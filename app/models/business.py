@@ -1,0 +1,38 @@
+from .db import db
+
+
+class Business(db.Model):
+    __tablename__ = 'businesses'
+    id = db.Column(db.Integer, nullable=False, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    address = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(255), nullable=False)
+    state = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(255), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    owner = db.relationship('user', back_populates='businesses')
+    images = db.relationship('Image', back_populates='businesses', cascade='all, delete')
+
+
+    def to_dict_business(self):
+        return {
+          "id": self.id,
+          "ownerId": self.owner_id,
+          "name": self.name,
+          "description": self.description,
+          "address": self.address,
+          "city": self.city,
+          "state": self.state,
+        }
+
+    def to_dict_relationship(self):
+        return {
+          "id": self.id,
+          "ownerId": self.owner_id,
+          "name": self.name,
+          "description": self.description,
+          "address": self.address,
+          "city": self.city,
+          "state": self.state,
+          "owner": self.owner.to_dict(),
+        }
