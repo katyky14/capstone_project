@@ -26,6 +26,7 @@ def upgrade():
     sa.Column('state', sa.String(length=255), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
+    sa.Column('preview_image',sa.String(length=500), nullable=False),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

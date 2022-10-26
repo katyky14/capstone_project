@@ -15,8 +15,11 @@ business_routes = Blueprint('business', __name__)
 # Get all business
 @business_routes.route('/')
 def get_all_businesses():
-    all_businesses = Business.query.join(Image).all()
-    return {'business': [business.to_dict_relationship() for business in all_businesses]}
+    all_business = Business.query.all()
+    print('in the', all_business)
+    return {'business': [b.to_dict_business() for b in all_business]}
+    # all_businesses = Business.query.join(Image).all()
+    # return {'business': [business.to_dict_relationship() for business in all_businesses]}
 
 # Get business by id
 @business_routes.route('/<int:id>')

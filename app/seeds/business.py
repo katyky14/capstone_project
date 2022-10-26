@@ -7,7 +7,8 @@ def seed_business():
         city = 'South San Sanfrancisco',
         state = 'CA',
         description = 'Ramen, Sushi Bars, Salad',
-        owner_id = 1
+        owner_id = 1,
+        preview_image = 'https://cdn.pixabay.com/photo/2015/05/13/16/16/noodle-soup-765706__340.jpg'
 
     )
 
@@ -17,7 +18,8 @@ def seed_business():
         city = 'New York',
         state = 'NY',
         description = 'Bakeries',
-        owner_id = 2
+        owner_id = 2,
+        preview_image = 'https://cdn.pixabay.com/photo/2016/03/27/21/59/bread-1284438__340.jpg'
     )
 
     business3 = Business(
@@ -27,7 +29,8 @@ def seed_business():
         state = 'IL',
         description = 'Pizza, Italian, Sandwiches',
         # phone = '3128289800',
-        owner_id = 3
+        owner_id = 3,
+        preview_image = 'https://cdn.pixabay.com/photo/2018/07/09/09/34/pizza-3525673__340.jpg'
     )
 
     db.session.add(business1)

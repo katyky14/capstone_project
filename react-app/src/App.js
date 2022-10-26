@@ -9,6 +9,10 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 
+import GetAllBusiness from './components/business/getAllBusiness';
+import GetBusinessById from './components/business/businessDetail';
+import CreateBusinessForm from './components/business/businessForm';
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -28,6 +32,8 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+
+
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -40,9 +46,18 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+
+
+        <ProtectedRoute path='/business/new' exact={true}>
+          <CreateBusinessForm />
         </ProtectedRoute>
+
+        <Route path='/business/:businessId' exact={true}>
+          <GetBusinessById />
+        </Route>
+        <Route path='/' exact={true}>
+          <GetAllBusiness />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -42,9 +42,10 @@ const deleteBusiness = payload => {
 export const getAllBusinessThunk = () => async dispatch => {
     const response = await fetch('/api/business/')
 
+    //console.log('the response in all thunk', response)
     if (response.ok) {
         const data = await response.json()
-        console.log('the data thunk in fetch all business', data)
+        //console.log('the data thunk in fetch all business', data)
         dispatch(getAllBusiness(data.business))
     }
 }
@@ -53,38 +54,57 @@ export const getAllBusinessThunk = () => async dispatch => {
 
 export const getOneBusinessThunk = (id) => async dispatch => {
     const response = await fetch(`/api/business/${id}`);
-
+    //console.log('the in in thunk for details', id)
     if (response.ok) {
         const data = await response.json();
-        console.log('the data thunk  fetch bz ID', data)
+        //console.log('the data thunk  fetch bz ID', data)
         dispatch(getOneBusiness(data.oneBusiness))
         return { ...data }
     }
 }
 
 // add bz thunk
+// export const addOneBusinessThunk = (businessData) => async (dispatch) => {
+//     const response = await fetch('/api/business', {
+//         method: 'POST',
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify(businessData)
+//     })
+
+//     if (response.ok) {
+//         const data = await response.json()
+//         console.log('the data in thunk for create', data)
+//         console.log('the business data in thunk for create', businessData)
+//         // to add image to the image table
+//         const imageResponse = await fetch(`/api/business/${data.business.id}/images`, {
+//             method: 'POST',
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify({
+//                 "image_url": businessData.image_url
+//             })
+//         })
+//         const imageData = await imageResponse.json()
+//         dispatch(addOneBusiness(data));
+//         return data;
+//     }
+// }
+
+//add business
 export const addOneBusinessThunk = (businessData) => async (dispatch) => {
+    console.log('the business data', businessData)
     const response = await fetch('/api/business', {
         method: 'POST',
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json"},
         body: JSON.stringify(businessData)
-    })
+    });
 
+    console.log('after post', businessData)
+    console.log('after post in thunk response ', response)
     if (response.ok) {
-        const data = await response.json()
-        console.log('the data in thunk for create', data)
-        console.log('the business data in thunk for create', businessData)
-        // to add image to the image table
-        const imageResponse = await fetch(`/api/business/${data.business.id}/images`, {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                "image_url": businessData.image_url
-            })
-        })
-        const imageData = await imageResponse.json()
-        dispatch(addOneBusiness(data));
-        return data;
+        const data = await response.json();
+        dispatch(addOneBusiness(data))
+        console.log('the data if response is ok', data)
+        return data
     }
 }
 
@@ -118,7 +138,18 @@ const businessReducer = (state = {}, action) => {
             return newState;
         }
 
+        case ADD_BUSINESS: {
+            const newStateBz = { ...state };
+            console.log('in reducer', action)
+            console.log('in the reducer the action.payload', action.payload)
+            newStateBz[action.payload.business.id] = action.payload;
+            console.log('in the reducer the state after normalization', newStateBz)
+            return newStateBz
+        }
+
         default:
             return state
     }
 }
+
+export default businessReducer
