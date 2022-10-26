@@ -5,9 +5,10 @@ class Review(db.Model):
     __tablename__ = 'reviews'
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    business_id = db.Column(db.integer, db.ForeignKey('businesses.id'), nullable=True)
+    business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=True)
     rating = db.Column(db.Integer, nullable=False)
     review = db.Column(db.String(500), nullable=False)
+    
     users = db.relationship('User', back_populates='reviews')
     business = db.relationship('Business', back_populates='reviews')
     # images = db.relationship('Image', back_populates='reviews')

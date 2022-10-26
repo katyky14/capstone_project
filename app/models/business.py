@@ -8,11 +8,13 @@ class Business(db.Model):
     address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
+    # phone = db.Column(db.String(15), nullable=False)
     description = db.Column(db.String(255), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    owner = db.relationship('user', back_populates='businesses')
-    images = db.relationship('Image', back_populates='businesses', cascade='all, delete')
 
+    owner = db.relationship('User', back_populates='business')
+    images = db.relationship('Image', back_populates ='business')
+    reviews = db.relationship('Review', back_populates='business', cascade='all, delete')
 
     def to_dict_business(self):
         return {
@@ -23,6 +25,7 @@ class Business(db.Model):
           "address": self.address,
           "city": self.city,
           "state": self.state,
+          # "phone": self.phone
         }
 
     def to_dict_relationship(self):
@@ -35,4 +38,6 @@ class Business(db.Model):
           "city": self.city,
           "state": self.state,
           "owner": self.owner.to_dict(),
+          "images": [i.to_dict_images() for i in self.images],
+          "reviews": [r.to_dict_reviews() for r in self.reviews]
         }

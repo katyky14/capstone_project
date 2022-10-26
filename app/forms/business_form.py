@@ -1,16 +1,18 @@
 from tokenize import String
 from wsgiref.validate import validator
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField
-from wtforms.validators import DataRequired, Email
+from wtforms import StringField, TextAreaField, SubmitField, validators, IntegerField
+from wtforms.validators import DataRequired, Email, ValidationError
 
 
 class BusinessForm(FlaskForm):
-    name = StringField('Business Name', validators=[DataRequired()])
+    name = StringField('Business Name', validators=[DataRequired(), validators.Length(min=1, max=50, message='Name must be between 2 to 50 characters')])
     address = StringField('Address', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
-    description = TextAreaField('Description', validators=[DataRequired()])
+    # phone = StringField('Phone Number', validators=[DataRequired(), validators.Length(min=12, max=12, message="Phone must be 10 characters")])
+    description = TextAreaField('Description', validators=[DataRequired(), validators.Length(min=4, max=500, message="Description must be between 4 to 500 characters")])
+    owner_id = IntegerField('Owner Id')
     submit = SubmitField('Add Business')
 
 
@@ -20,5 +22,7 @@ class EditBusinessForm(FlaskForm):
     address = StringField('Address', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
+    # phone = StringField('Phone Number', validators=[DataRequired(), validators.Length(min=12, max=12, message="Phone must be 10 characters")])
     description = TextAreaField('Description', validators=[DataRequired()])
+    owner_id = IntegerField('Owner Id')
     submit = SubmitField('Edit Business')

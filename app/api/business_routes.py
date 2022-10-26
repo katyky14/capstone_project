@@ -48,7 +48,7 @@ def edit_business(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = Business.query.get(id)
-        form.populate_ob(data)
+        form.populate_obj(data)
         db.session.add(data)
         db.session.commit()
         return {'editedBusiness': data.to_dict_relationship()}
@@ -75,7 +75,7 @@ def add_images_to_business(business_id):
     return form.errors
 
 # delete a business
-@business_routes.route('/<int:id>', method=['DELETE'])
+@business_routes.route('/<int:id>', methods=['DELETE'])
 def delete_business(id):
     selected_business = Business.query.get(id)
     if selected_business:
@@ -87,7 +87,7 @@ def delete_business(id):
 
 
 #add a review for a business
-@business_routes.route('/<int:business_id>/reviews', method=['POST'])
+@business_routes.route('/<int:business_id>/reviews', methods=['POST'])
 def add_review(business_id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
