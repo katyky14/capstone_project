@@ -16,7 +16,7 @@ business_routes = Blueprint('business', __name__)
 @business_routes.route('/')
 def get_all_businesses():
     all_business = Business.query.all()
-    print('in the', all_business)
+    # print('in the', all_business)
     return {'business': [b.to_dict_business() for b in all_business]}
     # all_businesses = Business.query.join(Image).all()
     # return {'business': [business.to_dict_relationship() for business in all_businesses]}
@@ -48,12 +48,15 @@ def create_business():
 @business_routes.route('/<int:id>', methods=['PUT'])
 def edit_business(id):
     form = EditBusinessForm()
+    print('edit form', form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = Business.query.get(id)
+        print('the data inside form', data)
         form.populate_obj(data)
         db.session.add(data)
         db.session.commit()
+        print('the json of data', data.to_dict_relationship())
         return {'editedBusiness': data.to_dict_relationship()}
 
     return form.errors

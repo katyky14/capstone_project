@@ -1,6 +1,7 @@
 //types
 const GET_BUSINESSES = 'business/GET_BUSINESSES'
 const GET_BUSINESS_BY_ID = 'business/GET_BUSINESS_BY_ID'
+const EDIT_BUSINESS = 'business/EDIT_BUSINESS'
 const ADD_BUSINESS = 'business/ADD_BUSINESS'
 const DELETE_BUSINESS = 'business/DELETE_BUSINESS'
 
@@ -24,6 +25,13 @@ const getOneBusiness = payload => {
 const addOneBusiness = payload => {
     return {
         type: ADD_BUSINESS,
+        payload
+    }
+}
+
+const editBusiness = payload => {
+    return {
+        type: EDIT_BUSINESS,
         payload
     }
 }
@@ -91,26 +99,45 @@ export const getOneBusinessThunk = (id) => async dispatch => {
 
 //add business
 export const addOneBusinessThunk = (businessData) => async (dispatch) => {
-    console.log('the business data', businessData)
+    //console.log('the business data', businessData)
     const response = await fetch('/api/business', {
         method: 'POST',
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(businessData)
     });
 
-    console.log('after post', businessData)
-    console.log('after post in thunk response ', response)
+    //console.log('after post', businessData)
+    //console.log('after post in thunk response ', response)
     if (response.ok) {
         const data = await response.json();
         dispatch(addOneBusiness(data))
-        console.log('the data if response is ok', data)
+        //console.log('the data if response is ok', data)
         return data
     }
 }
 
 
 //edit a bz
+export const editBusinessThunk = (businessData) => async (dispatch) => {
+    //console.log('before everything', businessData)
 
+    const response = await fetch(`/api/business/${businessData.id}`, {
+        method: 'PUT',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(businessData),
+    });
+
+    //console.log('after response', response)
+    //console.log('after response the business data', businessData)
+
+    if (response.ok) {
+        const data = await response.json();
+        //console.log('inside the response the data is', data)
+        dispatch(editBusiness(data))
+        //console.log('after dispatch data is', data)
+        return data;
+    }
+}
 
 
 
@@ -140,11 +167,19 @@ const businessReducer = (state = {}, action) => {
 
         case ADD_BUSINESS: {
             const newStateBz = { ...state };
-            console.log('in reducer', action)
-            console.log('in the reducer the action.payload', action.payload)
+            //console.log('in reducer', action)
+            //console.log('in the reducer the action.payload', action.payload)
             newStateBz[action.payload.business.id] = action.payload;
-            console.log('in the reducer the state after normalization', newStateBz)
+            //console.log('in the reducer the state after normalization', newStateBz)
             return newStateBz
+        }
+
+        case EDIT_BUSINESS: {
+            const newStateEdit = {...state}
+            console.log('in reducer ----', action.payload)
+            newStateEdit[action.payload.editedBusiness.id] = action.payload
+            console.log('in reducer after normalized', newStateEdit)
+            return newStateEdit
         }
 
         default:
