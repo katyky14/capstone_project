@@ -8,6 +8,7 @@ class Image(db.Model):
     image_url = db.Column(db.String, nullable = False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=True)
+
     business = db.relationship('Business', back_populates='images')
     users = db.relationship('User', back_populates='images')
     # review_id = db.Column(db.Integer, db.ForeignKey('reviews.id'), nullable=True)
