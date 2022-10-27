@@ -12,7 +12,7 @@ def get_all_reviews_user():
     if current_user.is_authenticated:
         user = current_user.to_dict()
         all_reviews = Review.query.filter(Review.user_id == user['id'])
-        return { "reviews": [review.to_dict_reviews() for review in all_reviews]}
+        return { "review": [review.to_dict_reviews() for review in all_reviews]}
 
     return {"message": "no user logged in"}
 
