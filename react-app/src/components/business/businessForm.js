@@ -40,7 +40,7 @@ function CreateBusinessForm() {
 
         let createdBusiness = await dispatch(addOneBusinessThunk(businessInformation))
 
-        console.log('the created business in component', createdBusiness)
+        //console.log('the created business in component', createdBusiness)
         if (createdBusiness) {
             history.push(`/business/${createdBusiness.business.id}`)
         }
@@ -51,10 +51,11 @@ function CreateBusinessForm() {
         const errors = [];
 
         if (name.length < 2 || name.length > 50) errors.push('Name must be between 2 and 50 characters')
+        if (description.length < 5 || description.length > 255) errors.push('Description must be between 5 and 255 characters')
         if (!preview_image.match(/\.(jpg|jpeg|png)$/)) errors.push('Please provide a valid image extension [png/jpg/jpeg]')
 
         setValidationErrors(errors)
-    }, [name, preview_image])
+    }, [name, description, preview_image])
 
 
 

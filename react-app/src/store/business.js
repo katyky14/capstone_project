@@ -119,7 +119,7 @@ export const addOneBusinessThunk = (businessData) => async (dispatch) => {
 
 //edit a bz
 export const editBusinessThunk = (businessData) => async (dispatch) => {
-    //console.log('before everything', businessData)
+    console.log('before everything', businessData)
 
     const response = await fetch(`/api/business/${businessData.id}`, {
         method: 'PUT',
@@ -127,14 +127,14 @@ export const editBusinessThunk = (businessData) => async (dispatch) => {
         body: JSON.stringify(businessData),
     });
 
-    //console.log('after response', response)
-    //console.log('after response the business data', businessData)
+    console.log('after response', response)
+    console.log('after response the business data', businessData)
 
     if (response.ok) {
         const data = await response.json();
-        //console.log('inside the response the data is', data)
+        console.log('inside the response the data is', data)
         dispatch(editBusiness(data))
-        //console.log('after dispatch data is', data)
+        console.log('after dispatch data is', data)
         return data;
     }
 }

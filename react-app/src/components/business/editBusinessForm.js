@@ -16,23 +16,16 @@ function EditBusinessForm() {
     const ownerObj = useSelector(state => state.session.user)
     //console.log('the ownerobj', ownerObj)
 
-    // const buz = useSelector(state => state.businessState)
-    // const buzArr = Object.values(buz)
-    // const buzValues = buzArr.find(b => b.id === Number(businessId))
-    // console.log('the buz', buz)
-    // console.log('the buz arr', buzArr)
-    // console.log('the values', buzValues)
-
     const businessObj = useSelector(state => state.businessState[businessId])
-    console.log('the business obj in compo', businessObj)
+    //console.log('the business obj in compon', businessObj)
 
 
-    const [name, setName] = useState(businessObj?.name)
-    const [address, setAddress] = useState(businessObj?.address)
-    const [city, setCity] = useState(businessObj?.city)
-    const [state, setState] = useState(businessObj?.state)
-    const [description, setDescription] = useState(businessObj?.description)
-    const [preview_image, setPreviewImage] = useState(businessObj?.previewImage)
+    const [name, setName] = useState("")
+    const [address, setAddress] = useState("")
+    const [city, setCity] = useState("")
+    const [state, setState] = useState("")
+    const [description, setDescription] = useState("")
+    const [preview_image, setPreviewImage] = useState("")
     const [validationeErrors, setValidationeErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -45,9 +38,20 @@ function EditBusinessForm() {
     const updatedPreviewImage = e => setPreviewImage(e.target.value)
 
     useEffect(() => {
-        dispatch(getOneBusinessThunk(businessId))
-        dispatch(authenticate())
-    }, [dispatch, businessId])
+        dispatch(getOneBusinessThunk(+businessId)).then(() => setIsLoaded(true))
+    }, [dispatch])
+
+    useEffect(() => {
+        if (businessObj) {
+            setName(businessObj.name)
+            setAddress(businessObj.address)
+            setCity(businessObj.city)
+            setState(businessObj.state)
+            setDescription(businessObj.description)
+            setPreviewImage(businessObj.previewImage)
+        }
+
+    }, [businessObj])
 
 
     const onSubmit = async (e) => {
@@ -70,7 +74,9 @@ function EditBusinessForm() {
 
         let editedBusiness = await dispatch(editBusinessThunk(businessInformation))
 
-        console.log('edited info', editedBusiness)
+        if (editedBusiness) {
+            history.push(`/business/${editedBusiness.editedBusiness.id}`)
+        }
 
     }
 
@@ -78,14 +84,14 @@ function EditBusinessForm() {
         const valerrors = [];
 
 
-        if (businessObj) {
+        // if (businessObj != undefined && businessId) {
 
             if (name.length < 2 || name.length > 50) valerrors.push('Name must be between 2 and 50 characters')
-            if (!preview_image.match(/\.(jpg|jpeg|png)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg]')
+            if (!preview_image?.match(/\.(jpg|jpeg|png)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg]')
             setValidationeErrors(valerrors)
 
-        }
-    }, [name, preview_image])
+        // }
+    }, [name, preview_image, businessId, businessObj])
 
 
 
@@ -164,7 +170,7 @@ function EditBusinessForm() {
                     />
                 </label>
 
-                <button> Create New Business</button>
+                <button> Edit Business</button>
 
             </form>
 
