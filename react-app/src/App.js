@@ -64,7 +64,7 @@ function App() {
         <Route path='/business/:businessId' exact={true}>
           <GetBusinessById />
         </Route>
-        <Route path='/' exact={true}>
+        <Route path='/business' exact={true}>
           <GetAllBusiness />
         </Route>
       </Switch>

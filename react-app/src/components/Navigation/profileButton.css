@@ -1,0 +1,109 @@
+
+.profile-container {
+    display: flex;
+    border: 1px solid red;
+    /* width: 600px; */
+
+}
+
+.li-owner {
+    /* margin-right: 80px; */
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+
+}
+li {
+    list-style: none;
+}
+
+.button-user {
+
+    /* margin-right: 20px; */
+    /* margin-left: 80px; */
+    border-radius: 8px;
+    cursor: pointer;
+    height: 50px;
+    width: 80px;
+    background-color: transparent;
+    border: none;
+}
+
+
+.profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+    position: absolute;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 0;
+    padding: 0;
+    right: 100px;
+    top: 80px;
+    width: 200px;
+    z-index: 10;
+    border: none;
+
+    background-color: rgb(196, 177, 177, 0.5px);
+
+    /* box-shadow: 2px 2px 5px 5px rgb(0 0 0 / 15%); */
+
+    /* border-radius: 10px;
+    border: none;
+    background-color: aqua;
+    display: flex;
+    height: 42px;
+    width: 76px;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease-in 0s; */
+
+    overflow: hidden;
+}
+
+.profile-dropdown button {
+    padding: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.profile-dropdown .profile-content {
+    padding: 15px 20px;
+}
+
+.profile-dropdown .profile-content:hover,
+.profile-dropdown .profile-content:hover button {
+
+    background-color:  rgb(235, 235, 235);
+}
+
+.profile-content {
+    font-size: 16px;
+}
+
+
+.button-style {
+
+    font-size: 16px;
+    border-style: none;
+    cursor: pointer;
+}
+
+.navlink-business-form {
+    text-decoration: none;
+    color: black;
+
+}
+
+.navlink-business-user {
+    text-decoration: none;
+    color: black;
+
+}
+
+.navlink-business-all {
+    text-decoration: none;
+    color: black;
+}
