@@ -5,6 +5,7 @@ import { deleteBusinessThunk, getAllBusinessThunk } from "../../store/business";
 
 
 import { authenticate } from '../../store/session'
+import EditBusinessForm from "./editBusinessForm";
 
 
 
@@ -14,10 +15,10 @@ function OwnerBusiness() {
     const history = useHistory();
 
     const ownerObj = useSelector(state => state.session.user)
-    console.log('the owner obj', ownerObj)
+    //console.log('the owner obj', ownerObj)
 
     const ownerArr = useSelector(state => state.session.user?.business)
-    console.log('the owner arr', ownerArr)
+    //console.log('the owner arr', ownerArr)
 
     useEffect(() => {
         dispatch(getAllBusinessThunk())
@@ -37,8 +38,13 @@ function OwnerBusiness() {
                 <div key={id}>
                     <div>{name} </div>
                     <div>{address} </div>
+                    <div>{city} </div>
+                    <img src={previewImage}
+                        alt='image'
+                        onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
+                    />
+                    <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm/>Edit Business</button>
                     <button onClick={() => deleteTheBusiness(id)}>Delete</button>
-
                 </div>
             ))}
 

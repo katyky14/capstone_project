@@ -187,7 +187,7 @@ function EditBusinessForm() {
                     />
                 </label>
 
-                <button> Edit Business</button>
+                <button onClick={() => history.push(`/business/${businessId}`)}> Edit Business</button>
 
             </form>
 
