@@ -14,6 +14,7 @@ import GetBusinessById from './components/business/businessDetail';
 import CreateBusinessForm from './components/business/businessForm';
 import EditBusinessForm from './components/business/editBusinessForm';
 import Navigation from './components/Navigation';
+import OwnerBusiness from './components/business/ownerBusiness';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,10 @@ function App() {
           <User />
         </ProtectedRoute>
 
+
+        <ProtectedRoute path='/business/owner' exact={true}>
+          <OwnerBusiness />
+        </ProtectedRoute>
 
         <ProtectedRoute path='/business/new' exact={true}>
           <CreateBusinessForm />

@@ -15,14 +15,14 @@ function Navigation({ loaded }) {
     return (
         <>
             <div>
+                <div>
+                    <NavLink to='/' exact={true} activeClassName='active'>
+                        Home
+                    </NavLink>
+                </div>
 
                 {!sessionUser && (
                     <div>
-                        <div>
-                            <NavLink to='/' exact={true} activeClassName='active'>
-                                Home
-                            </NavLink>
-                        </div>
                         <div>
                             <NavLink to='/login' exact={true} activeClassName='active'>
                                 Login
@@ -39,7 +39,7 @@ function Navigation({ loaded }) {
 
             <div>
                 {sessionUser && (
-                   <ProfileButton sessionUser={sessionUser}/>
+                    <ProfileButton sessionUser={sessionUser} />
                 )}
             </div>
         </>

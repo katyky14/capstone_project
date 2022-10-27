@@ -36,24 +36,24 @@ function ProfileButton({ sessionUser }) {
     return (
         <div>
             <div>
+                <li>
+                    <NavLink to='/business/new' exact={true}>Create a Business</NavLink>
+                </li>
                 <button onClick={openMenu} >
                     <div>
-                    <i className="fas fa-user-circle fa-2x" />
-                    <i className="fas fa-angle-down fa-2x" />
+                        <i className="fas fa-user-circle fa-2x" />
+                        <i className="fas fa-angle-down fa-2x" />
                     </div>
                 </button>
             </div>
-            {showMenu && sessionUser && (
+            {showMenu && (
                 <ul>
-                    <li>
-                        <NavLink to='/business/new' exact={true}>Create a Business</NavLink>
-                    </li>
                     {/* <li>
                         <NavLink to='/' exact={true}>My reviews</NavLink>
-                    </li>
-                    <li>
-                        <NavLink>My Business</NavLink>
                     </li> */}
+                    <li>
+                        <NavLink to='/business/owner' exact={true}>My Business</NavLink>
+                    </li>
                     <li>
                         <div onClick={loggingOut}>Log out</div>
                     </li>
