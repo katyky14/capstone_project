@@ -1,13 +1,13 @@
-import {useEffect, useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import {getAllBusinessThunk, getOneBusinessThunk} from '../../store/business'
+import { getAllBusinessThunk, getOneBusinessThunk } from '../../store/business'
 
 
 
 function GetBusinessById() {
     const dispatch = useDispatch()
-    const {businessId} = useParams()
+    const { businessId } = useParams()
     const businessObj = useSelector(state => state.businessState)
     //console.log('in the component', businessObj)
     const businessArr = Object.values(businessObj)
@@ -26,6 +26,11 @@ function GetBusinessById() {
                     <div>{business.name}</div>
                     <div>{business.description}</div>
                     <div>{business.address} {business.city}</div>
+                    <div>{business.phone}</div>
+                    <img src={business.previewImage}
+                        alt='image'
+                        onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
+                    />
                     <div>{business.previewImage}</div>
                 </div>
             ))}

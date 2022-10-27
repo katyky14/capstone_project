@@ -119,7 +119,7 @@ export const addOneBusinessThunk = (businessData) => async (dispatch) => {
 
 //edit a bz
 export const editBusinessThunk = (businessData) => async (dispatch) => {
-    console.log('before everything', businessData)
+    //console.log('before everything', businessData)
 
     const response = await fetch(`/api/business/${businessData.id}`, {
         method: 'PUT',
@@ -127,12 +127,12 @@ export const editBusinessThunk = (businessData) => async (dispatch) => {
         body: JSON.stringify(businessData),
     });
 
-    console.log('after response', response)
-    console.log('after response the business data', businessData)
+    //console.log('after response', response)
+    //console.log('after response the business data', businessData)
 
     if (response.ok) {
         const data = await response.json();
-        console.log('inside the response the data is', data)
+        //console.log('inside the response the data is', data)
         dispatch(editBusiness(data))
         console.log('after dispatch data is', data)
         return data;
@@ -144,6 +144,21 @@ export const editBusinessThunk = (businessData) => async (dispatch) => {
 
 // delete a bz
 
+export const deleteBusinessThunk = (businessId) => async (dispatch) => {
+    console.log('the id in delete', businessId)
+    const response = await fetch(`/api/business/${businessId}`, {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        console.log('the data in thunk', data)
+        dispatch(deleteBusiness(businessId))
+    }
+}
 
 
 
@@ -176,10 +191,16 @@ const businessReducer = (state = {}, action) => {
 
         case EDIT_BUSINESS: {
             const newStateEdit = {...state}
-            console.log('in reducer ----', action.payload)
+            //console.log('in reducer ----', action.payload)
             newStateEdit[action.payload.editedBusiness.id] = action.payload
-            console.log('in reducer after normalized', newStateEdit)
+            //console.log('in reducer after normalized', newStateEdit)
             return newStateEdit
+        }
+
+        case DELETE_BUSINESS: {
+            const newStateDelete = { ...state }
+            delete newStateDelete[action.payload];
+            return newStateDelete
         }
 
         default:

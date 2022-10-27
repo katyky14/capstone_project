@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector} from 'react-redux'
-import {useHistory} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 
-import { getAllBusinessThunk} from '../../store/business'
+import { getAllBusinessThunk } from '../../store/business'
 
 function GetAllBusiness() {
     const dispatch = useDispatch()
@@ -18,6 +18,12 @@ function GetAllBusiness() {
     }, [dispatch])
 
 
+    // <img
+    // src={original.image}
+    // alt="image description for screen readers"
+    // onError={e => { e.currentTarget.src = "https://demofree.sirv.com/nope-not-here.jpg"; }}/>
+
+
 
     return !!businessArr.length && (
         <div>
@@ -28,6 +34,10 @@ function GetAllBusiness() {
                     <div>{business.address} </div>
                     <div>{business.city} </div>
                     <div>{business.previewImage}</div>
+                    <img src={business.previewImage}
+                        alt='image'
+                        onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
+                    />
                     <hr></hr>
 
 

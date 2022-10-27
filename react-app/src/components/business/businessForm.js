@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom'
 
 import { addOneBusinessThunk } from '../../store/business'
 
+const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
 function CreateBusinessForm() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -13,13 +15,14 @@ function CreateBusinessForm() {
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [description, setDescription] = useState('')
+    const [phone, setPhone] = useState('')
     const [preview_image, setPreviewImage] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
 
     const ownerObj = useSelector(state => state.session.user)
-    //console.log('the user obj in form', ownerObj)
+    console.log('the user obj in form', ownerObj)
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +38,7 @@ function CreateBusinessForm() {
             city,
             state,
             description,
+            phone,
             preview_image
         }
 
@@ -42,7 +46,7 @@ function CreateBusinessForm() {
 
         //console.log('the created business in component', createdBusiness)
         if (createdBusiness) {
-            history.push(`/business/${createdBusiness.business.id}`)
+            history.push(`/business/${createdBusiness.id}`)
         }
     }
 
@@ -52,10 +56,11 @@ function CreateBusinessForm() {
 
         if (name.length < 2 || name.length > 50) errors.push('Name must be between 2 and 50 characters')
         if (description.length < 5 || description.length > 255) errors.push('Description must be between 5 and 255 characters')
-        if (!preview_image.match(/\.(jpg|jpeg|png)$/)) errors.push('Please provide a valid image extension [png/jpg/jpeg]')
+        if (!phone.match(phoneRegEx)) errors.push('Please enter a valid phone number ex. 000-000-0000')
+        if (!preview_image.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
 
         setValidationErrors(errors)
-    }, [name, description, preview_image])
+    }, [name, description, phone, preview_image])
 
 
 
@@ -118,6 +123,15 @@ function CreateBusinessForm() {
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                         required
+                    />
+                </label>
+
+                <label>
+                    <input
+                    placeholder='Phone Number (ex 000-000-0000)'
+                    type='text'
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)}
                     />
                 </label>
 

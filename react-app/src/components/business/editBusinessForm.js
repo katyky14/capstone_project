@@ -5,6 +5,8 @@ import { useHistory, useParams } from 'react-router-dom'
 import { authenticate } from '../../store/session'
 import { getOneBusinessThunk, editBusinessThunk, addOneBusinessThunk } from '../../store/business'
 
+const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
 function EditBusinessForm() {
 
     const { businessId } = useParams()
@@ -25,6 +27,7 @@ function EditBusinessForm() {
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
     const [description, setDescription] = useState("")
+    const [phone, setPhone] = useState("")
     const [preview_image, setPreviewImage] = useState("")
     const [validationeErrors, setValidationeErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -35,6 +38,7 @@ function EditBusinessForm() {
     const updatedCity = e => setCity(e.target.value)
     const updatedState = e => setState(e.target.value)
     const updatedDescription = e => setDescription(e.target.value)
+    const updatedPhone = e => setPhone(e.target.value)
     const updatedPreviewImage = e => setPreviewImage(e.target.value)
 
     useEffect(() => {
@@ -48,6 +52,7 @@ function EditBusinessForm() {
             setCity(businessObj.city)
             setState(businessObj.state)
             setDescription(businessObj.description)
+            setPhone(businessObj.phone)
             setPreviewImage(businessObj.previewImage)
         }
 
@@ -67,6 +72,7 @@ function EditBusinessForm() {
             address,
             city,
             state,
+            phone,
             description,
             preview_image
         }
@@ -87,11 +93,12 @@ function EditBusinessForm() {
         // if (businessObj != undefined && businessId) {
 
             if (name.length < 2 || name.length > 50) valerrors.push('Name must be between 2 and 50 characters')
-            if (!preview_image?.match(/\.(jpg|jpeg|png)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg]')
+            if (!phone.match(phoneRegEx)) valerrors.push('Please enter a valid phone number ex. 000-000-0000')
+            if (!preview_image?.match(/\.(jpg|jpeg|png|gif)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
             setValidationeErrors(valerrors)
 
         // }
-    }, [name, preview_image, businessId, businessObj])
+    }, [name, preview_image, phone, businessId, businessObj])
 
 
 
@@ -158,6 +165,16 @@ function EditBusinessForm() {
                         value={description}
                         onChange={updatedDescription}
                         required
+                    />
+                </label>
+
+                <label>
+                    <input
+                    placeholder='Phone Number'
+                    type='text'
+                    value={phone}
+                    onChange={updatedPhone}
+
                     />
                 </label>
 

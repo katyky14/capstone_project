@@ -8,7 +8,7 @@ class Business(db.Model):
     address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
-    # phone = db.Column(db.String(15), nullable=False)
+    phone = db.Column(db.String(15), nullable=False)
     preview_image = db.Column(db.String(500), nullable=False)
     description = db.Column(db.String(255), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
@@ -26,7 +26,7 @@ class Business(db.Model):
           "address": self.address,
           "city": self.city,
           "state": self.state,
-          # "phone": self.phone,
+          "phone": self.phone,
           "previewImage": self.preview_image
 
         }
@@ -40,6 +40,7 @@ class Business(db.Model):
           "address": self.address,
           "city": self.city,
           "state": self.state,
+          "phone": self.phone,
           "owner": self.owner.to_dict(),
           "previewImage": self.preview_image,
           "images": [i.to_dict_images() for i in self.images],

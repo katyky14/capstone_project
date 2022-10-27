@@ -13,6 +13,7 @@ import GetAllBusiness from './components/business/getAllBusiness';
 import GetBusinessById from './components/business/businessDetail';
 import CreateBusinessForm from './components/business/businessForm';
 import EditBusinessForm from './components/business/editBusinessForm';
+import Navigation from './components/Navigation';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <Navigation loaded={loaded} />
       <Switch>
 
 
