@@ -45,5 +45,6 @@ class User(db.Model, UserMixin):
             'firstName': self.first_name,
             'lastName': self.last_name,
             'business': [b.to_dict_business() for b in self.business],
-            'userImages': [i.to_dict_images() for i in self.images]
+            'userImages': [i.to_dict_images() for i in self.images],
+            "reviews": [r.to_dict_reviews() for r in self.reviews]
         }
