@@ -6,6 +6,8 @@ import { signUp } from '../../store/session';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -14,12 +16,19 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    if (!email.includes('@')) {
+      return setErrors(['Please provide a valid email'])
+    }
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
       }
+      return;
     }
+    return setErrors(['Password fields must match'])
   };
 
   const updateUsername = (e) => {
@@ -50,14 +59,38 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-        <label>User Name</label>
+        <label>Username</label>
         <input
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
+          required
         ></input>
       </div>
+
+          <div>
+            <label> First Name</label>
+              <input
+              type='text'
+              name='firstName'
+              onChange={e => setFirstName(e.target.value)}
+              value={firstName}
+              required
+              />
+          </div>
+
+          <div>
+            <label>Last Name</label>
+              <input
+              type='text'
+              name='lastName'
+              onChange={e => setLastName(e.target.value)}
+              value={lastName}
+              required
+              />
+          </div>
+
       <div>
         <label>Email</label>
         <input

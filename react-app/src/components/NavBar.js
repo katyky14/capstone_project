@@ -30,6 +30,9 @@ const NavBar = () => {
         <li>
           <LogoutButton />
         </li>
+        <li>
+          <NavLink to='/business/new' exact={true}>Create a Business</NavLink>
+        </li>
       </ul>
     </nav>
   );
