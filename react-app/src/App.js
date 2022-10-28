@@ -15,6 +15,7 @@ import CreateBusinessForm from './components/business/businessForm';
 import EditBusinessForm from './components/business/editBusinessForm';
 import Navigation from './components/Navigation';
 import OwnerBusiness from './components/business/ownerBusiness';
+import HomePage from './homepage/homepage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,7 +37,9 @@ function App() {
       <Navigation loaded={loaded} />
       <Switch>
 
-
+        <Route path='/' exact={true}>
+          <HomePage />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>

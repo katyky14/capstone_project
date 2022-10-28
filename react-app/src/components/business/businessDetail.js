@@ -38,31 +38,94 @@ function GetBusinessById() {
 
     const getRating = (rating) => {
         if (rating === 5) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                </span >)
         }
         else if (rating > 4 && rating < 5) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-regular fa-star-half-stroke" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-regular fa-star-half-stroke" />
+                </span >)
         }
         else if (rating === 4) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-regular fa-star" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-regular fa-star" />
+                </span >)
         }
         else if (rating > 3 && rating < 4) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-regular fa-star-half-stroke" /><i class="fa-regular fa-star" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-regular fa-star-half-stroke" />
+                    <i class="fa-regular fa-star" />
+                </span >)
         }
         else if (rating === 3) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                </span >)
         }
         else if (rating > 2 && rating < 3) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-regular fa-star-half-stroke" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-regular fa-star-half-stroke" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                </span >)
         }
         else if (rating === 2) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-solid fa-star" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                </span >)
         }
         else if (rating > 1 && rating < 2) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-solid fa-star-half-stroke" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-solid fa-star-half-stroke" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                </span >)
         }
         else if (rating === 1) {
-            return (< span ><i class="fa-solid fa-star" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /><i class="fa-regular fa-star" /></span >)
+            return (
+                < span >
+                    <i class="fa-solid fa-star" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                    <i class="fa-regular fa-star" />
+                </span >)
         }
     }
 
@@ -94,7 +157,7 @@ function GetBusinessById() {
                     <div>{business.phone}</div>
                     <img src={business.previewImage}
                         alt='image'
-                        onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
+                        onError={e => { e.currentTarget.src = 'https://e7.pngegg.com/pngimages/261/502/png-clipart-league-of-legends-emote-video-game-summoner-league-of-legends-fictional-character-online-chat-thumbnail.png' }}
                     />
 
                 </div>
@@ -128,28 +191,28 @@ function GetBusinessById() {
                                 {/* for user who already has a review and want to edit or delete */}
 
                                 {
-                                userReview(rev, user) && !owner &&
+                                    userReview(rev, user) && !owner &&
 
                                     <div>
 
                                         <div>
-                                        <button onClick={async (e) => {
-                                            e.preventDefault()
-                                            await dispatch(deleteTheReviewThunk(rev.id))
-                                            //await dispatch(getBusinessReviewThunk(businessId))
-                                            await dispatch(getOneBusinessThunk(businessId))
-                                        }} > Delete Review </button>
+                                            <button onClick={async (e) => {
+                                                e.preventDefault()
+                                                await dispatch(deleteTheReviewThunk(rev.id))
+                                                //await dispatch(getBusinessReviewThunk(businessId))
+                                                await dispatch(getOneBusinessThunk(businessId))
+                                            }} > Delete Review </button>
 
-                                         </div>
+                                        </div>
 
 
-                                         <div>
+                                        <div>
                                             {
-                                                <EditReviewFormModal businessId={+businessId} business={business1}/>
+                                                <EditReviewFormModal businessId={+businessId} business={business1} />
                                             }
                                         </div>
 
-                                        </div>
+                                    </div>
 
 
 

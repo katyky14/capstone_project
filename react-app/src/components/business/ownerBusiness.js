@@ -43,7 +43,7 @@ function OwnerBusiness() {
                         alt='image'
                         onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
                     />
-                    <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm/>Edit Business</button>
+                    <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm />Edit Business</button>
                     <button onClick={() => deleteTheBusiness(id)}>Delete</button>
                 </div>
             ))}
