@@ -16,7 +16,7 @@ function GetBusinessById() {
     const businessArr = Object.values(businessObj)
     //console.log('the busines arr', businessArr)
     const business1 = businessArr.find(buz => buz.id === +businessId)
-    //console.log('the business find', business1)
+    console.log('the business find', business1)
 
     const allReviewsObj = useSelector(state => state.reviewState)
     //console.log('the reviews obj', allReviewsObj)

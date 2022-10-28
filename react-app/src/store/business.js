@@ -53,9 +53,9 @@ export const getAllBusinessThunk = () => async dispatch => {
     //console.log('the response in all thunk', response)
     if (response.ok) {
         const data = await response.json()
-        console.log('the data thunk in fetch all business', data.business)
 
         dispatch(getAllBusiness(data.business))
+        console.log('the data thunk in fetch all business', data.business)
     }
 }
 
