@@ -1,49 +1,61 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllBusinessThunk, getOneBusinessThunk } from "../../store/business";
-import { addOneReviewThunk } from "../../store/reviews";
+import { editTheReviewThunk } from "../../store/reviews";
+
 
 import './reviewFrom.css'
 
 
-function CreateReview({ setShowModal, businessId }) {
-    const dispatch = useDispatch();
+function EditReviewForm({ setShowModal, business}) {
 
-    console.log('the business id in create review', businessId)
-    const [review, setReview] = useState('');
-    const [stars, setStars] = useState(0);
-    const [errors, setErrors] = useState([]);
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.session.user)
+    console.log('the user', user)
+
+    const businessReview = business.reviews.find(review => review.userId === user.id)
+
+    const [review, setReview] = useState(businessReview.review)
+    const [stars, setStars] = useState(businessReview.rating);
+    const [validationErrors, setValidationErrors] = useState([]);
+
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const valErrors = [];
+        // const errors = [];
+        // if (stars === 0) errors.push("Stars rating is required");
+        // if (review.length === 0) errors.push("Review cannot be empty");
+        // if (review.length < 5 || review.length > 1000) errors.push("Review must be between 5 to 1000 characters")
+        // await setValidationErrors(errors);
 
-        if (stars === 0) valErrors.push("Star rating is required");
-        if (review.length === 0) valErrors.push("Review cannot be empty")
-        if (review.length < 5 || review.length > 1000) valErrors.push("Review must be between 5 to 1000 characters")
-        await setErrors(valErrors)
 
-        const reviewInformation = {
+        const reviewInfo = {
             "review": review,
             "rating": +stars,
-            businessId
+            "reviewId": businessReview.id
         }
+
 
         if (review.length > 0 && stars > 0) {
-            await dispatch(addOneReviewThunk(reviewInformation))
+            await dispatch(editTheReviewThunk(reviewInfo))
             // await dispatch(getAllBusinessThunk())
-            await dispatch(getOneBusinessThunk(businessId))
+            await dispatch(getOneBusinessThunk(business.id))
             setShowModal(false)
         }
-
 
     }
 
 
+    useEffect(() => {
+        const errors = [];
+        if (stars === 0) errors.push("Stars rating is required");
+        if (review.length === 0) errors.push("Review cannot be empty");
+        if (review.length < 5 || review.length > 1000) errors.push("Review must be between 5 to 1000 characters")
+        setValidationErrors(errors);
+    }, [review, stars])
+
     return (
-
-
 
         <form onSubmit={onSubmit} className="review-form">
             <div className='review-form-header'>
@@ -114,73 +126,20 @@ function CreateReview({ setShowModal, businessId }) {
                 </textarea>
             </div>
             <div className='review-errors-div'>
-                {errors.map((error, idx) => (
+                {validationErrors.map((error, idx) => (
                     <p key={idx} >{error}</p>
                     ))}
             </div>
-            <button className='Submit-Review' type="submit">Submit Review</button>
+            <button className='Submit-Review' type="submit" disabled={validationErrors.length > 0}>Submit Review</button>
         </form>
 
-)
+    )
+
+
+
 
 
 }
 
-export default CreateReview;
-{/* <div>
-    <input
-    className="star-inputs"
-        type='checkbox'
-        id="rate5"
-        name="stars"
-        value={5}
-        onChange={e => setStars(e.target.value)}
-        checked={+stars >= 5 ? true : false}
-    />
-    <label htmlFor="rate5">&#9733;</label>
 
-    <input
-     className="star-inputs"
-        type='checkbox'
-        id="rate4"
-        name="stars"
-        value={4}
-        onChange={e => setStars(e.target.value)}
-        checked={+stars >= 4 ? true : false}
-    />
-    <label htmlFor="rate4">&#9733;</label>
-
-    <input
-     className="star-inputs"
-        type='checkbox'
-        id="rate3"
-        name="stars"
-        value={3}
-        onChange={e => setStars(e.target.value)}
-        checked={+stars >= 3 ? true : false}
-    />
-    <label htmlFor="rate3">&#9733;</label>
-
-    <input
-     className="star-inputs"
-        type='checkbox'
-        id="rate2"
-        name="stars"
-        value={2}
-        onChange={e => setStars(e.target.value)}
-        checked={+stars >= 2 ? true : false}
-    />
-    <label htmlFor="rate2">&#9733;</label>
-
-    <input
-     className="star-inputs"
-        type='checkbox'
-        id="rate1"
-        name="stars"
-        value={1}
-        onChange={e => setStars(e.target.value)}
-        checked={+stars >= 1 ? true : false}
-    />
-    <label htmlFor="rate1">&#9733;</label>
-</div>
-*/}
+export default EditReviewForm;

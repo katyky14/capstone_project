@@ -13,13 +13,14 @@ function EditBusinessForm() {
     const dispatch = useDispatch();
     const history = useHistory()
 
-    //console.log('the business id', businessId)
+    console.log('the business id', businessId)
+
 
     const ownerObj = useSelector(state => state.session.user)
     //console.log('the ownerobj', ownerObj)
 
     const businessObj = useSelector(state => state.businessState[businessId])
-    //console.log('the business obj in compon', businessObj)
+    console.log('the business obj in compon', businessObj)
 
 
     const [name, setName] = useState("")
@@ -43,7 +44,8 @@ function EditBusinessForm() {
 
     useEffect(() => {
         dispatch(getOneBusinessThunk(+businessId)).then(() => setIsLoaded(true))
-    }, [dispatch])
+
+    }, [dispatch, businessId])
 
     useEffect(() => {
         if (businessObj) {
@@ -78,10 +80,10 @@ function EditBusinessForm() {
         }
 
 
-        let editedBusiness = await dispatch(editBusinessThunk(businessInformation))
+        let editedBusiness = await dispatch(editBusinessThunk(businessInformation, +businessId))
 
         if (editedBusiness) {
-            history.push(`/business/${editedBusiness.editedBusiness.id}`)
+            history.push(`/business/${businessId}`)
         }
 
     }
@@ -98,7 +100,7 @@ function EditBusinessForm() {
             setValidationeErrors(valerrors)
 
         // }
-    }, [name, preview_image, phone, businessId, businessObj])
+    }, [name, preview_image, phone, businessId])
 
 
 
@@ -187,7 +189,7 @@ function EditBusinessForm() {
                     />
                 </label>
 
-                <button onClick={() => history.push(`/business/${businessId}`)}> Edit Business</button>
+                <button type="submit"> Edit Business</button>
 
             </form>
 

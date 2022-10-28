@@ -16,7 +16,7 @@ class BusinessForm(FlaskForm):
     state = StringField('State', validators=[DataRequired()])
     phone = StringField('Phone Number', validators=[DataRequired(), validators.Length(min=12, max=12, message="Phone must be 10 characters")])
     description = TextAreaField('Description', validators=[DataRequired(), validators.Length(min=4, max=500, message="Description must be between 4 to 500 characters")])
-    preview_image = StringField('PreviewImage', validators=[DataRequired(), validUrl])
+    preview_image = StringField('PreviewImage', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
     submit = SubmitField('Add Business')
 
@@ -29,6 +29,12 @@ class EditBusinessForm(FlaskForm):
     state = StringField('State', validators=[DataRequired()])
     phone = StringField('Phone Number', validators=[DataRequired(), validators.Length(min=12, max=12, message="Phone must be 10 characters")])
     description = TextAreaField('Description', validators=[DataRequired()])
-    preview_image = StringField('PreviewImage', validators=[DataRequired(), validUrl])
+    preview_image = StringField('PreviewImage', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
     submit = SubmitField('Edit Business')
+
+
+# (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/))
+# regex = “([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)”
+# FileField('Header Image', validators=[FileAllowed(['jpg', 'png'])])
+# https://pythonhosted.org/Flask-WTF/form.html --- aws form validators

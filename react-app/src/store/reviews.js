@@ -93,7 +93,7 @@ export const addOneReviewThunk = (reviewData) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(addOneReview(data));
+        dispatch(addOneReview(data.review));
         console.log('the data in add review', data)
         return data
     }
@@ -122,6 +122,19 @@ export const editTheReviewThunk = (reviewData) => async (dispatch) => {
 }
 
 
+export const deleteTheReviewThunk = (reviewId) => async(dispatch) => {
+    console.log('the review id', reviewId)
+
+    const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: 'DELETE'
+    });
+
+    if(response.ok) {
+        const { id } = await response.json();
+        dispatch(deleteTheReview(id));
+    }
+}
+
 
 //reducer
 
@@ -139,19 +152,19 @@ const reviewReducer = (state = {}, action) => {
         }
 
         case CREATE_REVIEW: {
-            if (!state[action.review.id]) {
+            if (!state[action.payload.id]) {
                 const newStateAdd = {...state, [action.payload.id]: action.payload}
                 return newStateAdd;
             }
-        }
-
             return {
                 ...state,
-                [action.review.id]: {
+                [action.payload.id]: {
                     ...state[action.payload.id],
                     ...action.payload
                 }
             };
+        }
+
 
         case EDIT_REVIEW: {
             if (!state[action.payload.id]) {
@@ -169,6 +182,7 @@ const reviewReducer = (state = {}, action) => {
 
         case DELETE_REVIEW: {
             const newStateDelete = { ...state };
+            //console.log('in the reducer for review action', action.payload)
             delete newStateDelete[action.payload];
             return newStateDelete;
         }

@@ -53,7 +53,8 @@ export const getAllBusinessThunk = () => async dispatch => {
     //console.log('the response in all thunk', response)
     if (response.ok) {
         const data = await response.json()
-        //console.log('the data thunk in fetch all business', data)
+        console.log('the data thunk in fetch all business', data.business)
+
         dispatch(getAllBusiness(data.business))
     }
 }
@@ -99,7 +100,7 @@ export const getOneBusinessThunk = (id) => async dispatch => {
 
 //add business
 export const addOneBusinessThunk = (businessData) => async (dispatch) => {
-    //console.log('the business data', businessData)
+    console.log('the business data', businessData)
     const response = await fetch('/api/business', {
         method: 'POST',
         headers: { "Content-Type": "application/json"},
@@ -111,28 +112,29 @@ export const addOneBusinessThunk = (businessData) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(addOneBusiness(data))
-        //console.log('the data if response is ok', data)
+        console.log('the data if response is ok', data)
         return data
     }
 }
 
 
 //edit a bz
-export const editBusinessThunk = (businessData) => async (dispatch) => {
-    //console.log('before everything', businessData)
+export const editBusinessThunk = (businessData, businessId) => async (dispatch) => {
+    console.log('before everything', businessData)
+    console.log('the bz id', businessId)
 
-    const response = await fetch(`/api/business/${businessData.id}`, {
+    const response = await fetch(`/api/business/${businessId}`, {
         method: 'PUT',
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(businessData),
+        body: JSON.stringify(businessData)
     });
 
     //console.log('after response', response)
-    //console.log('after response the business data', businessData)
+    console.log('after response the edit business data', businessData)
 
     if (response.ok) {
         const data = await response.json();
-        //console.log('inside the response the data is', data)
+
         dispatch(editBusiness(data))
         console.log('after dispatch data is', data)
         return data;
@@ -171,11 +173,13 @@ const businessReducer = (state = {}, action) => {
             action.payload.forEach(business => {
                 allBusiness[business.id] = business
             })
+            console.log('in reducer for all bz', allBusiness)
             return allBusiness
         }
 
         case GET_BUSINESS_BY_ID: {
             const newState = {};
+            console.log('in reducer for bz by id', action.payload)
             newState[action.payload.id] = action.payload
             return newState;
         }
@@ -183,16 +187,17 @@ const businessReducer = (state = {}, action) => {
         case ADD_BUSINESS: {
             const newStateBz = { ...state };
             //console.log('in reducer', action)
-            //console.log('in the reducer the action.payload', action.payload)
-            newStateBz[action.payload.business.id] = action.payload;
+            console.log('in the reducer the action.payload', action.payload)
+            // newStateBz[action.payload.business.id] = action.payload;
             //console.log('in the reducer the state after normalization', newStateBz)
+            newStateBz[action.payload.id] = action.payload
             return newStateBz
         }
 
         case EDIT_BUSINESS: {
             const newStateEdit = {...state}
             //console.log('in reducer ----', action.payload)
-            newStateEdit[action.payload.editedBusiness.id] = action.payload
+            newStateEdit[action.payload.id] = action.payload
             //console.log('in reducer after normalized', newStateEdit)
             return newStateEdit
         }
