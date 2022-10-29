@@ -80,11 +80,11 @@ function ProfileButton({ sessionUser }) {
                     {/* <li>
                         <NavLink to='/' exact={true}>My reviews</NavLink>
                     </li> */}
-                    <li className="profile-content button-style">
+                    <li className="profile-content button-style-profile">
                         <StyledNavMyBusiness to='/business/owner' exact={true}> <i class="fa-solid fa-business-time"></i> My Businesses </StyledNavMyBusiness>
                     </li>
-                    <li className="profile-content button-style">
-                        <div onClick={loggingOut} className='button-style'> <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</div>
+                    <li className="profile-content button-style-profile">
+                        <div onClick={loggingOut} className='button-style-profile'> <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</div>
                     </li>
 
                 </ul>

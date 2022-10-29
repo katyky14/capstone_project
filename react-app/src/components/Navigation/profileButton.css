@@ -1,7 +1,7 @@
 
 .profile-container {
     display: flex;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* width: 600px; */
 
 }
@@ -84,7 +84,7 @@ li {
 }
 
 
-.button-style {
+.button-style-profile {
 
     font-size: 16px;
     border-style: none;

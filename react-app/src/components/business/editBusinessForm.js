@@ -5,22 +5,26 @@ import { useHistory, useParams } from 'react-router-dom'
 import { authenticate } from '../../store/session'
 import { getOneBusinessThunk, editBusinessThunk, addOneBusinessThunk } from '../../store/business'
 
+
+import './businessForm.css'
+
 const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
 function EditBusinessForm() {
+
 
     const { businessId } = useParams()
     const dispatch = useDispatch();
     const history = useHistory()
 
-    console.log('the business id', businessId)
+    //console.log('the business id', businessId)
 
 
     const ownerObj = useSelector(state => state.session.user)
     //console.log('the ownerobj', ownerObj)
 
     const businessObj = useSelector(state => state.businessState[businessId])
-    console.log('the business obj in compon', businessObj)
+    //console.log('the business obj in compon', businessObj)
 
 
     const [name, setName] = useState("")
@@ -94,10 +98,10 @@ function EditBusinessForm() {
 
         // if (businessObj != undefined && businessId) {
 
-            if (name.length < 2 || name.length > 50) valerrors.push('Name must be between 2 and 50 characters')
-            if (!phone.match(phoneRegEx)) valerrors.push('Please enter a valid phone number ex. 000-000-0000')
-            if (!preview_image?.match(/\.(jpg|jpeg|png|gif)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
-            setValidationeErrors(valerrors)
+        if (name.length < 2 || name.length > 50) valerrors.push('Name must be between 2 and 50 characters')
+        if (!phone.match(phoneRegEx)) valerrors.push('Please enter a valid phone number ex. 000-000-0000')
+        if (!preview_image?.match(/\.(jpg|jpeg|png|gif)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
+        setValidationeErrors(valerrors)
 
         // }
     }, [name, preview_image, phone, businessId])
@@ -109,91 +113,130 @@ function EditBusinessForm() {
     if (businessObj == undefined) return null;
 
     return businessObj && (
-        <>
-            <h2>Edit Form</h2>
+        <div className='form-container-main'>
 
-            <form onSubmit={onSubmit} >
-                {hasSubmitted && validationeErrors.length > 0 && (
-                    <ul>
-                        {validationeErrors.map(error =>
-                            <li key={error}>{error}</li>)}
-                    </ul>
-                )}
+            <div className='left-form left-bz-form'>
 
-                <label>
-                    <input
-                        placeholder='Business Name'
-                        type='text'
-                        value={name}
-                        onChange={updatedName}
-                        required
-                    />
-                </label>
+                <form onSubmit={onSubmit} >
+                    {hasSubmitted && validationeErrors.length > 0 && (
+                        <ul>
+                            {validationeErrors.map(error =>
+                                <li key={error}>{error}</li>)}
+                        </ul>
+                    )}
+                    <h2>Edit Form</h2>
 
-                <label>
-                    <input
-                        placeholder='Address'
-                        type='text'
-                        value={address}
-                        onChange={updatedAddress}
-                        required
-                    />
-                </label>
+                    <div>
 
-                <label>
-                    <input
-                        placeholder='City'
-                        type='text'
-                        value={city}
-                        onChange={updatedCity}
-                        required
-                    />
-                </label>
+                        <label> Business Name *
+                        </label>
+                        <input
+                            className='input-form'
+                            // placeholder='Business Name'
+                            type='text'
+                            value={name}
+                            onChange={updatedName}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label> Address *
+                        </label>
 
-                <label>
-                    <input
-                        placeholder='State'
-                        type='text'
-                        value={state}
-                        onChange={updatedState}
-                        required
-                    />
-                </label>
+                        <input
+                            className='input-form'
+                            // placeholder='Address'
+                            type='text'
+                            value={address}
+                            onChange={updatedAddress}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label> City *
+                            </label>
+                            <input
+                                className='input-form'
+                                // placeholder='City'
+                                type='text'
+                                value={city}
+                                onChange={updatedCity}
+                                required
+                            />
+                    </div>
 
-                <label>
-                    <input
-                        placeholder='Description'
-                        type='text'
-                        value={description}
-                        onChange={updatedDescription}
-                        required
-                    />
-                </label>
+                                <div>
 
-                <label>
-                    <input
-                    placeholder='Phone Number'
-                    type='text'
-                    value={phone}
-                    onChange={updatedPhone}
+                    <label> State *
+                        </label>
+                        <input
+                        className='input-form'
+                            // placeholder='State'
+                            type='text'
+                            value={state}
+                            onChange={updatedState}
+                            required
+                            />
+                            </div>
 
-                    />
-                </label>
+                                <div>
 
-                <label>
-                    <input
-                        placeholder='Image should be format jpg, jpeg, png'
-                        type='string'
-                        value={preview_image}
-                        onChange={updatedPreviewImage}
-                    />
-                </label>
+                    <label>Description *
+                        </label>
+                        <input
+                        className='input-form'
+                            // placeholder='Description'
+                            type='text'
+                            value={description}
+                            onChange={updatedDescription}
+                            required
+                            />
+                            </div>
 
-                <button type="submit"> Edit Business</button>
+                                <div>
 
-            </form>
+                    <label>Phone Number * (ex.888-888-8888)
+                        </label>
+                        <input
+                        className='input-form'
+                            // placeholder='Phone Number'
+                            type='text'
+                            value={phone}
+                            onChange={updatedPhone}
 
-        </>
+                            />
+                            </div>
+
+                                <div>
+
+                    <label>Preview Image *
+                        </label>
+                        <input
+                        className='input-form'
+                            // placeholder='Image should be format jpg, jpeg, png'
+                            type='string'
+                            value={preview_image}
+                            onChange={updatedPreviewImage}
+                            />
+                            </div>
+
+                    <button className='button-style' type="submit"> Edit Business</button>
+
+                </form>
+            </div>
+
+            <div className='right-form '>
+                <img
+                    className='bz-img'
+                    src='https://64.media.tumblr.com/034135208d1b91f579ee5582c19cd0be/tumblr_pw50rmClPW1ufm3tmo2_500.jpg' alt='login-img'
+                    style={{
+                        width: '300px',
+                        height: '300px',
+                        borderRadius: '170px'
+                    }}
+                ></img>
+            </div>
+        </div>
     )
 
 }
