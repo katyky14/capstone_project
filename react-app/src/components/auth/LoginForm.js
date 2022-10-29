@@ -40,7 +40,7 @@ const LoginForm = () => {
     <div className='form-container-main'>
 
 
-      <div className='left-form'>
+      <div className='left-form left-login'>
         <form onSubmit={onLogin}>
           <div>
             {errors.map((error, ind) => (
@@ -91,7 +91,7 @@ const LoginForm = () => {
       </div>
 
 
-      <div className='right-form'>
+      <div className='right-form login-img'>
         <img
           src='https://64.media.tumblr.com/034135208d1b91f579ee5582c19cd0be/tumblr_pw50rmClPW1ufm3tmo2_500.jpg' alt='login-img'
           style={{

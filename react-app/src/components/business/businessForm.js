@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom'
 
 import { addOneBusinessThunk } from '../../store/business'
 
+import './businessForm.css'
+
 const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 
 function CreateBusinessForm() {
@@ -65,90 +67,138 @@ function CreateBusinessForm() {
 
 
     return (
-        <>
-            <h1>Business Form</h1>
 
-            <form onSubmit={onSubmit} >
-                {hasSubmitted && validationErrors.length > 0 && (
-                    <ul>
-                        {validationErrors.map(error =>
-                            <li key={error}>{error}</li>)}
-                    </ul>
-                )}
+        <div className='form-container-main'>
 
-                <label>
-                    <input
-                        placeholder='Business Name'
-                        type='text'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                </label>
+            <div className='left-form left-bz-form'>
 
-                <label>
-                    <input
-                        placeholder='Address'
-                        type='text'
-                        value={address}
-                        onChange={e => setAddress(e.target.value)}
-                        required
-                    />
-                </label>
 
-                <label>
-                    <input
-                        placeholder='City'
-                        type='text'
-                        value={city}
-                        onChange={e => setCity(e.target.value)}
-                        required
-                    />
-                </label>
+                <form onSubmit={onSubmit} >
+                    {hasSubmitted && validationErrors.length > 0 && (
+                        <ul>
+                            {validationErrors.map(error =>
+                                <li key={error}>{error}</li>)}
+                        </ul>
+                    )}
+                    <h1>Business Form</h1>
 
-                <label>
-                    <input
-                        placeholder='State'
-                        type='text'
-                        value={state}
-                        onChange={e => setState(e.target.value)}
-                        required
-                    />
-                </label>
+                    <div>
 
-                <label>
-                    <input
-                        placeholder='Description'
-                        type='text'
-                        value={description}
-                        onChange={e => setDescription(e.target.value)}
-                        required
-                    />
-                </label>
+                        <div>
+                            <label>Business Name *</label>
 
-                <label>
-                    <input
-                    placeholder='Phone Number (ex 000-000-0000)'
-                    type='text'
-                    value={phone}
-                    onChange={e => setPhone(e.target.value)}
-                    />
-                </label>
+                        </div>
+                        <input
+                            className='input-form'
+                            // placeholder='Business Name'
+                            type='text'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </div>
 
-                <label>
-                    <input
-                        placeholder='Image should be format jpg, jpeg, png'
-                        type='string'
-                        value={preview_image}
-                        onChange={e => setPreviewImage(e.target.value)}
-                    />
-                </label>
+                    <div>
 
-                <button> Create New Business</button>
+                        <label>Address *</label>
+                        <input
+                            className='input-form'
+                            // placeholder='Address'
+                            type='text'
+                            value={address}
+                            onChange={e => setAddress(e.target.value)}
+                            required
+                        />
 
-            </form>
+                    </div>
 
-        </>
+                    <div>
+
+                        <label>City *</label>
+                        <input
+                            className='input-form'
+                            // placeholder='City'
+                            type='text'
+                            value={city}
+                            onChange={e => setCity(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div>
+
+                        <label>State *</label>
+                        <input
+                            className='input-form'
+                            // placeholder='State'
+                            type='text'
+                            value={state}
+                            onChange={e => setState(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div>
+
+                        <label>Description *</label>
+                        <input
+                            className='input-form'
+                            // placeholder='Description'
+                            type='text'
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    <div>
+
+                        <label>Phone Number * (ex. 000-000-0000)</label>
+                        <input
+                            className='input-form'
+                            // placeholder='Phone Number (ex 000-000-0000)'
+                            type='text'
+                            value={phone}
+                            onChange={e => setPhone(e.target.value)}
+                        />
+                    </div>
+
+                    <div>
+
+                        <label>Preview Image *
+                            <span>
+                                (format jpg, jpeg, png, gif)
+                            </span>
+                        </label>
+                        <input
+                            className='input-form'
+                            // placeholder='Image should be format jpg, jpeg, png'
+                            type='string'
+                            value={preview_image}
+                            onChange={e => setPreviewImage(e.target.value)}
+                        />
+                    </div>
+
+                    <div>
+                        <button className='button-style'> Create New Business</button>
+                    </div>
+
+                </form>
+            </div>
+            <div className='right-form '>
+                <img
+                className='bz-img'
+                    src='https://64.media.tumblr.com/034135208d1b91f579ee5582c19cd0be/tumblr_pw50rmClPW1ufm3tmo2_500.jpg' alt='login-img'
+                    style={{
+                        width: '300px',
+                        height: '300px',
+                        borderRadius: '170px'
+                    }}
+                ></img>
+            </div>
+
+        </div>
+
     )
 }
 

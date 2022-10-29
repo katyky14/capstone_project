@@ -60,7 +60,7 @@ const SignUpForm = () => {
 
     <div className='form-container-main'>
 
-      <div className='left-form'>
+      <div className='left-form left-signup'>
 
         <form onSubmit={onSignUp}>
           <div>
@@ -72,7 +72,7 @@ const SignUpForm = () => {
           <p className='new-to-relp'>Already in Relp? <button  className='signup-button-login' onClick={() => history.push('/login')}>Log In</button></p>
           <p className='new-to-relp'>Connect with great local businesses</p>
           <div>
-            {/* <label>Username</label> */}
+            <label className='label-signup input-label-signup'>Username *</label>
             <input
               className='input-form'
               placeholder='Username'
@@ -85,7 +85,7 @@ const SignUpForm = () => {
           </div>
 
           <div>
-            {/* <label> First Name</label> */}
+            <label  className='label-signup'> First Name *</label>
 
             <input
               className='input-form'
@@ -99,7 +99,7 @@ const SignUpForm = () => {
           </div>
 
           <div>
-            {/* <label>Last Name</label> */}
+            <label  className='label-signup'>Last Name *</label>
             <input
               className='input-form'
               placeholder='Last Name'
@@ -112,7 +112,7 @@ const SignUpForm = () => {
           </div>
 
           <div>
-            {/* <label>Email</label> */}
+            <label  className='label-signup'>Email *</label>
             <input
               className='input-form'
               placeholder='Email'
@@ -123,7 +123,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div>
-            {/* <label>Password</label> */}
+            <label  className='label-signup'>Password *</label>
             <input
               className='input-form'
               placeholder='Password'
@@ -134,7 +134,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div>
-            {/* <label>Repeat Password</label> */}
+            <label  className='label-signup'>Repeat Password *</label>
             <input
               className='input-form'
               placeholder='Confirm Password'
@@ -149,8 +149,9 @@ const SignUpForm = () => {
         </form>
       </div>
 
-      <div className='right-form'>
+      <div className='right-form signup-img'>
         <img
+        className='signup-img'
           src='https://64.media.tumblr.com/034135208d1b91f579ee5582c19cd0be/tumblr_pw50rmClPW1ufm3tmo2_500.jpg' alt='login-img'
           style={{
             width: '300px',

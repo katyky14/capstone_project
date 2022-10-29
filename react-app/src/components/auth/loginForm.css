@@ -19,3 +19,25 @@
     cursor: pointer;
     font-size: 14px;
 }
+
+.label-signup {
+    font-size: 14px;
+}
+
+
+.signup-img {
+    margin-top: 100px;
+}
+
+.left-signup {
+    margin-top: -125px;
+}
+
+
+.left-login {
+    margin-top: 200px;
+}
+
+.login-img {
+    margin-top: 200px;
+}
