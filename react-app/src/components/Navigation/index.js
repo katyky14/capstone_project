@@ -23,7 +23,7 @@ function Navigation({ loaded }) {
 
     return (
         <>
-            <div className="nav-main-container">
+            <div className="nav-main-container image-wrapper">
 
                 <div className="nav-logout-div">
                     {/* <div className="home-container"> */}

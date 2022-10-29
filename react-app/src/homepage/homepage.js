@@ -14,10 +14,11 @@ function HomePage() {
                     backgroundPosition: 'center',
                     backgroundSize: 'no-repeat',
                     width: '100vw',
-                    height: '100vh'
+                    height: '100vh',
+                   
                 }}
             >
-               
+
 
             </div>
 

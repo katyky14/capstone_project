@@ -1,0 +1,21 @@
+
+.login-h3 {
+    text-align: center;
+    color: red
+}
+
+.new-to-relp {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.signup-button-login {
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+    color: blue;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+}
