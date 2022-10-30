@@ -7,6 +7,8 @@ import EditReviewFormModal from '../reviews/editReviewFormModal'
 import ReviewFormModal from '../reviews/reviewFormModal'
 
 
+import './businessDetails.css'
+
 
 function GetBusinessById() {
     const dispatch = useDispatch()
@@ -149,34 +151,45 @@ function GetBusinessById() {
     return !!businessArr.length && (
         <>
             <h1>Business by ID</h1>
-            {businessArr.map(business => (
-                <div key={business.id}>
-                    <div>{business.name}</div>
-                    <div>{business.description}</div>
-                    <div>{business.address} {business.city}</div>
-                    <div>{business.phone}</div>
-                    <img src={business.previewImage}
-                        alt='image'
-                        onError={e => { e.currentTarget.src = 'https://e7.pngegg.com/pngimages/261/502/png-clipart-league-of-legends-emote-video-game-summoner-league-of-legends-fictional-character-online-chat-thumbnail.png' }}
-                    />
+            <div className='bz-details-main-container'>
+
+                {businessArr.map(business => (
+                    <div key={business.id} className='details-bz-div'>
+                        <img
+                            className='img-details'
+                            src={business.previewImage}
+                            alt='image'
+                            onError={e => { e.currentTarget.src = 'https://e7.pngegg.com/pngimages/261/502/png-clipart-league-of-legends-emote-video-game-summoner-league-of-legends-fictional-character-online-chat-thumbnail.png' }}
+                        />
+                        <div className='details-bottom-left'>
+                            <div className='details-name-top'>{business.name}</div>
+                            <br />
+                            <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
+                            <br/>
+                            <div>{business.description}</div>
+                            <br />
+                            <div>Open 9:00AM - 10:00PM </div>
+                        </div>
+                    </div>
+                ))}
+
+                <br />
+
+                <div>{business1.address} {business1.city} {business1.state}</div>
+                <div>{business1.phone}</div>
+
+                <br />
+                <div>
+                    <div>
+                        Review for this Business
+                        {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
+                    </div>
 
                 </div>
-            ))}
 
-            <div>
-                <div>{business1.reviews.length} reviews {avgRating(business1.reviews)}</div>
-                <div>
-                    Review for this Business
-                    {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
-                </div>
+                {/* for users to create a reviews and that are not the owner of the restaurant */}
 
-            </div>
-
-            {/* for users to create a reviews and that are not the owner of the restaurant */}
-
-            {
-                business1 &&
-                <div>
+                {business1 && <div>
                     {
                         business1.reviews.map(rev => (
                             <div key={rev.id}>
@@ -190,11 +203,8 @@ function GetBusinessById() {
 
                                 {/* for user who already has a review and want to edit or delete */}
 
-                                {
-                                    userReview(rev, user) && !owner &&
-
+                                {userReview(rev, user) && !owner &&
                                     <div>
-
                                         <div>
                                             <button onClick={async (e) => {
                                                 e.preventDefault()
@@ -204,29 +214,16 @@ function GetBusinessById() {
                                             }} > Delete Review </button>
 
                                         </div>
-
-
-                                        <div>
-                                            {
-                                                <EditReviewFormModal businessId={+businessId} business={business1} />
-                                            }
-                                        </div>
-
+                                        <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
                                     </div>
-
-
-
                                 }
-
-
-
-
 
                             </div>
                         ))
                     }
                 </div>
-            }
+                }
+            </div>
 
 
         </>
