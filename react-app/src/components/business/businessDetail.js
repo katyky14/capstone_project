@@ -175,18 +175,35 @@ function GetBusinessById() {
 
                 <br />
 
-                <div>{business1.address} {business1.city} {business1.state}</div>
-                <div>{business1.phone}</div>
-
-                <br />
                 <div>
                     <div>
-                        Review for this Business
                         {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
                     </div>
 
                 </div>
 
+                <br />
+
+                <div className='rating-reviews'>
+                    <div>
+                    <div>Overall rating</div>
+                    <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
+                    </div>
+
+                    <div className='rate-bar-container'>
+                        <div className='background-rate-color'></div>
+                    </div>
+
+                </div>
+
+
+
+
+
+                <div>{business1.address} {business1.city} {business1.state}</div>
+                <div>{business1.phone}</div>
+
+                <br />
                 {/* for users to create a reviews and that are not the owner of the restaurant */}
 
                 {business1 && <div>
@@ -195,8 +212,9 @@ function GetBusinessById() {
                             <div key={rev.id}>
 
                                 <div>
-                                    {getRating(rev.rating)} <br /> <br />
+                                    {getRating(rev.rating)} <br />
                                     {rev.review}
+
                                 </div>
 
 

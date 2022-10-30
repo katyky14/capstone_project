@@ -29,3 +29,21 @@
     font-weight: 600;
 
 }
+
+
+/* testing the bar for ratings */
+
+.rating-reviews {
+    width: 500px;
+}
+
+.rate-bar-container {
+    border: 1px solid rebeccapurple;
+    border-radius: 10px;
+}
+
+.background-rate-color {
+    background-color: #f0f0f0;
+    height: 10px;
+    max-width: 350px;
+}
