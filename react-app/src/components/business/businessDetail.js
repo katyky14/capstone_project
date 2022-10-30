@@ -294,8 +294,8 @@ function GetBusinessById() {
                     <br />
                     <div className='right-bz-details'>
 
-                        <div>{business1.phone} <i class="fa-solid fa-phone"></i></div>
-                        <div>{business1.address} {business1.city} {business1.state} <i class="fa-solid fa-diamond-turn-right"></i></div>
+                        <div className='phone-bz-details'>{business1.phone} <span className='span-bz-details'><i class="fa-solid fa-phone"></i></span></div>
+                        <div className='address-bz-details'>{business1.address} {business1.city} {business1.state} <span className='span-bz-details'><i class="fa-solid fa-diamond-turn-right"></i></span></div>
 
                     </div>
 

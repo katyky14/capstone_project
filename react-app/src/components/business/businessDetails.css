@@ -1,4 +1,3 @@
-
 .bz-details-main-container {
     /* border: 1px solid violet; */
     margin-top: 20px;
@@ -46,6 +45,7 @@
     /* align-items: center; */
     justify-content: center;
     flex-direction: row;
+    gap: 15px;
 
 }
 
@@ -55,7 +55,7 @@
     /* border: 1px solid red; */
     /* margin-right: 150px; */
     min-width: 500px;
-    max-width: 500px;
+    max-width: 600px;
 
 }
 
@@ -63,10 +63,31 @@
 .right-bz-details {
     display: flex;
     flex-direction: column;
-     /* border: 1px solid blue; */
-     
+    gap: 10px;
+    width: 300px;
+
+
+    max-height: 150px;
+    border: 1px solid black;
+
 }
 
+
+.phone-bz-details {
+    border-bottom: 1px solid gray;
+    border-bottom-width: 50%;
+
+    padding-left: 10px;
+
+
+
+    /* display: flex;
+    flex-direction: row; */
+}
+
+.address-bz-details {
+
+}
 
 
 
@@ -89,6 +110,4 @@
 }
 
 
-.rate-bar {
-
-}
+.rate-bar {}
