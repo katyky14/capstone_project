@@ -41,7 +41,7 @@
 
 
 .main-div-details-rev {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     display: flex;
     /* align-items: center; */
     justify-content: center;
@@ -52,8 +52,10 @@
 .left-bz-details {
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     /* margin-right: 150px; */
+    min-width: 500px;
+    max-width: 500px;
 
 }
 
@@ -61,7 +63,8 @@
 .right-bz-details {
     display: flex;
     flex-direction: column;
-     border: 1px solid blue;
+     /* border: 1px solid blue; */
+     
 }
 
 

@@ -186,19 +186,19 @@ function GetBusinessById() {
 
                 <br />
 
-                        <div>
-                            {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
-                        </div>
                 <div className='main-div-details-rev'>
-                    <div>
-
-                    </div>
 
                     <br />
 
 
                     <div className='left-bz-details'>
 
+                        <div>
+                            <div>
+                                {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
+                            </div>
+
+                        </div>
 
                         <div>Overall Rating </div>
 
@@ -256,8 +256,13 @@ function GetBusinessById() {
                                     <div key={rev.id}>
 
                                         <div>
-                                            {getRating(rev.rating)} <br />
-                                            {rev.review}
+                                            <div>
+                                                {getRating(rev.rating)} <br />
+                                            </div>
+                                            <div>
+
+                                                {rev.review}
+                                            </div>
 
                                         </div>
 
