@@ -7,6 +7,8 @@ import EditReviewFormModal from '../reviews/editReviewFormModal'
 import ReviewFormModal from '../reviews/reviewFormModal'
 
 
+import './businessDetails.css'
+
 
 function GetBusinessById() {
     const dispatch = useDispatch()
@@ -127,6 +129,17 @@ function GetBusinessById() {
                     <i class="fa-regular fa-star" />
                 </span >)
         }
+        // else if (rating === 0) {
+        //     return (
+        //         < span >
+        //             <i class="fa-regular fa-star" />
+        //             <i class="fa-regular fa-star" />
+        //             <i class="fa-regular fa-star" />
+        //             <i class="fa-regular fa-star" />
+        //             <i class="fa-regular fa-star" />
+        //         </span >)
+
+        // }
     }
 
 
@@ -148,85 +161,161 @@ function GetBusinessById() {
 
     return !!businessArr.length && (
         <>
-            <h1>Business by ID</h1>
-            {businessArr.map(business => (
-                <div key={business.id}>
-                    <div>{business.name}</div>
-                    <div>{business.description}</div>
-                    <div>{business.address} {business.city}</div>
-                    <div>{business.phone}</div>
-                    <img src={business.previewImage}
-                        alt='image'
-                        onError={e => { e.currentTarget.src = 'https://e7.pngegg.com/pngimages/261/502/png-clipart-league-of-legends-emote-video-game-summoner-league-of-legends-fictional-character-online-chat-thumbnail.png' }}
-                    />
+            <div className='bz-details-main-container'>
+                {/* <h1>Business by ID</h1> */}
 
-                </div>
-            ))}
+                {businessArr.map(business => (
+                    <div key={business.id} className='details-bz-div'>
+                        <img
+                            className='img-details'
+                            src={business.previewImage}
+                            alt='image'
+                            onError={e => { e.currentTarget.src = 'https://e7.pngegg.com/pngimages/261/502/png-clipart-league-of-legends-emote-video-game-summoner-league-of-legends-fictional-character-online-chat-thumbnail.png' }}
+                        />
+                        <div className='details-bottom-left'>
+                            <div className='details-name-top'>{business.name}</div>
+                            <br />
+                            <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
+                            <br />
+                            <div>{business.description}</div>
+                            <br />
+                            <div>Open 9:00AM - 10:00PM </div>
+                        </div>
+                    </div>
+                ))}
 
-            <div>
-                <div>{business1.reviews.length} reviews {avgRating(business1.reviews)}</div>
-                <div>
-                    Review for this Business
-                    {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
-                </div>
+                <br />
 
-            </div>
+                <div className='main-div-details-rev'>
 
-            {/* for users to create a reviews and that are not the owner of the restaurant */}
+                    <br />
 
-            {
-                business1 &&
-                <div>
+
+                    <div className='left-bz-details'>
+
+                        <div>
+                            <div>
+                                {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
+                            </div>
+
+                        </div>
+
+                        <div>Overall Rating </div>
+
+                        <div>{business1.reviews.length > 0 ? avgRating(business1.reviews) : <span>
+                            <i class="fa-regular fa-star" />
+                            <i class="fa-regular fa-star" />
+                            <i class="fa-regular fa-star" />
+                            <i class="fa-regular fa-star" />
+                            <i class="fa-regular fa-star" />
+                        </span>}
+                            {business1.reviews.length} reviews
+                        </div>
+
+
+
+
+                        {/* testing to get overall rating chart! */}
+
+                        {/* <div className='rating-reviews'>
+                    <div>
+                    <div>Overall rating</div>
+                    <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
+                    </div>
+
+                    <div>4 stars</div>
+                    <div className='rate-bar-container'>
+                    <div className='background-rate-color'>
                     {
-                        business1.reviews.map(rev => (
-                            <div key={rev.id}>
+                        business1.reviews.length > 0 && (
+                            <div className='rate-bar' style={{ width: `${getRating()}`}} > </div>
+                            )
+                        }
+                        </div>
+                        <div></div>
+                        </div>
 
-                                <div>
-                                    {getRating(rev.rating)} <br /> <br />
-                                    {rev.review}
-                                </div>
+                    </div> */}
+
+                        {/* end of testing the rating overall chart */}
 
 
 
-                                {/* for user who already has a review and want to edit or delete */}
 
-                                {
-                                    userReview(rev, user) && !owner &&
 
-                                    <div>
+
+
+
+
+                        <br />
+                        {/* for users to create a reviews and that are not the owner of the restaurant */}
+
+                        {business1 && <div className='left-bz-details'>
+                            {
+                                business1.reviews.map(rev => (
+                                    <div key={rev.id}>
 
                                         <div>
-                                            <button onClick={async (e) => {
-                                                e.preventDefault()
-                                                await dispatch(deleteTheReviewThunk(rev.id))
-                                                //await dispatch(getBusinessReviewThunk(businessId))
-                                                await dispatch(getOneBusinessThunk(businessId))
-                                            }} > Delete Review </button>
+                                            <div>
+                                                {getRating(rev.rating)} <br />
+                                            </div>
+                                            <div>
+
+                                                {rev.review}
+                                            </div>
 
                                         </div>
 
 
-                                        <div>
-                                            {
-                                                <EditReviewFormModal businessId={+businessId} business={business1} />
-                                            }
-                                        </div>
+
+                                        {/* for user who already has a review and want to edit or delete */}
+
+                                        {userReview(rev, user) && !owner &&
+                                            <div>
+                                                <div>
+                                                    <button onClick={async (e) => {
+                                                        e.preventDefault()
+                                                        await dispatch(deleteTheReviewThunk(rev.id))
+                                                        //await dispatch(getBusinessReviewThunk(businessId))
+                                                        await dispatch(getOneBusinessThunk(businessId))
+                                                    }} > Delete Review </button>
+
+                                                </div>
+                                                <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
+                                            </div>
+                                        }
 
                                     </div>
+                                ))}
+                        </div>
+                        }
+                    </div>
 
+                    <br />
+                    {/* <div className='right-bz-details'>
 
+                        <div className='phone-bz-details'>{business1.phone} <span className='span-bz-details'><i class="fa-solid fa-phone"></i></span></div>
+                        <div className='address-bz-details'>{business1.address} {business1.city} {business1.state} <span className='span-bz-details'><i class="fa-solid fa-diamond-turn-right"></i></span></div>
 
-                                }
+                    </div> */}
 
+                    <div className='right-bz-details'>
 
+                        <div className='phone-bz-details'>
 
+                            <div className='phone-div'>{business1.phone} </div>
+                            <div className='phone-icon'><i class="fa-solid fa-phone"></i></div>
+                        </div>
 
+                        <div className='address-bz-details'>
+                            <div className='address-div'>{business1.address} {business1.city} {business1.state} </div>
+                            <div className='address-icon'><i class="fa-solid fa-diamond-turn-right"></i></div>
+                        </div>
 
-                            </div>
-                        ))
-                    }
+                    </div>
+
                 </div>
-            }
+            </div>
 
 
         </>

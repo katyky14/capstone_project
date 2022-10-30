@@ -9,7 +9,7 @@ import './reviewFrom.css'
 function CreateReview({ setShowModal, businessId }) {
     const dispatch = useDispatch();
 
-    console.log('the business id in create review', businessId)
+    //console.log('the business id in create review', businessId)
     const [review, setReview] = useState('');
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
@@ -17,12 +17,12 @@ function CreateReview({ setShowModal, businessId }) {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const valErrors = [];
+        // const valErrors = [];
 
-        if (stars === 0) valErrors.push("Star rating is required");
-        if (review.length === 0) valErrors.push("Review cannot be empty")
-        if (review.length < 5 || review.length > 1000) valErrors.push("Review must be between 5 to 1000 characters")
-        await setErrors(valErrors)
+        // if (stars === 0) valErrors.push("Star rating is required");
+        // if (review.length === 0) valErrors.push("Review cannot be empty")
+        // if (review.length < 5 || review.length > 1000) valErrors.push("Review must be between 5 to 1000 characters")
+        // await setErrors(valErrors)
 
         const reviewInformation = {
             "review": review,
@@ -36,9 +36,18 @@ function CreateReview({ setShowModal, businessId }) {
             await dispatch(getOneBusinessThunk(businessId))
             setShowModal(false)
         }
-
-
     }
+
+
+    useEffect(() => {
+        const valErrors = [];
+
+        if (stars === 0) valErrors.push("Star rating is required");
+        if (review.length === 0) valErrors.push("Review cannot be empty")
+        if (review.length < 5 || review.length > 1000) valErrors.push("Review must be between 5 to 1000 characters")
+        setErrors(valErrors)
+    }, [review, stars])
+
 
 
     return (
@@ -46,9 +55,10 @@ function CreateReview({ setShowModal, businessId }) {
 
 
         <form onSubmit={onSubmit} className="review-form">
+
             <div className='review-form-header'>
                 {/* <i className="fas fa-times cancel-button" onClick={() => setShowModal(false)} /> */}
-                <h2 className='review-title'>Add your review</h2>
+                <h2 className='review-title'>Write your review</h2>
             </div>
             <div className='star-container'>
                 <input
@@ -114,11 +124,11 @@ function CreateReview({ setShowModal, businessId }) {
                 </textarea>
             </div>
             <div className='review-errors-div'>
-                {errors.map((error, idx) => (
+                { errors.length > 0 && errors.map((error, idx) => (
                     <p key={idx} >{error}</p>
                     ))}
             </div>
-            <button className='Submit-Review' type="submit">Submit Review</button>
+            <button className='Submit-Review' type="submit" disabled={errors.length > 0}>Submit Review</button>
         </form>
 
 )

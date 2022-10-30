@@ -11,7 +11,7 @@ function EditReviewForm({ setShowModal, business}) {
 
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
-    console.log('the user', user)
+    //console.log('the user', user)
 
     const businessReview = business.reviews.find(review => review.userId === user.id)
 
