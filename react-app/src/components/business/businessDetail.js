@@ -129,6 +129,17 @@ function GetBusinessById() {
                     <i class="fa-regular fa-star" />
                 </span >)
         }
+        // else if (rating === 0) {
+        //     return (
+        //         < span >
+        //             <i class="fa-regular fa-star" />
+        //             <i class="fa-regular fa-star" />
+        //             <i class="fa-regular fa-star" />
+        //             <i class="fa-regular fa-star" />
+        //             <i class="fa-regular fa-star" />
+        //         </span >)
+
+        // }
     }
 
 
@@ -150,8 +161,8 @@ function GetBusinessById() {
 
     return !!businessArr.length && (
         <>
-            <h1>Business by ID</h1>
             <div className='bz-details-main-container'>
+                {/* <h1>Business by ID</h1> */}
 
                 {businessArr.map(business => (
                     <div key={business.id} className='details-bz-div'>
@@ -165,7 +176,7 @@ function GetBusinessById() {
                             <div className='details-name-top'>{business.name}</div>
                             <br />
                             <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
-                            <br/>
+                            <br />
                             <div>{business.description}</div>
                             <br />
                             <div>Open 9:00AM - 10:00PM </div>
@@ -175,72 +186,115 @@ function GetBusinessById() {
 
                 <br />
 
-                <div>
+                        <div>
+                            {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
+                        </div>
+                <div className='main-div-details-rev'>
                     <div>
-                        {user && !showButton && !owner && <ReviewFormModal businessId={+businessId} />}
+
                     </div>
 
-                </div>
+                    <br />
 
-                <br />
 
-                <div className='rating-reviews'>
+                    <div className='left-bz-details'>
+
+
+                        <div>Overall Rating </div>
+
+                        <div>{business1.reviews.length > 0 ? avgRating(business1.reviews) : <span>
+                            <i class="fa-regular fa-star" />
+                            <i class="fa-regular fa-star" />
+                            <i class="fa-regular fa-star" />
+                            <i class="fa-regular fa-star" />
+                            <i class="fa-regular fa-star" />
+                        </span>}
+                            {business1.reviews.length} reviews
+                        </div>
+
+
+
+
+                        {/* testing to get overall rating chart! */}
+
+                        {/* <div className='rating-reviews'>
                     <div>
                     <div>Overall rating</div>
                     <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
                     </div>
 
+                    <div>4 stars</div>
                     <div className='rate-bar-container'>
-                        <div className='background-rate-color'></div>
+                    <div className='background-rate-color'>
+                    {
+                        business1.reviews.length > 0 && (
+                            <div className='rate-bar' style={{ width: `${getRating()}`}} > </div>
+                            )
+                        }
+                        </div>
+                        <div></div>
+                        </div>
+
+                    </div> */}
+
+                        {/* end of testing the rating overall chart */}
+
+
+
+
+
+
+
+
+
+                        <br />
+                        {/* for users to create a reviews and that are not the owner of the restaurant */}
+
+                        {business1 && <div className='left-bz-details'>
+                            {
+                                business1.reviews.map(rev => (
+                                    <div key={rev.id}>
+
+                                        <div>
+                                            {getRating(rev.rating)} <br />
+                                            {rev.review}
+
+                                        </div>
+
+
+
+                                        {/* for user who already has a review and want to edit or delete */}
+
+                                        {userReview(rev, user) && !owner &&
+                                            <div>
+                                                <div>
+                                                    <button onClick={async (e) => {
+                                                        e.preventDefault()
+                                                        await dispatch(deleteTheReviewThunk(rev.id))
+                                                        //await dispatch(getBusinessReviewThunk(businessId))
+                                                        await dispatch(getOneBusinessThunk(businessId))
+                                                    }} > Delete Review </button>
+
+                                                </div>
+                                                <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                ))}
+                        </div>
+                        }
+                    </div>
+
+                    <br />
+                    <div className='right-bz-details'>
+
+                        <div>{business1.phone} <i class="fa-solid fa-phone"></i></div>
+                        <div>{business1.address} {business1.city} {business1.state} <i class="fa-solid fa-diamond-turn-right"></i></div>
+
                     </div>
 
                 </div>
-
-
-
-
-
-                <div>{business1.address} {business1.city} {business1.state}</div>
-                <div>{business1.phone}</div>
-
-                <br />
-                {/* for users to create a reviews and that are not the owner of the restaurant */}
-
-                {business1 && <div>
-                    {
-                        business1.reviews.map(rev => (
-                            <div key={rev.id}>
-
-                                <div>
-                                    {getRating(rev.rating)} <br />
-                                    {rev.review}
-
-                                </div>
-
-
-
-                                {/* for user who already has a review and want to edit or delete */}
-
-                                {userReview(rev, user) && !owner &&
-                                    <div>
-                                        <div>
-                                            <button onClick={async (e) => {
-                                                e.preventDefault()
-                                                await dispatch(deleteTheReviewThunk(rev.id))
-                                                //await dispatch(getBusinessReviewThunk(businessId))
-                                                await dispatch(getOneBusinessThunk(businessId))
-                                            }} > Delete Review </button>
-
-                                        </div>
-                                        <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
-                                    </div>
-                                }
-
-                            </div>
-                        ))
-                    }
-                </div>
-                }
             </div>
 
 

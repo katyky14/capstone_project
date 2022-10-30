@@ -1,6 +1,10 @@
 
 .bz-details-main-container {
-    border: 1px solid blue;
+    /* border: 1px solid violet; */
+    margin-top: 20px;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -15,6 +19,9 @@
     width: 100%;
     height: 500px;
     object-fit: cover;
+
+    display: flex;
+    flex-direction: row;
 }
 
 
@@ -31,10 +38,39 @@
 }
 
 
+
+
+.main-div-details-rev {
+    border: 1px solid green;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.left-bz-details {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    /* margin-right: 150px; */
+
+}
+
+
+.right-bz-details {
+    display: flex;
+    flex-direction: column;
+     border: 1px solid blue;
+}
+
+
+
+
 /* testing the bar for ratings */
 
 .rating-reviews {
-    width: 500px;
+    width: 350px;
 }
 
 .rate-bar-container {
@@ -46,4 +82,10 @@
     background-color: #f0f0f0;
     height: 10px;
     max-width: 350px;
+    border-radius: 10px;
+}
+
+
+.rate-bar {
+
 }
