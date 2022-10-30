@@ -60,6 +60,46 @@
 }
 
 
+/* .right-bz-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+
+
+    max-height: 150px;
+    border: 1px solid black;
+
+} */
+
+
+/* .phone-bz-details {
+    border-bottom: 1px solid gray;
+    border-bottom-width: 50%;
+
+    padding-left: 10px;
+
+
+
+} */
+
+
+/* .address-bz-details {
+    padding-left: 10px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+} */
+
+
+
+
+
+
+
+
+
+/* test for the second box description */
+
 .right-bz-details {
     display: flex;
     flex-direction: column;
@@ -75,7 +115,7 @@
 
 .phone-bz-details {
     border-bottom: 1px solid gray;
-    border-bottom-width: 50%;
+    
 
     padding-left: 10px;
 
@@ -85,15 +125,41 @@
     flex-direction: row; */
 }
 
+.phone-div {
+
+}
+
+
+.phone-icon {
+    font-size: 20px;
+}
+
+
 .address-bz-details {
 
 }
 
 
+.address-div {
+    padding-left: 10px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+
+.address-icon {
+    font-size: 20px;
+
+}
+
+
+
+
+
 
 /* testing the bar for ratings */
 
-.rating-reviews {
+/* .rating-reviews {
     width: 350px;
 }
 
@@ -107,7 +173,4 @@
     height: 10px;
     max-width: 350px;
     border-radius: 10px;
-}
-
-
-.rate-bar {}
+} */

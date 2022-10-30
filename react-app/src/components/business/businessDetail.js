@@ -292,10 +292,25 @@ function GetBusinessById() {
                     </div>
 
                     <br />
-                    <div className='right-bz-details'>
+                    {/* <div className='right-bz-details'>
 
                         <div className='phone-bz-details'>{business1.phone} <span className='span-bz-details'><i class="fa-solid fa-phone"></i></span></div>
                         <div className='address-bz-details'>{business1.address} {business1.city} {business1.state} <span className='span-bz-details'><i class="fa-solid fa-diamond-turn-right"></i></span></div>
+
+                    </div> */}
+
+                    <div className='right-bz-details'>
+
+                        <div className='phone-bz-details'>
+
+                            <div className='phone-div'>{business1.phone} </div>
+                            <div className='phone-icon'><i class="fa-solid fa-phone"></i></div>
+                        </div>
+
+                        <div className='address-bz-details'>
+                            <div className='address-div'>{business1.address} {business1.city} {business1.state} </div>
+                            <div className='address-icon'><i class="fa-solid fa-diamond-turn-right"></i></div>
+                        </div>
 
                     </div>
 
