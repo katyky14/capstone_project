@@ -29,7 +29,7 @@ class Business(db.Model):
           "state": self.state,
           "phone": self.phone,
           "previewImage": self.preview_image,
-          "webiste": self.website
+          "website": self.website
 
         }
 
