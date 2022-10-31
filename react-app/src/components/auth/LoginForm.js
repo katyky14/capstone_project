@@ -42,17 +42,17 @@ const LoginForm = () => {
 
       <div className='left-form left-login'>
         <form onSubmit={onLogin}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
           <h2 className='login-h3'>Log in to Relp</h2>
           <p className='new-to-relp'>New to Relp?
             <button
             className='signup-button-login'
             onClick={() => history.push('/sign-up')}>Sign up
             </button></p>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind} className='signup-errors'>{error}</div>
+              ))}
+            </div>
           <div>
             {/* <label htmlFor='email'>Email</label> */}
             <input
