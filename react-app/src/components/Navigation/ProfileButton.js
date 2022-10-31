@@ -54,7 +54,7 @@ function ProfileButton({ sessionUser }) {
         <ul className="profile-container">
 
             <li className="li-owner">
-                <StyledNavBusinessForm to='/business/new' exact={true}> Create a Business </StyledNavBusinessForm>
+                <StyledNavBusinessForm to='/business/new' exact={true}> Create Business </StyledNavBusinessForm>
             </li>
             <li className="li-owner">
                 <StyledNavAllBusiness to='/business' exact={true}>All Restaurants</StyledNavAllBusiness>
