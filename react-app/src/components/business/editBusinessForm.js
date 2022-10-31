@@ -121,13 +121,13 @@ function EditBusinessForm() {
             <div className='left-form left-bz-form'>
 
                 <form onSubmit={onSubmit} >
+                    <h2 className='h2-bz-form'>Edit My Business</h2>
                     {hasSubmitted && validationeErrors.length > 0 && (
-                        <ul>
+                        <ul className='ul-error-bz-form'>
                             {validationeErrors.map(error =>
-                                <li key={error}>{error}</li>)}
+                                <li key={error} className='li-bz-form-errors'>{error}</li>)}
                         </ul>
                     )}
-                    <h2>Edit Form</h2>
 
                     <div>
 

@@ -78,7 +78,7 @@ function CreateBusinessForm() {
 
 
                 <form onSubmit={onSubmit} >
-                    <h1>Create Business</h1>
+                    <h2 className='h2-bz-form'>Create Business</h2>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <ul className='ul-error-bz-form'>
                             {validationErrors.map(error =>
