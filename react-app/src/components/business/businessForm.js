@@ -69,6 +69,7 @@ function CreateBusinessForm() {
 
 
 
+
     return (
 
         <div className='form-container-main'>
@@ -77,13 +78,13 @@ function CreateBusinessForm() {
 
 
                 <form onSubmit={onSubmit} >
+                    <h1>Create Business</h1>
                     {hasSubmitted && validationErrors.length > 0 && (
-                        <ul>
+                        <ul className='ul-error-bz-form'>
                             {validationErrors.map(error =>
-                                <li key={error}>{error}</li>)}
+                                <li key={error} className='li-bz-form-errors'>{error}</li>)}
                         </ul>
                     )}
-                    <h1>Business Form</h1>
 
                     <div>
 

@@ -1,8 +1,20 @@
 .left-bz-form {
     margin-top: -100px;
+    /* border: 1px solid red; */
 }
 
 
 .bz-img {
     margin-top: 300px;
+}
+
+
+.ul-error-bz-form {
+    margin-left: -35px;
+ /* border: 1px solid red; */
+}
+
+.li-bz-form-errors {
+    list-style: circle;
+    color: red;
 }
