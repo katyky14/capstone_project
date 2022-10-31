@@ -15,6 +15,9 @@
     border-bottom: 2px solid rgb(235, 235, 235);
 }
 
+.business-card-container:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.18);
+}
 
 .business-card-inner-div {
     display: flex;
@@ -49,6 +52,10 @@
 }
 
 .bz-card-address {
+    margin-bottom: 10px;
+}
+
+.bz-card-description {
     margin-bottom: 10px;
 }
 

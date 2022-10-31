@@ -55,6 +55,7 @@ function GetAllBusiness() {
                                 <div className='bz-card-header'>{business.name}</div>
                                 <div className='bz-card-rate'> <i className="fa-solid fa-star"></i> {business.reviews.length ? averageRate(business.reviews) : "No Reviews Yet!"} </div>
                                 <div className='bz-card-address'>{business.address}, {business.city}</div>
+                                <div className='bz-card-description'>{business.description} </div>
                                 <div className='bz-card-review'><i class="fa-regular fa-message"></i> {business.reviews.map(rev => rev.review)} </div>
 
                             </div>
