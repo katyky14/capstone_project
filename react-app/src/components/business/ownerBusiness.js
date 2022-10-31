@@ -7,7 +7,7 @@ import { deleteBusinessThunk, getAllBusinessThunk } from "../../store/business";
 import { authenticate } from '../../store/session'
 import EditBusinessForm from "./editBusinessForm";
 
-
+import './ownerBusiness.css'
 
 
 function OwnerBusiness() {
@@ -32,19 +32,34 @@ function OwnerBusiness() {
     }
 
     return (
-        <div>
-            <h2>Business Owner Page</h2>
-            {ownerArr.map(({ id, name, address, city, previewImage }) => (
-                <div key={id}>
-                    <div>{name} </div>
-                    <div>{address} </div>
-                    <div>{city} </div>
-                    <img src={previewImage}
-                        alt='image'
-                        onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
-                    />
-                    <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm />Edit Business</button>
-                    <button onClick={() => deleteTheBusiness(id)}>Delete</button>
+        <div className='business-card-owner'>
+            <h2 className="h2-owner-div">Manage Your Businesses</h2>
+            {ownerArr.map(({ id, name, address, city, previewImage, phone, state }) => (
+                <div key={id} className='business-card-container-owner'>
+                    <div className="business-card-inner-div-owner">
+                        <div className="bz-card-div-left-owner">
+                            <img src={previewImage}
+                                className='bz-card-pic-owner'
+                                alt='image'
+                                onError={e => { e.currentTarget.src = 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg' }}
+                            />
+                        </div>
+
+                        <div className="bz-card-div-right-owner">
+                            <div className="bz-card-header-owner">{name} </div>
+                            <div className="bz-card-phone-owner">Phone Number: {phone}</div>
+                            <div className="bz-card-address-owner">{address}, {city}, {state} </div>
+                            {/* <div>{state} </div> */}
+
+
+                            <div className="button-owner-container">
+                                {/* <button onClick={() => history.push(`/business/${id}/edit`)} className='button-owner-inner '><EditBusinessForm />Edit Business</button> */}
+                                {/* <button onClick={() => deleteTheBusiness(id)} className='button-owner-inner '>Delete</button> */}
+                                <button onClick={() => history.push(`/business/${id}/edit`)} className='button-owner-inner '><EditBusinessForm /><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button onClick={() => deleteTheBusiness(id)} className='button-owner-inner '><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             ))}
 

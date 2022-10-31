@@ -2,12 +2,12 @@
     /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
-    height: 85px;
+    height: 95px;
     align-items: center;
     box-sizing: border-box;
     padding: 0 75px;
 
-    border-bottom: 1px solid rgb(235, 235, 235);
+    border-bottom: 2px solid rgb(235, 235, 235);
 }
 
 

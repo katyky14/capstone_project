@@ -1,6 +1,6 @@
 .bz-details-main-container {
     /* border: 1px solid violet; */
-    margin-top: 20px;
+    /* margin-top: 10px; */
     min-height: 800px;
     display: flex;
     flex-direction: column;
@@ -16,17 +16,18 @@
 .img-details {
     /* border: 1px solid red; */
     width: 100%;
-    height: 500px;
+    height: 450px;
     object-fit: cover;
 
     display: flex;
     flex-direction: row;
+
 }
 
 
 .details-bottom-left {
     position: absolute;
-    bottom: 100px;
+    bottom: 80px;
     left: 356px;
 }
 
@@ -60,99 +61,69 @@
 }
 
 
-/* .right-bz-details {
+
+
+
+
+
+/* testing two for right side box */
+
+.bz-detail-right {
+    /* width: 33.3333333%; */
+    box-sizing: border-box;
+    padding-left: 16px;
+    width: 400px;
+}
+
+
+.bz-detail-right-div {
+    border: 1px solid #ebebeb;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+
+.bz-detail-right-website {
+    padding-bottom: 16px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 300px;
-
-
-    max-height: 150px;
-    border: 1px solid black;
-
-} */
-
-
-/* .phone-bz-details {
-    border-bottom: 1px solid gray;
-    border-bottom-width: 50%;
-
-    padding-left: 10px;
-
-
-
-} */
-
-
-/* .address-bz-details {
-    padding-left: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
     overflow: hidden;
-    overflow-wrap: break-word;
-} */
+    text-decoration: none;
+}
 
-
-
-
-
-
-
-
-
-/* test for the second box description */
-
-.right-bz-details {
+.bz-detail-phone {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 10px;
+    border-top: 1px solid #ebebeb;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 300px;
-
-
-    max-height: 150px;
-    border: 1px solid black;
-
+    justify-content: space-between;
 }
 
-
-.phone-bz-details {
-    border-bottom: 1px solid gray;
-    
-
-    padding-left: 10px;
-
-
-
-    /* display: flex;
-    flex-direction: row; */
+.bz-detail-right-div-direction {
+    padding-top: 16px;
+    border-top: 1px solid #ebebeb;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.phone-div {
-
+.bz-detail-direction-address {
+    line-height: 24px;
+    font-weight: 600;
 }
 
-
-.phone-icon {
-    font-size: 20px;
+.bz-detail-direction-two{
+    line-height: 24px;
 }
 
-
-.address-bz-details {
-
+.bz-detail-direction {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
 }
-
-
-.address-div {
-    padding-left: 10px;
-    overflow: hidden;
-    overflow-wrap: break-word;
-}
-
-
-.address-icon {
-    font-size: 20px;
-
-}
-
-
 
 
 

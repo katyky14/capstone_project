@@ -17,6 +17,7 @@ class BusinessForm(FlaskForm):
     phone = StringField('Phone Number', validators=[DataRequired(), validators.Length(min=12, max=12, message="Phone must be 10 characters")])
     description = TextAreaField('Description', validators=[DataRequired(), validators.Length(min=4, max=500, message="Description must be between 4 to 500 characters")])
     preview_image = StringField('PreviewImage', validators=[DataRequired()])
+    website = StringField('Website', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
     submit = SubmitField('Add Business')
 
@@ -30,6 +31,7 @@ class EditBusinessForm(FlaskForm):
     phone = StringField('Phone Number', validators=[DataRequired(), validators.Length(min=12, max=12, message="Phone must be 10 characters")])
     description = TextAreaField('Description', validators=[DataRequired()])
     preview_image = StringField('PreviewImage', validators=[DataRequired()])
+    website = StringField('Website', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
     submit = SubmitField('Edit Business')
 

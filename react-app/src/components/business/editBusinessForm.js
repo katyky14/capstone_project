@@ -9,6 +9,7 @@ import { getOneBusinessThunk, editBusinessThunk, addOneBusinessThunk } from '../
 import './businessForm.css'
 
 const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+const websiteRegEx = /^(http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
 
 function EditBusinessForm() {
 
@@ -34,6 +35,7 @@ function EditBusinessForm() {
     const [description, setDescription] = useState("")
     const [phone, setPhone] = useState("")
     const [preview_image, setPreviewImage] = useState("")
+    const [website, setWebsite] = useState("")
     const [validationeErrors, setValidationeErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -45,6 +47,7 @@ function EditBusinessForm() {
     const updatedDescription = e => setDescription(e.target.value)
     const updatedPhone = e => setPhone(e.target.value)
     const updatedPreviewImage = e => setPreviewImage(e.target.value)
+    const updatedWebsite = e => setWebsite(e.target.value)
 
     useEffect(() => {
         dispatch(getOneBusinessThunk(+businessId)).then(() => setIsLoaded(true))
@@ -60,6 +63,7 @@ function EditBusinessForm() {
             setDescription(businessObj.description)
             setPhone(businessObj.phone)
             setPreviewImage(businessObj.previewImage)
+            setWebsite(businessObj.website)
         }
 
     }, [businessObj])
@@ -80,7 +84,8 @@ function EditBusinessForm() {
             state,
             phone,
             description,
-            preview_image
+            preview_image,
+            website
         }
 
 
@@ -104,10 +109,13 @@ function EditBusinessForm() {
         if (address.length > 45 || address.length < 5) valerrors.push("Address must be between 5 and 35 characters")
         if (city.length > 18 || city.length < 3) valerrors.push("City must be between 3 and 18 characters")
         if (state.length > 14 || state.length < 2) valerrors.push("State must be between 2 and 14 characters")
+        if (website.length < 2 || !website.match(websiteRegEx)) valerrors.push("Business website mus be a valid url ex.(http://example.com)")
+
+
         setValidationeErrors(valerrors)
 
         // }
-    }, [name, preview_image, phone, businessId, city, address])
+    }, [name, preview_image, phone, businessId, city, address, website])
 
 
 
@@ -121,13 +129,13 @@ function EditBusinessForm() {
             <div className='left-form left-bz-form'>
 
                 <form onSubmit={onSubmit} >
+                    <h2 className='h2-bz-form'>Edit My Business</h2>
                     {hasSubmitted && validationeErrors.length > 0 && (
-                        <ul>
+                        <ul className='ul-error-bz-form'>
                             {validationeErrors.map(error =>
-                                <li key={error}>{error}</li>)}
+                                <li key={error} className='li-bz-form-errors'>{error}</li>)}
                         </ul>
                     )}
-                    <h2>Edit Form</h2>
 
                     <div>
 
@@ -157,71 +165,82 @@ function EditBusinessForm() {
                     </div>
                     <div>
                         <label> City *
-                            </label>
-                            <input
-                                className='input-form'
-                                // placeholder='City'
-                                type='text'
-                                value={city}
-                                onChange={updatedCity}
-                                required
-                            />
-                    </div>
-
-                                <div>
-
-                    <label> State *
                         </label>
                         <input
-                        className='input-form'
+                            className='input-form'
+                            // placeholder='City'
+                            type='text'
+                            value={city}
+                            onChange={updatedCity}
+                            required
+                        />
+                    </div>
+
+                    <div>
+
+                        <label> State *
+                        </label>
+                        <input
+                            className='input-form'
                             // placeholder='State'
                             type='text'
                             value={state}
                             onChange={updatedState}
                             required
-                            />
-                            </div>
+                        />
+                    </div>
 
-                                <div>
+                    <div>
 
-                    <label>Description *
+                        <label>Description *
                         </label>
                         <input
-                        className='input-form'
+                            className='input-form'
                             // placeholder='Description'
                             type='text'
                             value={description}
                             onChange={updatedDescription}
                             required
-                            />
-                            </div>
+                        />
+                    </div>
 
-                                <div>
+                    <div>
 
-                    <label>Phone Number * (ex.888-888-8888)
+                        <label>Phone Number * (ex.888-888-8888)
                         </label>
                         <input
-                        className='input-form'
+                            className='input-form'
                             // placeholder='Phone Number'
                             type='text'
                             value={phone}
                             onChange={updatedPhone}
 
-                            />
-                            </div>
+                        />
+                    </div>
 
-                                <div>
+                    <div>
+                        <label>website * (ex. https://example.com)</label>
+                        <input
+                            className='input-form'
+                            type='string'
+                            value={website}
+                            onChange={e => setWebsite(e.target.value)}
 
-                    <label>Preview Image *
+                        />
+                    </div>
+
+
+                    <div>
+                        <label>Preview Image *
                         </label>
                         <input
-                        className='input-form'
+                            className='input-form'
                             // placeholder='Image should be format jpg, jpeg, png'
                             type='string'
                             value={preview_image}
                             onChange={updatedPreviewImage}
-                            />
-                            </div>
+                        />
+                    </div>
 
                     <button className='button-style' type="submit"> Edit Business</button>
 

@@ -2,6 +2,8 @@
 
 body {
     font-family: sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -39,9 +41,10 @@ body {
 
 .button-style {
     cursor: pointer;
-    background-color: rgb(227, 28, 95);
+    /* background-color: rgb(227, 28, 95); */
+    background-color: #f51600;
     color: #fff;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 20px;
     text-align: center;
     border-radius: 2px;
@@ -49,5 +52,5 @@ body {
     height: 35px;
     margin-top: 15px;
     border: none;
-    font-size: 16px;
+    font-size: 18px;
 }

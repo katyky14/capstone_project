@@ -7,6 +7,7 @@ import { addOneBusinessThunk } from '../../store/business'
 import './businessForm.css'
 
 const phoneRegEx = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+const websiteRegEx = /^(http(s)?:\/\/)[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
 
 function CreateBusinessForm() {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function CreateBusinessForm() {
     const [description, setDescription] = useState('')
     const [phone, setPhone] = useState('')
     const [preview_image, setPreviewImage] = useState('')
+    const [website, setWebsite] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -41,7 +43,8 @@ function CreateBusinessForm() {
             state,
             description,
             phone,
-            preview_image
+            preview_image,
+            website
         }
 
         let createdBusiness = await dispatch(addOneBusinessThunk(businessInformation))
@@ -63,9 +66,12 @@ function CreateBusinessForm() {
         if (address.length > 35 || address.length < 5) errors.push("Address must be between 5 and 35 characters")
         if (city.length > 18 || city.length < 3) errors.push("City must be between 3 and 18 characters")
         if (state.length > 14 || state.length < 2) errors.push("State must be between 2 and 14 characters")
+        if (website.length < 2 || !website.match(websiteRegEx)) errors.push("Business website mus be a valid url ex.(http://example.com)")
+
 
         setValidationErrors(errors)
-    }, [name, description, phone, preview_image, address, city, state])
+    }, [name, description, phone, preview_image, address, city, state, website])
+
 
 
 
@@ -77,13 +83,13 @@ function CreateBusinessForm() {
 
 
                 <form onSubmit={onSubmit} >
+                    <h2 className='h2-bz-form'>Create Business</h2>
                     {hasSubmitted && validationErrors.length > 0 && (
-                        <ul>
+                        <ul className='ul-error-bz-form'>
                             {validationErrors.map(error =>
-                                <li key={error}>{error}</li>)}
+                                <li key={error} className='li-bz-form-errors'>{error}</li>)}
                         </ul>
                     )}
-                    <h1>Business Form</h1>
 
                     <div>
 
@@ -163,6 +169,17 @@ function CreateBusinessForm() {
                             type='text'
                             value={phone}
                             onChange={e => setPhone(e.target.value)}
+                        />
+                    </div>
+
+                    <div>
+                        <label>website * (ex. https://example.com)</label>
+                        <input
+                            className='input-form'
+                            type='string'
+                            value={website}
+                            onChange={e => setWebsite(e.target.value)}
+
                         />
                     </div>
 

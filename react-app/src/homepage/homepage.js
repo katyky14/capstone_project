@@ -3,6 +3,7 @@ import Navigation from '../components/Navigation';
 import asianFood from '../components/images-all/asianFood.webp'
 import githubLogo from '../components/images-all/githubLogo.jpeg'
 import linkedin from '../components/images-all/linkendLogo.png'
+import asianFood2 from '../components/images-all/asianFood2.jpeg'
 import './homepage.css'
 
 
