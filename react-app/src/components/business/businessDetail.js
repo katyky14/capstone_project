@@ -166,12 +166,14 @@ function GetBusinessById() {
 
                 {businessArr.map(business => (
                     <div key={business.id} className='details-bz-div'>
-                        <img
-                            className='img-details'
-                            src={business.previewImage}
-                            alt='image'
-                            onError={e => { e.currentTarget.src = 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg' }}
-                        />
+                        <div className='image-container'>
+                            <img
+                                className='img-details'
+                                src={business.previewImage}
+                                alt='image'
+                                onError={e => { e.currentTarget.src = 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg' }}
+                            />
+                        </div>
                         <div className='details-bottom-left'>
                             <div className='details-name-top'>{business.name}</div>
                             <br />
@@ -293,28 +295,50 @@ function GetBusinessById() {
 
                     <br />
 
-                    <div className='right-bz-details'>
+                    {/* <div className='right-bz-details'>
 
                         <div><a href={business1.website} target="_blank">{business1.website}</a> <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
                         <div className='phone-bz-details'>{business1.phone} <span className='span-bz-details'><i class="fa-solid fa-phone"></i></span></div>
                         <div className='address-bz-details'>{business1.address} {business1.city} {business1.state} <span className='span-bz-details'><i class="fa-solid fa-diamond-turn-right"></i></span></div>
 
+                    </div> */}
+
+                    <div className='bz-detail-right'>
+                        <div className='bz-detail-right-div'>
+
+                            <div className='bz-detail-right-website'>
+                                <a href={business1.website} target="_blank" style={{ textDecoration: 'none', color: 'black' }}>Website</a>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </div>
+
+
+
+                            <div className='bz-detail-phone'>
+                                {business1.phone}
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+
+                            <div className='bz-detail-right-div-direction'>
+                                <div>
+                                    <div className='bz-detail-direction-address'>Address</div>
+                                    <div className='bz-detail-direction-two'>{business1.address} {business1.city}, {business1.state}</div>
+                                </div>
+                                <div className='bz-detail-direction'>
+                                    <i class="fa-solid fa-diamond-turn-right"></i>
+                                </div>
+                            </div>
+
+
+                        </div>
+
                     </div>
 
-                    {/* <div className='right-bz-details'>
 
-                        <div className='phone-bz-details'>
 
-                            <div className='phone-div'>{business1.phone} </div>
-                            <div className='phone-icon'><i class="fa-solid fa-phone"></i></div>
-                        </div>
 
-                        <div className='address-bz-details'>
-                            <div className='address-div'>{business1.address} {business1.city} {business1.state} </div>
-                            <div className='address-icon'><i class="fa-solid fa-diamond-turn-right"></i></div>
-                        </div>
 
-                    </div> */}
+
+
 
                 </div>
             </div>

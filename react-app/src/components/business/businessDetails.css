@@ -16,11 +16,12 @@
 .img-details {
     /* border: 1px solid red; */
     width: 100%;
-    height: 500px;
+    height: 450px;
     object-fit: cover;
 
     display: flex;
     flex-direction: row;
+
 }
 
 
@@ -60,6 +61,8 @@
 }
 
 
+
+/* testing 1 for right side of business */
 /* .right-bz-details {
     display: flex;
     flex-direction: column;
@@ -92,67 +95,64 @@
 
 
 
+/* testing two */
+
+.bz-detail-right {
+    /* width: 33.3333333%; */
+    box-sizing: border-box;
+    padding-left: 16px;
+    width: 400px;
+}
 
 
+.bz-detail-right-div {
+    border: 1px solid #ebebeb;
+    padding: 16px;
+    border-radius: 4px;
+}
 
 
-
-
-/* test for the second box description */
-
-.right-bz-details {
+.bz-detail-right-website {
+    padding-bottom: 16px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 300px;
-
-
-    max-height: 150px;
-    border: 1px solid black;
-
-}
-
-
-.phone-bz-details {
-    border-bottom: 1px solid gray;
-
-
-    padding-left: 10px;
-
-
-
-    /* display: flex;
-    flex-direction: row; */
-}
-
-.phone-div {
-
-}
-
-
-.phone-icon {
-    font-size: 20px;
-}
-
-
-.address-bz-details {
-
-}
-
-
-.address-div {
-    padding-left: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
     overflow: hidden;
-    overflow-wrap: break-word;
+    text-decoration: none;
 }
 
-
-.address-icon {
-    font-size: 20px;
-
+.bz-detail-phone {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 10px;
+    border-top: 1px solid #ebebeb;
+    display: flex;
+    justify-content: space-between;
 }
 
+.bz-detail-right-div-direction {
+    padding-top: 16px;
+    border-top: 1px solid #ebebeb;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+}
 
+.bz-detail-direction-address {
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.bz-detail-direction-two{
+    line-height: 24px;
+}
+
+.bz-detail-direction {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
 
 
 
