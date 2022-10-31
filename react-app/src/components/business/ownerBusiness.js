@@ -7,7 +7,7 @@ import { deleteBusinessThunk, getAllBusinessThunk } from "../../store/business";
 import { authenticate } from '../../store/session'
 import EditBusinessForm from "./editBusinessForm";
 
-
+import './ownerBusiness.css'
 
 
 function OwnerBusiness() {
@@ -32,25 +32,26 @@ function OwnerBusiness() {
     }
 
     return (
-        <div className='business-card'>
-            <h2>Manage Your Business</h2>
+        <div className='business-card-owner'>
+            <h2>Manage Your Businesses</h2>
             {ownerArr.map(({ id, name, address, city, previewImage }) => (
-                <div key={id} className='business-card-container'>
-                    <div className="business-card-inner-div">
-                        <div className="bz-card-div-left">
+                <div key={id} className='business-card-container-owner'>
+                    <div className="business-card-inner-div-owner">
+                        <div className="bz-card-div-left-owner">
                             <img src={previewImage}
-                                className='bz-card-pic'
+                                className='bz-card-pic-owner'
                                 alt='image'
                                 onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
                             />
                         </div>
 
-                        <div className="bz-card-div-right">
-                            <div>{name} </div>
-                            <div>{address} </div>
-                            <div>{city} </div>
-                            <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm />Edit Business</button>
-                            <button onClick={() => deleteTheBusiness(id)}>Delete</button>
+                        <div className="bz-card-div-right-owner">
+                            <div className="bz-card-header-owner">{name} </div>
+                            <div className="bz-card-address-owner">{address}, {city} </div>
+                            <div>
+                                <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm />Edit Business</button>
+                                <button onClick={() => deleteTheBusiness(id)}>Delete</button>
+                            </div>
                         </div>
                     </div>
                 </div>

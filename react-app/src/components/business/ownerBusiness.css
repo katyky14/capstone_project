@@ -1,4 +1,52 @@
 
-.business-card {
-    
+.business-card-owner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.business-card-container-owner {
+    width: 840px;
+    height: 225px;
+    padding: 24px;
+    border-bottom: 2px solid rgb(235, 235, 235);
+}
+
+.business-card-container-owner:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.18);
+}
+
+.business-card-inner-div-owner {
+    display: flex;
+}
+
+.bz-card-div-left-owner {
+    margin-right: 24px;
+}
+
+.bz-card-pic-owner {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+}
+
+.bz-card-div-right-owner {
+    max-height: 220px;
+    word-wrap: break-word;
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bz-card-header-owner {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+
+.bz-card-address-owner {
+    margin-bottom: 10px;
 }
