@@ -33,8 +33,8 @@ function OwnerBusiness() {
 
     return (
         <div className='business-card-owner'>
-            <h2>Manage Your Businesses</h2>
-            {ownerArr.map(({ id, name, address, city, previewImage }) => (
+            <h2 className="h2-owner-div">Manage Your Businesses</h2>
+            {ownerArr.map(({ id, name, address, city, previewImage, phone }) => (
                 <div key={id} className='business-card-container-owner'>
                     <div className="business-card-inner-div-owner">
                         <div className="bz-card-div-left-owner">
@@ -47,8 +47,9 @@ function OwnerBusiness() {
 
                         <div className="bz-card-div-right-owner">
                             <div className="bz-card-header-owner">{name} </div>
+                            <div className="bz-card-phone-owner">Phone Number: {phone}</div>
                             <div className="bz-card-address-owner">{address}, {city} </div>
-                            <div>
+                            <div className="button-owner-container">
                                 <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm />Edit Business</button>
                                 <button onClick={() => deleteTheBusiness(id)}>Delete</button>
                             </div>

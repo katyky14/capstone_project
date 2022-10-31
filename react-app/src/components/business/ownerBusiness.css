@@ -50,3 +50,17 @@
 .bz-card-address-owner {
     margin-bottom: 10px;
 }
+
+.bz-card-phone-owner {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button-owner-container {
+    margin-top: 10px;
+}
+
+.h2-owner-div {
+    color: red;
+    
+}
