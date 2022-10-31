@@ -170,7 +170,7 @@ function GetBusinessById() {
                             className='img-details'
                             src={business.previewImage}
                             alt='image'
-                            onError={e => { e.currentTarget.src = 'https://e7.pngegg.com/pngimages/261/502/png-clipart-league-of-legends-emote-video-game-summoner-league-of-legends-fictional-character-online-chat-thumbnail.png' }}
+                            onError={e => { e.currentTarget.src = 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg' }}
                         />
                         <div className='details-bottom-left'>
                             <div className='details-name-top'>{business.name}</div>
