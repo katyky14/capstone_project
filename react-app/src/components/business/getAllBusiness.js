@@ -12,7 +12,7 @@ function GetAllBusiness() {
     const history = useHistory()
     const businessObj = useSelector(state => state.businessState)
     const businessArr = Object.values(businessObj)
-    console.log('in the component', businessObj)
+    //console.log('in the component', businessObj)
     //console.log('component arr', businessArr)
 
     useEffect(() => {
@@ -39,7 +39,7 @@ function GetAllBusiness() {
         <div className='business-card'>
             {businessArr.map(business => (
                 <div key={business.id} onClick={() => history.push(`business/${business.id}`)}>
-                    {console.log('inside return for all busines', business)}
+                    {/* {console.log('inside return for all busines', business)} */}
                     <div className='business-card-container'>
                         <div className='business-card-inner-div'>
 

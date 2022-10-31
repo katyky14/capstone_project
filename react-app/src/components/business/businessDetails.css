@@ -1,6 +1,6 @@
 .bz-details-main-container {
     /* border: 1px solid violet; */
-    margin-top: 20px;
+    /* margin-top: 10px; */
     min-height: 800px;
     display: flex;
     flex-direction: column;
@@ -115,7 +115,7 @@
 
 .phone-bz-details {
     border-bottom: 1px solid gray;
-    
+
 
     padding-left: 10px;
 

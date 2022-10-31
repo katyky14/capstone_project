@@ -32,19 +32,27 @@ function OwnerBusiness() {
     }
 
     return (
-        <div>
-            <h2>Business Owner Page</h2>
+        <div className='business-card'>
+            <h2>Manage Your Business</h2>
             {ownerArr.map(({ id, name, address, city, previewImage }) => (
-                <div key={id}>
-                    <div>{name} </div>
-                    <div>{address} </div>
-                    <div>{city} </div>
-                    <img src={previewImage}
-                        alt='image'
-                        onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
-                    />
-                    <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm />Edit Business</button>
-                    <button onClick={() => deleteTheBusiness(id)}>Delete</button>
+                <div key={id} className='business-card-container'>
+                    <div className="business-card-inner-div">
+                        <div className="bz-card-div-left">
+                            <img src={previewImage}
+                                className='bz-card-pic'
+                                alt='image'
+                                onError={e => { e.currentTarget.src = 'https://demofree.sirv.com/nope-not-here.jpg' }}
+                            />
+                        </div>
+
+                        <div className="bz-card-div-right">
+                            <div>{name} </div>
+                            <div>{address} </div>
+                            <div>{city} </div>
+                            <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm />Edit Business</button>
+                            <button onClick={() => deleteTheBusiness(id)}>Delete</button>
+                        </div>
+                    </div>
                 </div>
             ))}
 
