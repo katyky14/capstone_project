@@ -4,7 +4,18 @@
     justify-content: space-between;
     height: 85px;
     align-items: center;
+    box-sizing: border-box;
+    padding: 0 75px;
+
+    border-bottom: 1px solid rgb(235, 235, 235);
 }
+
+
+.logo-div {
+    width: 430px;
+}
+
+
 
 /* .home-container {
     margin-left: 30px;
@@ -22,24 +33,21 @@
 
 
 
-.nav-logout-div {
+/* .nav-logout-div {
     border: 1px solid blue;
     width: 100%;
     display: flex;
     justify-content: space-between;
     height: 100%;
     align-items: center;
-}
+} */
 
 .nav-right-container {
     /* border: 1px solid blue; */
-    width: 160px;
-
-    /* display: flex; */
-    /* margin-right: 20px; */
-    /* width: 100%; */
-    /* display: flex; */
-
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+    /* width: 430px; */
 
 
 }
@@ -86,6 +94,15 @@
     background: rgb(227, 28, 95);
     color: white;
 
+}
 
+
+
+/* logged in */
+.nav-logged-div {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-evenly;
+    /* width: 430px; */
 
 }

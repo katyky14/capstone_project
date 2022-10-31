@@ -1,0 +1,74 @@
+.business-card {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.business-card-container {
+    width: 840px;
+    height: 225px;
+    padding: 24px;
+    cursor: pointer;
+    border-bottom: 2px solid rgb(235, 235, 235);
+}
+
+.business-card-container:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.18);
+}
+
+.business-card-inner-div {
+    display: flex;
+    /* border: 1px solid blue; */
+}
+
+.bz-card-div-left {
+    margin-right: 24px;
+}
+
+
+.bz-card-pic {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+}
+
+.bz-card-div-right {
+    /* border: 1px solid violet; */
+    max-height: 220px;
+    word-wrap: break-word;
+}
+
+.bz-card-header {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.bz-card-rate {
+    margin-bottom: 10px;
+}
+
+.bz-card-address {
+    margin-bottom: 10px;
+}
+
+.bz-card-description {
+    margin-bottom: 10px;
+}
+
+.bz-card-review {
+    /* border: 1px solid blue; */
+
+    overflow: hidden;
+    max-height: 120px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+    max-width: 620px;
+    min-height: 120px;
+
+    color:rgb(150, 144, 144)
+}

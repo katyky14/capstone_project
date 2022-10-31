@@ -11,8 +11,8 @@ const SignUpForm = () => {
 
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [first_name, setFirstName] = useState('');
+  const [last_name, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -27,8 +27,9 @@ const SignUpForm = () => {
     }
 
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, first_name, last_name));
       if (data) {
+        console.log('the data', data)
         setErrors(data)
       }
       return;
@@ -63,14 +64,14 @@ const SignUpForm = () => {
       <div className='left-form left-signup'>
 
         <form onSubmit={onSignUp}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
           <h2 className='login-h3'>Sign Up for Relp </h2>
           <p className='new-to-relp'>Already in Relp? <button  className='signup-button-login' onClick={() => history.push('/login')}>Log In</button></p>
           <p className='new-to-relp'>Connect with great local businesses</p>
+          <div>
+            {errors.map((error, ind) => (
+              <div key={ind} className='signup-errors'>{error}</div>
+            ))}
+          </div>
           <div>
             <label className='label-signup input-label-signup'>Username *</label>
             <input
@@ -93,7 +94,7 @@ const SignUpForm = () => {
               type='text'
               name='firstName'
               onChange={e => setFirstName(e.target.value)}
-              value={firstName}
+              value={first_name}
               required
             />
           </div>
@@ -106,7 +107,7 @@ const SignUpForm = () => {
               type='text'
               name='lastName'
               onChange={e => setLastName(e.target.value)}
-              value={lastName}
+              value={last_name}
               required
             />
           </div>

@@ -41,3 +41,8 @@
 .login-img {
     margin-top: 200px;
 }
+
+.signup-errors {
+    color: red;
+    margin-bottom: 10px;
+}

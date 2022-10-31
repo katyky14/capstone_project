@@ -64,53 +64,53 @@ function CreateReview({ setShowModal, businessId }) {
                 <input
                     className='star-inputs'
                     type="checkbox"
-                    id="r5"
+                    id="st5"
                     name="stars"
                     value={5}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 5 ? true : false}
                     />
-                <label className='star-label' htmlFor="r5">&#9733;</label>
+                <label className='star-label' htmlFor="st5">&#9733;</label>
                 <input
                     className='star-inputs'
                     type="checkbox"
-                    id="r4"
+                    id="st4"
                     name="stars"
                     value={4}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 4 ? true : false}
                     />
-                <label className='star-label' htmlFor="r4">&#9733;</label>
+                <label className='star-label' htmlFor="st4">&#9733;</label>
                 <input
                     className='star-inputs'
                     type="checkbox"
-                    id="r3"
+                    id="st3"
                     name="stars"
                     value={3}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 3 ? true : false}
                     />
-                <label className='star-label' htmlFor="r3">&#9733;</label>
+                <label className='star-label' htmlFor="st3">&#9733;</label>
                 <input
                     className='star-inputs'
                     type="checkbox"
-                    id="r2"
+                    id="st2"
                     name="stars"
                     value={2}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 2 ? true : false}
                     />
-                <label className='star-label' htmlFor="r2">&#9733;</label>
+                <label className='star-label' htmlFor="st2">&#9733;</label>
                 <input
                     className='star-inputs'
                     type="checkbox"
-                    id="r1"
+                    id="st1"
                     name="stars"
                     value={Number(1)}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 1 ? true : false}
                     />
-                <label className='star-label' htmlFor="r1">&#9733;</label>
+                <label className='star-label' htmlFor="st1">&#9733;</label>
             </div>
             <div className='review-div'>
                 <label htmlFor="review" />
