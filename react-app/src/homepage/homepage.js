@@ -18,7 +18,8 @@ function HomePage() {
             <div className='home-pic-container'>
                 <img
                     className='homepage-img-div'
-                    src={asianFood} alt='homepage' />
+                    // src={asianFood} alt='homepage' />
+                    src='https://www.wnct.com/wp-content/uploads/sites/99/2021/12/asian-shutterstock_587404205.jpg' alt='homepage' />
                 <div className='welcome-div'>Welcome to Relp!</div>
             </div>
 
