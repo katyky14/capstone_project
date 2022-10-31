@@ -27,7 +27,7 @@ function HomePage() {
                     <a href='https://github.com/katyky14/capstone_project' target='_blank'>
                         <img className='homepage-github' src={githubLogo} />
                     </a>
-                    <a href='' target='_blank'>
+                    <a href='https://www.linkedin.com/in/katy-kam-a88051202/' target='_blank'>
                         <img
                         className='homepage-linkedin'
                         src={linkedin} />
