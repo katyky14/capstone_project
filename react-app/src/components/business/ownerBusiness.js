@@ -50,8 +50,8 @@ function OwnerBusiness() {
                             <div className="bz-card-phone-owner">Phone Number: {phone}</div>
                             <div className="bz-card-address-owner">{address}, {city} </div>
                             <div className="button-owner-container">
-                                <button onClick={() => history.push(`/business/${id}/edit`)}><EditBusinessForm />Edit Business</button>
-                                <button onClick={() => deleteTheBusiness(id)}>Delete</button>
+                                <button onClick={() => history.push(`/business/${id}/edit`)} className='button-owner-inner '><EditBusinessForm />Edit Business</button>
+                                <button onClick={() => deleteTheBusiness(id)} className='button-owner-inner '>Delete</button>
                             </div>
                         </div>
                     </div>

@@ -62,5 +62,18 @@
 
 .h2-owner-div {
     color: red;
-    
+}
+
+.button-owner-inner {
+    cursor: pointer;
+    background-color: #f51600;
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 3px;
+    height: 35px;
+    border: none;
+    font-size: 18px;
+    width: 150px;
+    margin-right: 5px;
 }
