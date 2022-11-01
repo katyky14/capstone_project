@@ -262,7 +262,8 @@ function GetBusinessById() {
                                             <div>
                                                 <div className='bz-left-user'>
                                                     <span className='user-icon-bz-details'>
-                                                        <i class="fa-regular fa-circle-user"></i>
+                                                        {/* <i class="fa-regular fa-circle-user"></i> */}
+                                                       <img className='icon-user' src={rev.users.iconImg} alt='icon'></img>
                                                     </span>
                                                     <span className='bz-details-user-firstname'>
                                                         {rev.users.firstName}
