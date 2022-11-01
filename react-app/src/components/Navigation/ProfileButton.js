@@ -66,7 +66,10 @@ function ProfileButton({ sessionUser }) {
                     <div>
                         {/* <i className="fas fa-user-circle fa-2x" /> */}
                         {/* <i className="fas fa-angle-down fa-2x" /> */}
-                        <img className="profile-icon" src={sessionUser.iconImg} ></img>
+                        <img
+                        className="profile-icon" src={sessionUser.iconImg}
+                        
+                        ></img>
 
                     </div>
                 </button>
@@ -78,7 +81,8 @@ function ProfileButton({ sessionUser }) {
 
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li className="profile-content"> <i class="fa-regular fa-circle-user"></i> {sessionUser.username}</li>
+                    <li className="profile-content">
+                    <i class="fa-regular fa-circle-user"></i> {sessionUser.username}</li>
                     {/* <li>
                         <NavLink to='/' exact={true}>My reviews</NavLink>
                     </li> */}

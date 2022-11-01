@@ -263,7 +263,10 @@ function GetBusinessById() {
                                                 <div className='bz-left-user'>
                                                     <span className='user-icon-bz-details'>
                                                         {/* <i class="fa-regular fa-circle-user"></i> */}
-                                                       <img className='icon-user' src={rev.users.iconImg} alt='icon'></img>
+                                                       <img
+                                                       className='icon-user' src={rev.users.iconImg} alt='icon'
+                                                       onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'; e.currentTarget.className ='icon-user' }}
+                                                       ></img>
                                                     </span>
                                                     <span className='bz-details-user-firstname'>
                                                         {rev.users.firstName}
