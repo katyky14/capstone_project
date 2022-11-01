@@ -17,6 +17,7 @@ import Navigation from './components/Navigation';
 import OwnerBusiness from './components/business/ownerBusiness';
 import HomePage from './homepage/homepage';
 import NotFound from './components/404Page/NotFound';
+import SearchBusiness from './components/business/searchBusiness';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,6 +56,10 @@ function App() {
           <User />
         </ProtectedRoute>
 
+
+        <Route path='/search'>
+          <SearchBusiness/>
+        </Route>
 
         <ProtectedRoute path='/business/owner' exact={true}>
           <OwnerBusiness />
