@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -16,11 +16,16 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+
+
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true)
 
     if (!email.includes('@')) {
       return setErrors(['Please provide a valid email'])
@@ -29,13 +34,26 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, first_name, last_name));
       if (data) {
-        console.log('the data', data)
+        //console.log('the data', data)
         setErrors(data)
       }
       return;
     }
     return setErrors(['Password fields must match'])
   };
+
+
+  useEffect(() => {
+    const valErrors = [];
+
+    if (first_name.length < 2 || first_name.length > 25) valErrors.push('First Name must be between 2 and 25 characters')
+
+
+    setErrors(valErrors)
+
+  }, [first_name])
+
+
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -68,7 +86,7 @@ const SignUpForm = () => {
           <p className='new-to-relp'>Already in Relp? <button  className='signup-button-login' onClick={() => history.push('/login')}>Log In</button></p>
           <p className='new-to-relp'>Connect with great local businesses</p>
           <div>
-            {errors.map((error, ind) => (
+            {hasSubmitted && errors.map((error, ind) => (
               <div key={ind} className='signup-errors'>{error}</div>
             ))}
           </div>
