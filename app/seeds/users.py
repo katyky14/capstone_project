@@ -6,13 +6,13 @@ def seed_users():
     demo = User(
         username='Demo', email='demo@aa.io', first_name='Demo', last_name='User', password='password')
     vayne = User(
-        username='vayne', email='vayne@aa.io',first_name='Vayne', last_name='Shauna', password='password')
+        username='Vayne', email='vayne@aa.io',first_name='Vayne', last_name='Shauna', password='password')
     sona = User(
-        username='sona', email='sona@aa.io', first_name='Sona', last_name='Buvelle', password='password')
+        username='Sona', email='sona@aa.io', first_name='Sona', last_name='Buvelle', password='password')
     lux = User(
-        username='lux', email='lux@aa.io', first_name='Lux', last_name='Crownguard', password='password')
+        username='Lux', email='lux@aa.io', first_name='Lux', last_name='Crownguard', password='password')
     morgana = User(
-        username='morgana', email='morgana@aa.io', first_name='Morgana', last_name='Hex', password='password')
+        username='Morgana', email='morgana@aa.io', first_name='Morgana', last_name='Hex', password='password')
 
 
 
