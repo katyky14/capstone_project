@@ -50,15 +50,15 @@ def create_business():
 @business_routes.route('/<int:id>', methods=['PUT'])
 def edit_business(id):
     form = EditBusinessForm()
-    print('edit form', form)
+    # print('edit form', form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = Business.query.get(id)
-        print('the data inside form', data)
+        # print('the data inside form', data)
         form.populate_obj(data)
         db.session.add(data)
         db.session.commit()
-        print('the json of data', data.to_dict_relationship())
+        # print('the json of data', data.to_dict_relationship())
         # return {'editedBusiness': data.to_dict_relationship()}
         return data.to_dict_relationship()
 

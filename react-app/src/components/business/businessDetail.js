@@ -18,7 +18,7 @@ function GetBusinessById() {
     const businessArr = Object.values(businessObj)
     //console.log('the busines arr', businessArr)
     const business1 = businessArr.find(buz => buz.id === +businessId)
-    console.log('the business find', business1)
+    //console.log('the business find', business1)
 
     const allReviewsObj = useSelector(state => state.reviewState)
     //console.log('the reviews obj', allReviewsObj)
@@ -171,7 +171,7 @@ function GetBusinessById() {
                                 className='img-details'
                                 src={business.previewImage}
                                 alt='image'
-                                onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className ='error-img-details' }}
+                                onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className = 'error-img-details' }}
                             />
                         </div>
                         <div className='details-bottom-left'>
@@ -213,7 +213,7 @@ function GetBusinessById() {
                                 <i class="fa-regular fa-star" />
                             </span>}
                             <div className='overall-rating-reviews'>
-                            {business1.reviews.length} reviews
+                                {business1.reviews.length} reviews
                             </div>
                         </div>
 
@@ -263,10 +263,10 @@ function GetBusinessById() {
                                                 <div className='bz-left-user'>
                                                     <span className='user-icon-bz-details'>
                                                         {/* <i class="fa-regular fa-circle-user"></i> */}
-                                                       <img
-                                                       className='icon-user' src={rev.users.iconImg ? rev.users.iconImg : "https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg"} alt='icon'
-                                                       onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'; e.currentTarget.className ='icon-user' }}
-                                                       ></img>
+                                                        <img
+                                                            className='icon-user' src={rev.users.iconImg ? rev.users.iconImg : "https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg"} alt='https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'
+                                                        //    onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'; e.currentTarget.className ='icon-user' }}
+                                                        />
                                                     </span>
                                                     <span className='bz-details-user-firstname'>
                                                         {rev.users.firstName}
@@ -346,9 +346,6 @@ function GetBusinessById() {
                         </div>
 
                     </div>
-
-
-
 
 
 
