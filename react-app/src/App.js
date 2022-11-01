@@ -16,6 +16,7 @@ import EditBusinessForm from './components/business/editBusinessForm';
 import Navigation from './components/Navigation';
 import OwnerBusiness from './components/business/ownerBusiness';
 import HomePage from './homepage/homepage';
+import NotFound from './components/404Page/NotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,6 +71,9 @@ function App() {
         </Route>
         <Route path='/business' exact={true}>
           <GetAllBusiness />
+        </Route>
+        <Route>
+          <NotFound />
         </Route>
       </Switch>
     </BrowserRouter>
