@@ -1,0 +1,21 @@
+
+.page-not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://cdn.mos.cms.futurecdn.net/BfemybeKVXCf9pgX9WCxsc-1200-80.jpg');
+    height: 100vh;
+}
+
+
+.h1-not-found {
+    color: white;
+}
+
+
+.img-404-gif {
+    width: 800px;
+    height: 600px;
+    border-radius: 10px;
+}
