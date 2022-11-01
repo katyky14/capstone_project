@@ -41,7 +41,7 @@ function GetBusinessById() {
     const getRating = (rating) => {
         if (rating === 5) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
@@ -51,7 +51,7 @@ function GetBusinessById() {
         }
         else if (rating > 4 && rating < 5) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
@@ -61,7 +61,7 @@ function GetBusinessById() {
         }
         else if (rating === 4) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
@@ -71,7 +71,7 @@ function GetBusinessById() {
         }
         else if (rating > 3 && rating < 4) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
@@ -81,7 +81,7 @@ function GetBusinessById() {
         }
         else if (rating === 3) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
@@ -91,7 +91,7 @@ function GetBusinessById() {
         }
         else if (rating > 2 && rating < 3) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
                     <i class="fa-regular fa-star-half-stroke" />
@@ -111,7 +111,7 @@ function GetBusinessById() {
         }
         else if (rating > 1 && rating < 2) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star-half-stroke" />
                     <i class="fa-regular fa-star" />
@@ -121,7 +121,7 @@ function GetBusinessById() {
         }
         else if (rating === 1) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-regular fa-star" />
                     <i class="fa-regular fa-star" />
@@ -264,7 +264,7 @@ function GetBusinessById() {
                                                     <span className='user-icon-bz-details'>
                                                         {/* <i class="fa-regular fa-circle-user"></i> */}
                                                        <img
-                                                       className='icon-user' src={rev.users.iconImg} alt='icon'
+                                                       className='icon-user' src={rev.users.iconImg ? rev.users.iconImg : "https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg"} alt='icon'
                                                        onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'; e.currentTarget.className ='icon-user' }}
                                                        ></img>
                                                     </span>
