@@ -77,12 +77,12 @@ function CreateBusinessForm() {
 
     return (
 
-        <div className='form-container-main'>
+        <div className='bz-form-container-main'>
 
-            <div className='left-form left-bz-form'>
+            <div className='bz-left-form'>
 
 
-                <form onSubmit={onSubmit} >
+                <form onSubmit={onSubmit} className='bz-form-div'>
                     <h2 className='h2-bz-form'>Create Business</h2>
                     {hasSubmitted && validationErrors.length > 0 && (
                         <ul className='ul-error-bz-form'>
@@ -98,7 +98,7 @@ function CreateBusinessForm() {
 
                         </div>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Business Name'
                             type='text'
                             value={name}
@@ -111,7 +111,7 @@ function CreateBusinessForm() {
 
                         <label>Address *</label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Address'
                             type='text'
                             value={address}
@@ -125,7 +125,7 @@ function CreateBusinessForm() {
 
                         <label>City *</label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='City'
                             type='text'
                             value={city}
@@ -138,7 +138,7 @@ function CreateBusinessForm() {
 
                         <label>State *</label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='State'
                             type='text'
                             value={state}
@@ -151,7 +151,7 @@ function CreateBusinessForm() {
 
                         <label>Description *</label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Description'
                             type='text'
                             value={description}
@@ -164,7 +164,7 @@ function CreateBusinessForm() {
 
                         <label>Phone Number * (ex. 000-000-0000)</label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Phone Number (ex 000-000-0000)'
                             type='text'
                             value={phone}
@@ -175,7 +175,7 @@ function CreateBusinessForm() {
                     <div>
                         <label>website * (ex. https://example.com)</label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             type='string'
                             value={website}
                             onChange={e => setWebsite(e.target.value)}
@@ -191,7 +191,7 @@ function CreateBusinessForm() {
                             </span>
                         </label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Image should be format jpg, jpeg, png'
                             type='string'
                             value={preview_image}
@@ -205,13 +205,13 @@ function CreateBusinessForm() {
 
                 </form>
             </div>
-            <div className='right-form '>
+            <div className='bz-right-form '>
                 <img
                 className='bz-img'
-                    src='https://64.media.tumblr.com/034135208d1b91f579ee5582c19cd0be/tumblr_pw50rmClPW1ufm3tmo2_500.jpg' alt='login-img'
+                    src='https://img.freepik.com/premium-vector/cute-business-woman-cartoon_96373-74.jpg' alt='login-img'
                     style={{
-                        width: '300px',
-                        height: '300px',
+                        width: '400px',
+                        height: '400px',
                         borderRadius: '170px'
                     }}
                 ></img>
