@@ -202,7 +202,7 @@ function GetBusinessById() {
 
                         </div>
 
-                        <div>Overall Rating </div>
+                        <div className='overall-rating'> Overall Rating </div>
 
                         <div>{business1.reviews.length > 0 ? avgRating(business1.reviews) : <span>
                             <i class="fa-regular fa-star" />
@@ -313,7 +313,7 @@ function GetBusinessById() {
                         <div className='bz-detail-right-div'>
 
                             <div className='bz-detail-right-website'>
-                                <a href={business1.website} target="_blank" style={{ textDecoration: 'none', color: 'black' }}>Website</a>
+                                <a href={business1.website} target="_blank" style={{ textDecoration: 'none', color: 'blue', fontWeight: '600' }}>Website</a>
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </div>
 
