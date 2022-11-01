@@ -26,7 +26,7 @@ function CreateBusinessForm() {
 
 
     const ownerObj = useSelector(state => state.session.user)
-    console.log('the user obj in form', ownerObj)
+    //console.log('the user obj in form', ownerObj)
 
     const onSubmit = async (e) => {
         e.preventDefault();
