@@ -74,3 +74,10 @@
 
     color:rgb(150, 144, 144)
 }
+
+
+.error-img-all-bz {
+    width: 220px;
+    height: 220px;
+    /* object-fit: cover; */
+}

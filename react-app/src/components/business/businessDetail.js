@@ -171,7 +171,7 @@ function GetBusinessById() {
                                 className='img-details'
                                 src={business.previewImage}
                                 alt='image'
-                                onError={e => { e.currentTarget.src = 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg' }}
+                                onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className ='error-img-details' }}
                             />
                         </div>
                         <div className='details-bottom-left'>
