@@ -27,9 +27,13 @@ const SignUpForm = () => {
     e.preventDefault();
     setHasSubmitted(true)
 
-    if (!email.includes('@')) {
-      return setErrors(['Please provide a valid email'])
+    if (errors.length > 0) {
+      return alert("Cannot Submit")
     }
+
+    // if (!email.includes('@')) {
+    //   return setErrors(['Please provide a valid email'])
+    // }
 
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, first_name, last_name));
@@ -37,21 +41,26 @@ const SignUpForm = () => {
         //console.log('the data', data)
         setErrors(data)
       }
-      return;
+    //   return;
     }
-    return setErrors(['Password fields must match'])
+    // return setErrors(['Password fields must match'])
   };
 
 
   useEffect(() => {
     const valErrors = [];
 
-    if (first_name.length < 2 || first_name.length > 25) valErrors.push('First Name must be between 2 and 25 characters')
+    if (first_name.length < 2 || first_name.length > 25) valErrors.push('First Name must be between 2 and 25 characters');
+    if (!email.includes('@')) valErrors.push("Please provide a valid Email");
+    if(last_name.length < 2 || last_name.length > 25) valErrors.push("Last Name must be between 2 and 25 characters");
+    if (username.length < 2 || username.length > 25) valErrors.push('Username must be between 2 and 25 characters');
+    if (password.length < 6 || password.length > 25) valErrors.push("Password must be between 6 and 25 characters");
+    if (password !== repeatPassword) valErrors.push("Password fields doesn't match")
 
 
     setErrors(valErrors)
 
-  }, [first_name])
+  }, [first_name, last_name, email, username, password, repeatPassword])
 
 
 
@@ -94,7 +103,7 @@ const SignUpForm = () => {
             <label className='label-signup input-label-signup'>Username *</label>
             <input
               className='input-form'
-              placeholder='Username'
+              // placeholder='Username'
               type='text'
               name='username'
               onChange={updateUsername}
@@ -108,7 +117,7 @@ const SignUpForm = () => {
 
             <input
               className='input-form'
-              placeholder='First Name'
+              // placeholder='First Name'
               type='text'
               name='firstName'
               onChange={e => setFirstName(e.target.value)}
@@ -121,7 +130,7 @@ const SignUpForm = () => {
             <label  className='label-signup'>Last Name *</label>
             <input
               className='input-form'
-              placeholder='Last Name'
+              // placeholder='Last Name'
               type='text'
               name='lastName'
               onChange={e => setLastName(e.target.value)}
@@ -134,7 +143,7 @@ const SignUpForm = () => {
             <label  className='label-signup'>Email *</label>
             <input
               className='input-form'
-              placeholder='Email'
+              // placeholder='Email'
               type='text'
               name='email'
               onChange={updateEmail}
@@ -145,7 +154,7 @@ const SignUpForm = () => {
             <label  className='label-signup'>Password *</label>
             <input
               className='input-form'
-              placeholder='Password'
+              // placeholder='Password'
               type='password'
               name='password'
               onChange={updatePassword}
@@ -156,7 +165,7 @@ const SignUpForm = () => {
             <label  className='label-signup'>Repeat Password *</label>
             <input
               className='input-form'
-              placeholder='Confirm Password'
+              // placeholder='Confirm Password'
               type='password'
               name='repeat_password'
               onChange={updateRepeatPassword}
