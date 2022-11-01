@@ -22,6 +22,8 @@
     display: flex;
     flex-direction: row;
 
+    filter: brightness(65%);
+
 }
 
 .error-img-details {
