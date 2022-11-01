@@ -18,12 +18,12 @@ function GetBusinessById() {
     const businessArr = Object.values(businessObj)
     //console.log('the busines arr', businessArr)
     const business1 = businessArr.find(buz => buz.id === +businessId)
-    //console.log('the business find', business1)
+    console.log('the business find', business1)
 
     const allReviewsObj = useSelector(state => state.reviewState)
     //console.log('the reviews obj', allReviewsObj)
     const user = useSelector(state => state.session.user)
-    // console.log('the user', user)
+    //console.log('the user', user)
 
     const owner = business1 && user && business1.ownerId === user.id
 
@@ -247,50 +247,54 @@ function GetBusinessById() {
 
 
 
-
-
                         <br />
                         {/* for users to create a reviews and that are not the owner of the restaurant */}
 
-                        {business1 && <div className='left-bz-details'>
-                            {
-                                business1.reviews.map(rev => (
-                                    <div key={rev.id}>
+                        {business1 &&
+                            <div className='left-bz-details'>
+                                {
+                                    business1.reviews.map(rev => (
+                                        <div key={rev.id}>
 
-                                        <div>
                                             <div>
-                                                {getRating(rev.rating)} <br />
-                                            </div>
-                                            <div>
+                                                <div><i class="fa-regular fa-circle-user"></i> {rev.users.firstName} </div>
 
-                                                {rev.review}
+
+                                                <div>
+                                                    {getRating(rev.rating)} <br />
+                                                </div>
+
+
+                                                <div>
+
+                                                    {rev.review}
+                                                </div>
+
                                             </div>
+
+
+                                            {/* for user who already has a review and want to edit or delete */}
+
+                                            {userReview(rev, user) && !owner &&
+                                                <div>
+                                                    <div>
+                                                        <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
+                                                        <button onClick={async (e) => {
+                                                            e.preventDefault()
+                                                            await dispatch(deleteTheReviewThunk(rev.id))
+                                                            //await dispatch(getBusinessReviewThunk(businessId))
+                                                            await dispatch(getOneBusinessThunk(businessId))
+                                                        }} > Delete Review </button>
+
+                                                    </div>
+                                                </div>
+                                            }
 
                                         </div>
-
-
-
-                                        {/* for user who already has a review and want to edit or delete */}
-
-                                        {userReview(rev, user) && !owner &&
-                                            <div>
-                                                <div>
-                                                    <button onClick={async (e) => {
-                                                        e.preventDefault()
-                                                        await dispatch(deleteTheReviewThunk(rev.id))
-                                                        //await dispatch(getBusinessReviewThunk(businessId))
-                                                        await dispatch(getOneBusinessThunk(businessId))
-                                                    }} > Delete Review </button>
-
-                                                </div>
-                                                <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
-                                            </div>
-                                        }
-
-                                    </div>
-                                ))}
-                        </div>
+                                    ))}
+                            </div>
                         }
+
                     </div>
 
                     <br />
