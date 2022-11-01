@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -16,26 +16,53 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [hasSubmitted, setHasSubmitted] = useState(false)
+
+
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true)
 
-    if (!email.includes('@')) {
-      return setErrors(['Please provide a valid email'])
+    if (errors.length > 0) {
+      return alert("Cannot Submit")
     }
+
+    // if (!email.includes('@')) {
+    //   return setErrors(['Please provide a valid email'])
+    // }
 
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password, first_name, last_name));
       if (data) {
-        console.log('the data', data)
+        //console.log('the data', data)
         setErrors(data)
       }
-      return;
+    //   return;
     }
-    return setErrors(['Password fields must match'])
+    // return setErrors(['Password fields must match'])
   };
+
+
+  useEffect(() => {
+    const valErrors = [];
+
+    if (first_name.length < 2 || first_name.length > 25) valErrors.push('First Name must be between 2 and 25 characters');
+    if (!email.includes('@')) valErrors.push("Please provide a valid Email");
+    if(last_name.length < 2 || last_name.length > 25) valErrors.push("Last Name must be between 2 and 25 characters");
+    if (username.length < 2 || username.length > 25) valErrors.push('Username must be between 2 and 25 characters');
+    if (password.length < 6 || password.length > 25) valErrors.push("Password must be between 6 and 25 characters");
+    if (password !== repeatPassword) valErrors.push("Password fields doesn't match")
+
+
+    setErrors(valErrors)
+
+  }, [first_name, last_name, email, username, password, repeatPassword])
+
+
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -68,7 +95,7 @@ const SignUpForm = () => {
           <p className='new-to-relp'>Already in Relp? <button  className='signup-button-login' onClick={() => history.push('/login')}>Log In</button></p>
           <p className='new-to-relp'>Connect with great local businesses</p>
           <div>
-            {errors.map((error, ind) => (
+            {hasSubmitted && errors.map((error, ind) => (
               <div key={ind} className='signup-errors'>{error}</div>
             ))}
           </div>
@@ -76,7 +103,7 @@ const SignUpForm = () => {
             <label className='label-signup input-label-signup'>Username *</label>
             <input
               className='input-form'
-              placeholder='Username'
+              // placeholder='Username'
               type='text'
               name='username'
               onChange={updateUsername}
@@ -90,7 +117,7 @@ const SignUpForm = () => {
 
             <input
               className='input-form'
-              placeholder='First Name'
+              // placeholder='First Name'
               type='text'
               name='firstName'
               onChange={e => setFirstName(e.target.value)}
@@ -103,7 +130,7 @@ const SignUpForm = () => {
             <label  className='label-signup'>Last Name *</label>
             <input
               className='input-form'
-              placeholder='Last Name'
+              // placeholder='Last Name'
               type='text'
               name='lastName'
               onChange={e => setLastName(e.target.value)}
@@ -116,7 +143,7 @@ const SignUpForm = () => {
             <label  className='label-signup'>Email *</label>
             <input
               className='input-form'
-              placeholder='Email'
+              // placeholder='Email'
               type='text'
               name='email'
               onChange={updateEmail}
@@ -127,7 +154,7 @@ const SignUpForm = () => {
             <label  className='label-signup'>Password *</label>
             <input
               className='input-form'
-              placeholder='Password'
+              // placeholder='Password'
               type='password'
               name='password'
               onChange={updatePassword}
@@ -138,7 +165,7 @@ const SignUpForm = () => {
             <label  className='label-signup'>Repeat Password *</label>
             <input
               className='input-form'
-              placeholder='Confirm Password'
+              // placeholder='Confirm Password'
               type='password'
               name='repeat_password'
               onChange={updateRepeatPassword}

@@ -64,8 +64,14 @@ function ProfileButton({ sessionUser }) {
             <li>
                 <button onClick={openMenu} className="button-user">
                     <div>
-                        <i className="fas fa-user-circle fa-2x" />
+                        {/* <i className="fas fa-user-circle fa-2x" /> */}
                         {/* <i className="fas fa-angle-down fa-2x" /> */}
+                        <img
+                        className="profile-icon" src={sessionUser.iconImg ? sessionUser.iconImg : 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'}
+                        onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'; e.currentTarget.className ='icon-user' }}
+
+                        ></img>
+
                     </div>
                 </button>
             </li>
@@ -76,7 +82,8 @@ function ProfileButton({ sessionUser }) {
 
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li className="profile-content"> <i class="fa-regular fa-circle-user"></i> {sessionUser.username}</li>
+                    <li className="profile-content">
+                    <i class="fa-regular fa-circle-user"></i> {sessionUser.username}</li>
                     {/* <li>
                         <NavLink to='/' exact={true}>My reviews</NavLink>
                     </li> */}

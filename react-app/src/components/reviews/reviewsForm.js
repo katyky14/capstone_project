@@ -13,9 +13,15 @@ function CreateReview({ setShowModal, businessId }) {
     const [review, setReview] = useState('');
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        setHasSubmitted(true)
+
+        if (errors.length > 0) {
+            return alert('Cannot Submit')
+        }
 
         // const valErrors = [];
 
@@ -43,7 +49,7 @@ function CreateReview({ setShowModal, businessId }) {
         const valErrors = [];
 
         if (stars === 0) valErrors.push("Star rating is required");
-        if (review.length === 0) valErrors.push("Review cannot be empty")
+        // if (review.length === 0) valErrors.push("Review cannot be empty")
         if (review.length < 5 || review.length > 1000) valErrors.push("Review must be between 5 to 1000 characters")
         setErrors(valErrors)
     }, [review, stars])
@@ -60,6 +66,9 @@ function CreateReview({ setShowModal, businessId }) {
                 {/* <i className="fas fa-times cancel-button" onClick={() => setShowModal(false)} /> */}
                 <h2 className='review-title'>Write your review</h2>
             </div>
+                {hasSubmitted && errors.map((error, idx) => (
+                    <div className="review-errors-div" key={idx}>{error}</div>
+                ))}
             <div className='star-container'>
                 <input
                     className='star-inputs'
@@ -123,12 +132,12 @@ function CreateReview({ setShowModal, businessId }) {
                     onChange={(e) => setReview(e.target.value)}>
                 </textarea>
             </div>
-            <div className='review-errors-div'>
+            {/* <div className='review-errors-div'>
                 { errors.length > 0 && errors.map((error, idx) => (
                     <p key={idx} >{error}</p>
                     ))}
-            </div>
-            <button className='Submit-Review' type="submit" disabled={errors.length > 0}>Submit Review</button>
+            </div> */}
+            <button className='Submit-Review' type="submit" >Submit Review</button>
         </form>
 
 )
@@ -138,7 +147,7 @@ function CreateReview({ setShowModal, businessId }) {
 
 export default CreateReview;
 {/* <div>
-    <input
+    <input  disabled={errors.length > 0}
     className="star-inputs"
         type='checkbox'
         id="rate5"
