@@ -47,5 +47,6 @@ class Business(db.Model):
           "previewImage": self.preview_image,
           "website": self.website,
           "images": [i.to_dict_images() for i in self.images],
-          "reviews": [r.to_dict_reviews() for r in self.reviews]
+          # "reviews": [r.to_dict_reviews() for r in self.reviews]
+          "reviews": [r.to_dict_rel() for r in self.reviews]
         }

@@ -8,7 +8,7 @@ function EditReviewFormModal({business}) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Edit Review</button>
+            <button onClick={() => setShowModal(true)} className='bz-details-delete-button-reviews'><i class="fa-solid fa-pen-to-square"></i></button>
             {
                 showModal && (
                     <Modal onClose={() => setShowModal(false)}>

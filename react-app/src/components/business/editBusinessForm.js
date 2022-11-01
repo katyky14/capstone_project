@@ -124,11 +124,11 @@ function EditBusinessForm() {
     if (businessObj == undefined) return null;
 
     return businessObj && (
-        <div className='form-container-main'>
+        <div className='bz-form-container-main'>
 
-            <div className='left-form left-bz-form'>
+            <div className='bz-left-form'>
 
-                <form onSubmit={onSubmit} >
+                <form onSubmit={onSubmit} className='bz-form-div'>
                     <h2 className='h2-bz-form'>Edit My Business</h2>
                     {hasSubmitted && validationeErrors.length > 0 && (
                         <ul className='ul-error-bz-form'>
@@ -142,7 +142,7 @@ function EditBusinessForm() {
                         <label> Business Name *
                         </label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Business Name'
                             type='text'
                             value={name}
@@ -155,7 +155,7 @@ function EditBusinessForm() {
                         </label>
 
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Address'
                             type='text'
                             value={address}
@@ -167,7 +167,7 @@ function EditBusinessForm() {
                         <label> City *
                         </label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='City'
                             type='text'
                             value={city}
@@ -181,7 +181,7 @@ function EditBusinessForm() {
                         <label> State *
                         </label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='State'
                             type='text'
                             value={state}
@@ -195,7 +195,7 @@ function EditBusinessForm() {
                         <label>Description *
                         </label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Description'
                             type='text'
                             value={description}
@@ -209,7 +209,7 @@ function EditBusinessForm() {
                         <label>Phone Number * (ex.888-888-8888)
                         </label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Phone Number'
                             type='text'
                             value={phone}
@@ -221,10 +221,10 @@ function EditBusinessForm() {
                     <div>
                         <label>website * (ex. https://example.com)</label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             type='string'
                             value={website}
-                            onChange={e => setWebsite(e.target.value)}
+                            onChange={updatedWebsite}
 
                         />
                     </div>
@@ -234,7 +234,7 @@ function EditBusinessForm() {
                         <label>Preview Image *
                         </label>
                         <input
-                            className='input-form'
+                            className='bz-input-form'
                             // placeholder='Image should be format jpg, jpeg, png'
                             type='string'
                             value={preview_image}
@@ -247,15 +247,10 @@ function EditBusinessForm() {
                 </form>
             </div>
 
-            <div className='right-form '>
+            <div className='bz-right-form '>
                 <img
                     className='bz-img'
-                    src='https://64.media.tumblr.com/034135208d1b91f579ee5582c19cd0be/tumblr_pw50rmClPW1ufm3tmo2_500.jpg' alt='login-img'
-                    style={{
-                        width: '300px',
-                        height: '300px',
-                        borderRadius: '170px'
-                    }}
+                    src='https://lolwildriftbuild.com/wp-content/uploads/2021/01/Teemo-Portrait.jpg' alt='bz-img'
                 ></img>
             </div>
         </div>

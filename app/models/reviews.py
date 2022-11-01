@@ -8,7 +8,7 @@ class Review(db.Model):
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'), nullable=True)
     rating = db.Column(db.Integer, nullable=False)
     review = db.Column(db.String(500), nullable=False)
-    
+
     users = db.relationship('User', back_populates='reviews')
     business = db.relationship('Business', back_populates='reviews')
     # images = db.relationship('Image', back_populates='reviews')
@@ -31,6 +31,7 @@ class Review(db.Model):
             "rating": self.rating,
             "review": self.review,
             "users": self.users.to_dict(),
+            # "users": [u.to_dict_user_rel() for u in self.users],
             "business": self.business.to_dict_business(),
 
         }

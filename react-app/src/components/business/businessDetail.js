@@ -18,12 +18,12 @@ function GetBusinessById() {
     const businessArr = Object.values(businessObj)
     //console.log('the busines arr', businessArr)
     const business1 = businessArr.find(buz => buz.id === +businessId)
-    //console.log('the business find', business1)
+    console.log('the business find', business1)
 
     const allReviewsObj = useSelector(state => state.reviewState)
     //console.log('the reviews obj', allReviewsObj)
     const user = useSelector(state => state.session.user)
-    // console.log('the user', user)
+    //console.log('the user', user)
 
     const owner = business1 && user && business1.ownerId === user.id
 
@@ -171,7 +171,7 @@ function GetBusinessById() {
                                 className='img-details'
                                 src={business.previewImage}
                                 alt='image'
-                                onError={e => { e.currentTarget.src = 'https://t3.ftcdn.net/jpg/03/34/83/22/360_F_334832255_IMxvzYRygjd20VlSaIAFZrQWjozQH6BQ.jpg' }}
+                                onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className ='error-img-details' }}
                             />
                         </div>
                         <div className='details-bottom-left'>
@@ -202,16 +202,19 @@ function GetBusinessById() {
 
                         </div>
 
-                        <div>Overall Rating </div>
+                        <div className='overall-rating'> Overall Rating </div>
 
-                        <div>{business1.reviews.length > 0 ? avgRating(business1.reviews) : <span>
-                            <i class="fa-regular fa-star" />
-                            <i class="fa-regular fa-star" />
-                            <i class="fa-regular fa-star" />
-                            <i class="fa-regular fa-star" />
-                            <i class="fa-regular fa-star" />
-                        </span>}
+                        <div>
+                            {business1.reviews.length > 0 ? avgRating(business1.reviews) : <span>
+                                <i class="fa-regular fa-star" />
+                                <i class="fa-regular fa-star" />
+                                <i class="fa-regular fa-star" />
+                                <i class="fa-regular fa-star" />
+                                <i class="fa-regular fa-star" />
+                            </span>}
+                            <div className='overall-rating-reviews'>
                             {business1.reviews.length} reviews
+                            </div>
                         </div>
 
 
@@ -247,50 +250,62 @@ function GetBusinessById() {
 
 
 
-
-
                         <br />
                         {/* for users to create a reviews and that are not the owner of the restaurant */}
 
-                        {business1 && <div className='left-bz-details'>
-                            {
-                                business1.reviews.map(rev => (
-                                    <div key={rev.id}>
+                        {business1 &&
+                            <div className='left-bz-details'>
+                                {
+                                    business1.reviews.map(rev => (
+                                        <div key={rev.id}>
 
-                                        <div>
                                             <div>
-                                                {getRating(rev.rating)} <br />
-                                            </div>
-                                            <div>
+                                                <div className='bz-left-user'>
+                                                    <span className='user-icon-bz-details'>
+                                                        <i class="fa-regular fa-circle-user"></i>
+                                                    </span>
+                                                    <span className='bz-details-user-firstname'>
+                                                        {rev.users.firstName}
+                                                    </span>
+                                                </div>
 
-                                                {rev.review}
+
+                                                <div className='bz-details-rating'>
+                                                    {getRating(rev.rating)}
+                                                    {/* <span>10/14/22</span> */}
+                                                </div>
+
+
+                                                <div className='bz-details-review'>
+
+                                                    {rev.review}
+                                                </div>
+
                                             </div>
+
+
+                                            {/* for user who already has a review and want to edit or delete */}
+
+                                            {userReview(rev, user) && !owner &&
+                                                <div className='bz-details-users-review-button'>
+                                                    <div className='bz-details-users-reviews-inner-div'>
+                                                        <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
+                                                        <button onClick={async (e) => {
+                                                            e.preventDefault()
+                                                            await dispatch(deleteTheReviewThunk(rev.id))
+                                                            //await dispatch(getBusinessReviewThunk(businessId))
+                                                            await dispatch(getOneBusinessThunk(businessId))
+                                                        }} className='bz-details-delete-button-reviews'> <i class="fa-solid fa-trash"></i> </button>
+
+                                                    </div>
+                                                </div>
+                                            }
 
                                         </div>
-
-
-
-                                        {/* for user who already has a review and want to edit or delete */}
-
-                                        {userReview(rev, user) && !owner &&
-                                            <div>
-                                                <div>
-                                                    <button onClick={async (e) => {
-                                                        e.preventDefault()
-                                                        await dispatch(deleteTheReviewThunk(rev.id))
-                                                        //await dispatch(getBusinessReviewThunk(businessId))
-                                                        await dispatch(getOneBusinessThunk(businessId))
-                                                    }} > Delete Review </button>
-
-                                                </div>
-                                                <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
-                                            </div>
-                                        }
-
-                                    </div>
-                                ))}
-                        </div>
+                                    ))}
+                            </div>
                         }
+
                     </div>
 
                     <br />
@@ -302,7 +317,7 @@ function GetBusinessById() {
                         <div className='bz-detail-right-div'>
 
                             <div className='bz-detail-right-website'>
-                                <a href={business1.website} target="_blank" style={{ textDecoration: 'none', color: 'black' }}>Website</a>
+                                <a href={business1.website} target="_blank" style={{ textDecoration: 'none', color: 'blue', fontWeight: '600' }}>Website</a>
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </div>
 

@@ -31,6 +31,11 @@
     object-fit: cover;
 }
 
+.error-img-owner {
+    width: 220px;
+    height: 220px;
+}
+
 .bz-card-div-right-owner {
     max-height: 220px;
     word-wrap: break-word;
