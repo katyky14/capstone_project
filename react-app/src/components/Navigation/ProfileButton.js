@@ -64,8 +64,10 @@ function ProfileButton({ sessionUser }) {
             <li>
                 <button onClick={openMenu} className="button-user">
                     <div>
-                        <i className="fas fa-user-circle fa-2x" />
+                        {/* <i className="fas fa-user-circle fa-2x" /> */}
                         {/* <i className="fas fa-angle-down fa-2x" /> */}
+                        <img className="profile-icon" src={sessionUser.iconImg} ></img>
+
                     </div>
                 </button>
             </li>
