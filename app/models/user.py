@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
     images = db.relationship('Image', back_populates='users', cascade='all, delete')
     reviews = db.relationship('Review', back_populates='users', cascade='all, delete')
 
+    icon_img = db.Column(db.String(500))
+
     @property
     def password(self):
         return self.hashed_password
@@ -46,5 +48,6 @@ class User(db.Model, UserMixin):
             'lastName': self.last_name,
             'business': [b.to_dict_business() for b in self.business],
             'userImages': [i.to_dict_images() for i in self.images],
-            "reviews": [r.to_dict_reviews() for r in self.reviews]
+            "reviews": [r.to_dict_reviews() for r in self.reviews],
+            'iconImg': self.icon_img
         }
