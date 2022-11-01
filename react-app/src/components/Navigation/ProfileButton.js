@@ -67,8 +67,9 @@ function ProfileButton({ sessionUser }) {
                         {/* <i className="fas fa-user-circle fa-2x" /> */}
                         {/* <i className="fas fa-angle-down fa-2x" /> */}
                         <img
-                        className="profile-icon" src={sessionUser.iconImg}
-                        
+                        className="profile-icon" src={sessionUser.iconImg ? sessionUser.iconImg : 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'}
+                        onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'; e.currentTarget.className ='icon-user' }}
+
                         ></img>
 
                     </div>
