@@ -36,7 +36,8 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'firstName': self.first_name,
-            'lastName': self.last_name
+            'lastName': self.last_name,
+            "iconImg": self.icon_img
         }
 
     def to_dict_user_rel(self):
