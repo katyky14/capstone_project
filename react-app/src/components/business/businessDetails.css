@@ -84,6 +84,31 @@
     margin-bottom: 10px;
 }
 
+
+.bz-details-users-review-button {
+    margin-top: 10px;
+
+}
+
+
+.bz-details-users-reviews-inner-div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.bz-details-delete-button-reviews {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 18px;
+   
+}
+
+
+
+
+
 /* testing two for right side box */
 
 .bz-detail-right {

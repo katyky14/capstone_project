@@ -283,15 +283,15 @@ function GetBusinessById() {
                                             {/* for user who already has a review and want to edit or delete */}
 
                                             {userReview(rev, user) && !owner &&
-                                                <div>
-                                                    <div>
+                                                <div className='bz-details-users-review-button'>
+                                                    <div className='bz-details-users-reviews-inner-div'>
                                                         <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
                                                         <button onClick={async (e) => {
                                                             e.preventDefault()
                                                             await dispatch(deleteTheReviewThunk(rev.id))
                                                             //await dispatch(getBusinessReviewThunk(businessId))
                                                             await dispatch(getOneBusinessThunk(businessId))
-                                                        }} > Delete Review </button>
+                                                        }} className='bz-details-delete-button-reviews'> <i class="fa-solid fa-trash"></i> </button>
 
                                                     </div>
                                                 </div>
