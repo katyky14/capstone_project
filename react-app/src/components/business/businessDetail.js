@@ -272,6 +272,7 @@ function GetBusinessById() {
 
                                                 <div className='bz-details-rating'>
                                                     {getRating(rev.rating)}
+                                                    {/* <span>10/14/22</span> */}
                                                 </div>
 
 
