@@ -204,14 +204,17 @@ function GetBusinessById() {
 
                         <div className='overall-rating'> Overall Rating </div>
 
-                        <div>{business1.reviews.length > 0 ? avgRating(business1.reviews) : <span>
-                            <i class="fa-regular fa-star" />
-                            <i class="fa-regular fa-star" />
-                            <i class="fa-regular fa-star" />
-                            <i class="fa-regular fa-star" />
-                            <i class="fa-regular fa-star" />
-                        </span>}
+                        <div>
+                            {business1.reviews.length > 0 ? avgRating(business1.reviews) : <span>
+                                <i class="fa-regular fa-star" />
+                                <i class="fa-regular fa-star" />
+                                <i class="fa-regular fa-star" />
+                                <i class="fa-regular fa-star" />
+                                <i class="fa-regular fa-star" />
+                            </span>}
+                            <div className='overall-rating-reviews'>
                             {business1.reviews.length} reviews
+                            </div>
                         </div>
 
 

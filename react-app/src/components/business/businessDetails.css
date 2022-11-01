@@ -50,6 +50,15 @@
 
 }
 
+.overall-rating {
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.overall-rating-reviews {
+    padding-top: 8px;
+    font-weight: lighter;
+}
 
 
 /* left side css */
