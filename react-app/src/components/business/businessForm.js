@@ -208,12 +208,7 @@ function CreateBusinessForm() {
             <div className='bz-right-form '>
                 <img
                 className='bz-img'
-                    src='https://img.freepik.com/premium-vector/cute-business-woman-cartoon_96373-74.jpg' alt='login-img'
-                    style={{
-                        width: '400px',
-                        height: '400px',
-                        borderRadius: '170px'
-                    }}
+                    src='https://lolwildriftbuild.com/wp-content/uploads/2021/01/Teemo-Portrait.jpg' alt='bz-img'
                 ></img>
             </div>
 
