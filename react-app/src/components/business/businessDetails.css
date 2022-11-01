@@ -57,14 +57,32 @@
     /* margin-right: 150px; */
     min-width: 500px;
     max-width: 600px;
+    margin-top: 30px;
 
 }
 
+.bz-left-user {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
 
+.user-icon-bz-details {
+    font-size: 28px;
+}
 
+.bz-details-user-firstname {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
 
-
-
+.bz-details-rating {
+    margin-bottom: 10px;
+}
 
 /* testing two for right side box */
 
@@ -124,6 +142,10 @@
     align-items: center;
     padding-right: 10px;
 }
+
+
+
+
 
 
 

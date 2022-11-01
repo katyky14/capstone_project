@@ -257,15 +257,22 @@ function GetBusinessById() {
                                         <div key={rev.id}>
 
                                             <div>
-                                                <div><i class="fa-regular fa-circle-user"></i> {rev.users.firstName} </div>
-
-
-                                                <div>
-                                                    {getRating(rev.rating)} <br />
+                                                <div className='bz-left-user'>
+                                                    <span className='user-icon-bz-details'>
+                                                        <i class="fa-regular fa-circle-user"></i>
+                                                    </span>
+                                                    <span className='bz-details-user-firstname'>
+                                                        {rev.users.firstName}
+                                                    </span>
                                                 </div>
 
 
-                                                <div>
+                                                <div className='bz-details-rating'>
+                                                    {getRating(rev.rating)}
+                                                </div>
+
+
+                                                <div className='bz-details-review'>
 
                                                     {rev.review}
                                                 </div>
