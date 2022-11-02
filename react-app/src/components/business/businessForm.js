@@ -60,13 +60,13 @@ function CreateBusinessForm() {
         const errors = [];
 
         if (name.length < 2 || name.length > 50) errors.push('Name must be between 2 and 50 characters')
-        if (description.length < 5 || description.length > 255) errors.push('Description must be between 5 and 255 characters')
-        if (!phone.match(phoneRegEx)) errors.push('Please enter a valid phone number ex. 000-000-0000')
-        if (!preview_image.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
         if (address.length > 35 || address.length < 5) errors.push("Address must be between 5 and 35 characters")
         if (city.length > 18 || city.length < 3) errors.push("City must be between 3 and 18 characters")
         if (state.length > 14 || state.length < 2) errors.push("State must be between 2 and 14 characters")
+        if (description.length < 5 || description.length > 255) errors.push('Description must be between 5 and 255 characters')
+        if (!phone.match(phoneRegEx)) errors.push('Please enter a valid phone number ex. 000-000-0000')
         if (website.length < 2 || !website.match(websiteRegEx)) errors.push("Business website mus be a valid url ex.(http://example.com)")
+        if (!preview_image.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
 
 
         setValidationErrors(errors)
