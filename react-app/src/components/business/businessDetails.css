@@ -48,7 +48,16 @@
 
 }
 
+.bz-detail-description {
+    overflow: hidden;
+    word-wrap: break-word;
+    width: auto;
+    /* text-overflow: ellipsis; */
+    /* white-space: nowrap; */
+    max-width: 900px;
 
+
+}
 
 
 .main-div-details-rev {

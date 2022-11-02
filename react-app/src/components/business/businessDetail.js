@@ -180,7 +180,7 @@ function GetBusinessById() {
                             <br />
                             <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
                             <br />
-                            <div>{business.description}</div>
+                            <div className='bz-detail-description'>{business.description}</div>
                             <br />
                             <div>Open 9:00AM - 10:00PM </div>
                         </div>
