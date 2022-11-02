@@ -11,11 +11,11 @@ function DeleteBusiness({ setShowModal, businessId }) {
     console.log('businessid', businessId)
 
     return (
-        <div>
-            <div>Do you want to delete this business?</div>
-            <div>
+        <div className="delete-modal-main-div">
+            <div className="delete-title">Do you want to delete this business?</div>
+            <div className="delete-button-div">
                 <button
-
+                    className="delete-button-modal"
                     onClick={async () => {
                         await dispatch(deleteBusinessThunk(businessId))
                         await dispatch(authenticate())
@@ -25,6 +25,7 @@ function DeleteBusiness({ setShowModal, businessId }) {
                 >Confirm</button>
 
                 <button
+                className="delete-button-modal"
                     onClick={() => {
                         setShowModal(false)
                     }}

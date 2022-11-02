@@ -63,6 +63,8 @@
 
 .button-owner-container {
     margin-top: 15px;
+    display: flex;
+    
 }
 
 .h2-owner-div {
