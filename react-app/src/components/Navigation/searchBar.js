@@ -5,6 +5,13 @@ import { NavLink, useHistory } from "react-router-dom";
 
 function SearchBar() {
 
+    
+
+
+
+
+
+
 }
 
 export default SearchBar;
