@@ -94,7 +94,7 @@ function CreateBusinessForm() {
                     <div>
 
                         <div>
-                            <label>Business Name *</label>
+                            <label className='bz-form-label'>Business Name *</label>
 
                         </div>
                         <input
@@ -109,7 +109,7 @@ function CreateBusinessForm() {
 
                     <div>
 
-                        <label>Address *</label>
+                        <label className='bz-form-label'>Address *</label>
                         <input
                             className='bz-input-form'
                             // placeholder='Address'
@@ -123,7 +123,7 @@ function CreateBusinessForm() {
 
                     <div>
 
-                        <label>City *</label>
+                        <label className='bz-form-label'>City *</label>
                         <input
                             className='bz-input-form'
                             // placeholder='City'
@@ -136,7 +136,7 @@ function CreateBusinessForm() {
 
                     <div>
 
-                        <label>State *</label>
+                        <label className='bz-form-label'>State *</label>
                         <input
                             className='bz-input-form'
                             // placeholder='State'
@@ -149,7 +149,7 @@ function CreateBusinessForm() {
 
                     <div>
 
-                        <label>Description *</label>
+                        <label className='bz-form-label'>Description *</label>
                         <input
                             className='bz-input-form'
                             // placeholder='Description'
@@ -162,7 +162,7 @@ function CreateBusinessForm() {
 
                     <div>
 
-                        <label>Phone Number * (ex. 000-000-0000)</label>
+                        <label className='bz-form-label'>Phone Number * (ex. 000-000-0000)</label>
                         <input
                             className='bz-input-form'
                             // placeholder='Phone Number (ex 000-000-0000)'
@@ -173,7 +173,7 @@ function CreateBusinessForm() {
                     </div>
 
                     <div>
-                        <label>website * (ex. https://example.com)</label>
+                        <label className='bz-form-label'>website * (ex. https://example.com)</label>
                         <input
                             className='bz-input-form'
                             type='string'
@@ -185,7 +185,7 @@ function CreateBusinessForm() {
 
                     <div>
 
-                        <label>Preview Image *
+                        <label className='bz-form-label'>Preview Image *
                             <span>
                                 (format jpg, jpeg, png, gif)
                             </span>
