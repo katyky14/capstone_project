@@ -5,6 +5,8 @@ import { getOneBusinessThunk } from "../../store/business";
 import { deleteTheReviewThunk } from "../../store/reviews";
 
 
+import './deleteReview.css'
+
 function DeleteReview({reviewId, setShowModal, businessId}) {
 
     const dispatch = useDispatch()
@@ -12,11 +14,11 @@ function DeleteReview({reviewId, setShowModal, businessId}) {
     //console.log('the review id', reviewId)
 
     return (
-        <div>
-            <div>Do you want to delete this review?</div>
-            <div>
+        <div className="delete-modal-main-div">
+            <div className="delete-title">Do you want to delete this review?</div>
+            <div className="delete-button-div">
                 <button
-
+                className="delete-button-modal"
                 onClick={ async () => {
                     await dispatch(deleteTheReviewThunk(reviewId))
                     await dispatch(getOneBusinessThunk(businessId))
@@ -25,6 +27,7 @@ function DeleteReview({reviewId, setShowModal, businessId}) {
                 >Confirm</button>
 
                 <button
+                className="delete-button-modal"
                 onClick={() => {
                     setShowModal(false)
                 }}
