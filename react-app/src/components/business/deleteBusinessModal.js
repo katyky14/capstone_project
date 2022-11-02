@@ -4,7 +4,7 @@ import { Modal } from "../../context/Modal";
 import DeleteBusiness from "./DeleteBusiness";
 
 
-function DeleteBusinessModal({ }) {
+function DeleteBusinessModal({ businessId}) {
     const [showModal, setShowModal] = useState(false)
 
 
@@ -12,18 +12,14 @@ function DeleteBusinessModal({ }) {
         <>
             <button
                 onClick={() => setShowModal(true)}
-
-
-
-            >
+                className="button-owner-inner">
                 <i class="fa-solid fa-trash"></i>
-
             </button>
 
         {
             showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <DeleteBusiness setShowModal={setShowModal}/>
+                    <DeleteBusiness setShowModal={setShowModal} businessId={businessId}/>
                 </Modal>
             )
         }
