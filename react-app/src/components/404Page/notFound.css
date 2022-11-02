@@ -4,18 +4,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('https://cdn.mos.cms.futurecdn.net/BfemybeKVXCf9pgX9WCxsc-1200-80.jpg');
-    height: 100vh;
+    /* background-image: url('https://as2.ftcdn.net/v2/jpg/03/13/17/67/1000_F_313176790_H5WOqnRb61Kd7YKeS4Jd8Ko4CZU6JtUR.jpg'); */
+    position: relative;
+
+    height: calc(100vh - 95px);
+    background-color: rgb(109, 113, 116);
 }
 
 
 .h1-not-found {
     color: white;
+    font-size: 48px;
 }
 
 
 .img-404-gif {
-    width: 800px;
-    height: 600px;
-    border-radius: 10px;
+    width: 1200px;
+    height: 700px;
+    border-radius: 40px;
 }
