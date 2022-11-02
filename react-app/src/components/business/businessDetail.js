@@ -265,7 +265,7 @@ function GetBusinessById() {
                                                     <span className='user-icon-bz-details'>
                                                         {/* <i class="fa-regular fa-circle-user"></i> */}
                                                         <img
-                                                            className='icon-user' src={rev.users.iconImg ? rev.users.iconImg : "https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg"} alt='https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'
+                                                            className='icon-user' src={rev.users.iconImg ? rev.users.iconImg : "https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg"} alt='https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg'
                                                         //    onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'; e.currentTarget.className ='icon-user' }}
                                                         />
                                                     </span>
