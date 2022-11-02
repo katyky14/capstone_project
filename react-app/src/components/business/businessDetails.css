@@ -125,6 +125,14 @@
     margin-bottom: 10px;
 }
 
+.bz-details-review {
+    max-width: 600px;
+}
+
+.bz-inner-review {
+    overflow: hidden;
+    word-wrap: break-word;
+}
 
 .bz-details-users-review-button {
     margin-top: 10px;

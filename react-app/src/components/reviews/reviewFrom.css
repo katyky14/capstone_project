@@ -79,6 +79,7 @@
     border-radius: 10px;
     border-color: lightgray;
     resize: none;
+    /* overflow: hidden; */
 }
 
 .Submit-Review {
