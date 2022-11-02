@@ -60,7 +60,7 @@ function EditReviewForm({ setShowModal, business}) {
         <form onSubmit={onSubmit} className="review-form">
             <div className='review-form-header'>
                 {/* <i className="fas fa-times cancel-button" onClick={() => setShowModal(false)} /> */}
-                <h2 className='review-title'>Add your review</h2>
+                <h2 className='review-title'>Edit Your review</h2>
             </div>
             <div className='star-container'>
                 <input
