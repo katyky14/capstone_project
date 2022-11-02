@@ -109,8 +109,8 @@ function EditBusinessForm() {
         if (state.length > 14 || state.length < 2) valerrors.push("State must be between 2 and 14 characters")
         if (description.length < 5 || description.length > 255) valerrors.push('Description must be between 5 and 255 characters')
         if (!phone.match(phoneRegEx)) valerrors.push('Please enter a valid phone number ex. 000-000-0000')
-        if (!preview_image?.match(/\.(jpg|jpeg|png|gif)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
         if (website.length < 2 || !website.match(websiteRegEx)) valerrors.push("Business website mus be a valid url ex.(http://example.com)")
+        if (!preview_image?.match(/\.(jpg|jpeg|png|gif)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
 
 
         setValidationeErrors(valerrors)
@@ -140,7 +140,7 @@ function EditBusinessForm() {
 
                     <div>
 
-                        <label> Business Name *
+                        <label className='bz-form-label'> Business Name *
                         </label>
                         <input
                             className='bz-input-form'
@@ -152,7 +152,7 @@ function EditBusinessForm() {
                         />
                     </div>
                     <div>
-                        <label> Address *
+                        <label className='bz-form-label'> Address *
                         </label>
 
                         <input
@@ -165,7 +165,7 @@ function EditBusinessForm() {
                         />
                     </div>
                     <div>
-                        <label> City *
+                        <label className='bz-form-label'> City *
                         </label>
                         <input
                             className='bz-input-form'
@@ -179,7 +179,7 @@ function EditBusinessForm() {
 
                     <div>
 
-                        <label> State *
+                        <label className='bz-form-label'> State *
                         </label>
                         <input
                             className='bz-input-form'
@@ -193,7 +193,7 @@ function EditBusinessForm() {
 
                     <div>
 
-                        <label>Description *
+                        <label className='bz-form-label'>Description *
                         </label>
                         <input
                             className='bz-input-form'
@@ -207,7 +207,7 @@ function EditBusinessForm() {
 
                     <div>
 
-                        <label>Phone Number * (ex.888-888-8888)
+                        <label className='bz-form-label'>Phone Number * (ex.888-888-8888)
                         </label>
                         <input
                             className='bz-input-form'
@@ -220,7 +220,7 @@ function EditBusinessForm() {
                     </div>
 
                     <div>
-                        <label>website * (ex. https://example.com)</label>
+                        <label className='bz-form-label'>Website * (ex. https://example.com)</label>
                         <input
                             className='bz-input-form'
                             type='string'
@@ -232,7 +232,7 @@ function EditBusinessForm() {
 
 
                     <div>
-                        <label>Preview Image *
+                        <label className='bz-form-label'>Preview Image *
                         </label>
                         <input
                             className='bz-input-form'
