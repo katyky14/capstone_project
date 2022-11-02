@@ -82,8 +82,8 @@ function ProfileButton({ sessionUser }) {
 
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li className="profile-content">
-                    <i class="fa-regular fa-circle-user"></i> {sessionUser.username}</li>
+                    <li className="profile-content username">
+                    <i class="fa-regular fa-circle-user"></i> <span className="user-span">{sessionUser.username} </span></li>
                     {/* <li>
                         <NavLink to='/' exact={true}>My reviews</NavLink>
                     </li> */}
