@@ -33,7 +33,11 @@ function CreateBusinessForm() {
         setHasSubmitted(true);
 
 
-        if (validationErrors.length) return alert("Cannot Submit Form, please fill out the required fields")
+        if (validationErrors.length) {
+
+            // return alert("Cannot Submit Form, please fill out the required fields")
+            return
+        }
 
         const businessInformation = {
             owner_id: ownerObj.id,

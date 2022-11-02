@@ -20,7 +20,7 @@ function CreateReview({ setShowModal, businessId }) {
         setHasSubmitted(true)
 
         if (errors.length > 0) {
-            return alert('Cannot Submit')
+            return 
         }
 
         // const valErrors = [];
