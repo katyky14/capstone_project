@@ -6,6 +6,7 @@ import ProfileButton from "./ProfileButton";
 
 import './navigation.css'
 import logo from '../images-all/logo.png'
+import logo2 from '../images-all/logo2.png'
 
 const StyledNavLinkLogIn = (props) => {
     return <NavLink {...props} className={`${props.className} login-navlink-style`} />
@@ -36,7 +37,7 @@ function Navigation({ loaded, home }) {
                     {/* <NavLink to='/' exact={true} activeClassName='active'>
                         Home
                     </NavLink> */}
-                    <img src={logo} alt='logo'  className="logo"/>
+                    <img src={logo2} alt='logo'  className="logo"/>
                 </div>
 
 
