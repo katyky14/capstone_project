@@ -9,10 +9,11 @@ function DeleteReview({reviewId, setShowModal, businessId}) {
 
     const dispatch = useDispatch()
 
-    console.log('the review id', reviewId)
+    //console.log('the review id', reviewId)
 
     return (
         <div>
+            <div>Do you want to delete this review?</div>
             <div>
                 <button
 
