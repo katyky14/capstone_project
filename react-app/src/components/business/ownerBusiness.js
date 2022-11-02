@@ -41,8 +41,8 @@ function OwnerBusiness() {
                         <div className="bz-card-div-left-owner">
                             <img src={previewImage}
                                 className='bz-card-pic-owner'
-                                alt='image'
-                                onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className = 'error-img-owner' }}
+                                alt='https://media1.giphy.com/media/l2Sq2Iw6xwrlzrLs4/giphy.gif?cid=ecf05e47ngdh794pzvn93c9du96d8qhtix3eimwn88q1k6sv&rid=giphy.gif'
+                                onError={e => { e.currentTarget.src = 'https://media1.giphy.com/media/l2Sq2Iw6xwrlzrLs4/giphy.gif?cid=ecf05e47ngdh794pzvn93c9du96d8qhtix3eimwn88q1k6sv&rid=giphy.gif'; e.currentTarget.className = 'error-img-owner' }}
                             />
                         </div>
 

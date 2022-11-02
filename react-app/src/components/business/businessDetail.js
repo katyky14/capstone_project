@@ -171,8 +171,8 @@ function GetBusinessById() {
                             <img
                                 className='img-details'
                                 src={business.previewImage}
-                                alt='image'
-                                onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className = 'error-img-details' }}
+                                alt='https://static.vecteezy.com/system/resources/previews/005/276/530/original/set-of-cute-kawaii-breakfast-food-and-beverages-free-vector.jpg'
+                                onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/005/276/530/original/set-of-cute-kawaii-breakfast-food-and-beverages-free-vector.jpg'; e.currentTarget.className = 'error-img-details' }}
                             />
                         </div>
                         <div className='details-bottom-left'>
