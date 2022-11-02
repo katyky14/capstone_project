@@ -277,14 +277,15 @@ function GetBusinessById() {
 
                                                 <div className='bz-details-rating'>
                                                     {getRating(rev.rating)}
-                                                    {console.log('the rating per user', rev.rating)}
+                                                    {/* {console.log('the rating per user', rev.rating)} */}
                                                     {/* <span>10/14/22</span> */}
                                                 </div>
 
 
                                                 <div className='bz-details-review'>
-
+                                                    <div className='bz-inner-review'>
                                                     {rev.review}
+                                                    </div>
                                                 </div>
 
                                             </div>
