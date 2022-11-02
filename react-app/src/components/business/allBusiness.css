@@ -59,6 +59,17 @@
 
 .bz-card-description {
     margin-bottom: 10px;
+
+
+    overflow: hidden;
+    /* border: 1px solid red; */
+    word-wrap: break-word;
+    max-width: 600px;
+    max-height: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+
 }
 
 .bz-card-review {

@@ -5,6 +5,7 @@ import { deleteBusinessThunk, getAllBusinessThunk } from "../../store/business";
 
 
 import { authenticate } from '../../store/session'
+import DeleteBusinessModal from "./deleteBusinessModal";
 import EditBusinessForm from "./editBusinessForm";
 
 import './ownerBusiness.css'
@@ -40,8 +41,8 @@ function OwnerBusiness() {
                         <div className="bz-card-div-left-owner">
                             <img src={previewImage}
                                 className='bz-card-pic-owner'
-                                alt='image'
-                                onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className='error-img-owner' }}
+                                alt='https://media1.giphy.com/media/l2Sq2Iw6xwrlzrLs4/giphy.gif?cid=ecf05e47ngdh794pzvn93c9du96d8qhtix3eimwn88q1k6sv&rid=giphy.gif'
+                                onError={e => { e.currentTarget.src = 'https://media1.giphy.com/media/l2Sq2Iw6xwrlzrLs4/giphy.gif?cid=ecf05e47ngdh794pzvn93c9du96d8qhtix3eimwn88q1k6sv&rid=giphy.gif'; e.currentTarget.className = 'error-img-owner' }}
                             />
                         </div>
 
@@ -56,7 +57,12 @@ function OwnerBusiness() {
                                 {/* <button onClick={() => history.push(`/business/${id}/edit`)} className='button-owner-inner '><EditBusinessForm />Edit Business</button> */}
                                 {/* <button onClick={() => deleteTheBusiness(id)} className='button-owner-inner '>Delete</button> */}
                                 <button onClick={() => history.push(`/business/${id}/edit`)} className='button-owner-inner '><EditBusinessForm /><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button onClick={() => deleteTheBusiness(id)} className='button-owner-inner '><i class="fa-solid fa-trash"></i></button>
+                                {/* <button onClick={() => deleteTheBusiness(id)} className='button-owner-inner '><i class="fa-solid fa-trash"></i></button> */}
+                                <div className="button-owner-inner">
+                                    <DeleteBusinessModal businessId={+id}/>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>

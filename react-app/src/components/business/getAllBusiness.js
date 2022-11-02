@@ -45,9 +45,9 @@ function GetAllBusiness() {
 
                             <div className='bz-card-div-left'>
                                 <img src={business.previewImage}
-                                    alt='image'
+                                    alt='https://static.vecteezy.com/system/resources/previews/005/276/530/original/set-of-cute-kawaii-breakfast-food-and-beverages-free-vector.jpg'
                                     className='bz-card-pic'
-                                    onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className ='error-img-all-bz' }}
+                                    onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/005/276/530/original/set-of-cute-kawaii-breakfast-food-and-beverages-free-vector.jpg'; e.currentTarget.className ='error-img-all-bz' }}
                                 />
                             </div>
 

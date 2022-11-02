@@ -90,7 +90,7 @@ li {
 
 .button-style-profile {
 
-    font-size: 16px;
+    font-size: 18px;
     border-style: none;
     cursor: pointer;
 }
@@ -107,7 +107,7 @@ li {
     color: black;
     font-size: 18px;
 
-    
+
 
 }
 
@@ -123,3 +123,20 @@ li {
     height: 50px;
     border-radius: 200px;
 }
+
+
+.username {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    /* max-width: 125px; */
+    white-space: nowrap;
+    font-size: 18px;
+
+
+
+}
+
+/* .user-span {
+    margin-left: 5px;
+} */

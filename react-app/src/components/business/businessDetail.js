@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getAllBusinessThunk, getOneBusinessThunk } from '../../store/business'
 import { deleteTheReviewThunk, getBusinessReviewThunk, getUserReviewsThunk } from '../../store/reviews'
+import DeleteReviewModal from '../reviews/deleteReviewModal'
 import EditReviewFormModal from '../reviews/editReviewFormModal'
 import ReviewFormModal from '../reviews/reviewFormModal'
 
@@ -170,8 +171,8 @@ function GetBusinessById() {
                             <img
                                 className='img-details'
                                 src={business.previewImage}
-                                alt='image'
-                                onError={e => { e.currentTarget.src = 'https://lurnjobs.com/img/no-image.jpeg'; e.currentTarget.className = 'error-img-details' }}
+                                alt='https://static.vecteezy.com/system/resources/previews/005/276/530/original/set-of-cute-kawaii-breakfast-food-and-beverages-free-vector.jpg'
+                                onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/005/276/530/original/set-of-cute-kawaii-breakfast-food-and-beverages-free-vector.jpg'; e.currentTarget.className = 'error-img-details' }}
                             />
                         </div>
                         <div className='details-bottom-left'>
@@ -179,7 +180,7 @@ function GetBusinessById() {
                             <br />
                             <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
                             <br />
-                            <div>{business.description}</div>
+                            <div className='bz-detail-description'>{business.description}</div>
                             <br />
                             <div>Open 9:00AM - 10:00PM </div>
                         </div>
@@ -264,7 +265,7 @@ function GetBusinessById() {
                                                     <span className='user-icon-bz-details'>
                                                         {/* <i class="fa-regular fa-circle-user"></i> */}
                                                         <img
-                                                            className='icon-user' src={rev.users.iconImg ? rev.users.iconImg : "https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg"} alt='https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'
+                                                            className='icon-user' src={rev.users.iconImg ? rev.users.iconImg : "https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg"} alt='https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg'
                                                         //    onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/002/318/271/original/user-profile-icon-free-vector.jpg'; e.currentTarget.className ='icon-user' }}
                                                         />
                                                     </span>
@@ -294,12 +295,17 @@ function GetBusinessById() {
                                                 <div className='bz-details-users-review-button'>
                                                     <div className='bz-details-users-reviews-inner-div'>
                                                         <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
-                                                        <button onClick={async (e) => {
+                                                        {/* <button onClick={async (e) => {
                                                             e.preventDefault()
                                                             await dispatch(deleteTheReviewThunk(rev.id))
                                                             //await dispatch(getBusinessReviewThunk(businessId))
                                                             await dispatch(getOneBusinessThunk(businessId))
-                                                        }} className='bz-details-delete-button-reviews'> <i class="fa-solid fa-trash"></i> </button>
+                                                        }} className='bz-details-delete-button-reviews'> <i class="fa-solid fa-trash"></i>
+                                                        </button> */}
+
+                                                        <div className='bz-details-delete-button-reviews'>
+                                                            <DeleteReviewModal reviewId={rev.id} businessId={+businessId}/>
+                                                        </div>
 
                                                     </div>
                                                 </div>
