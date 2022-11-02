@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getAllBusinessThunk, getOneBusinessThunk } from '../../store/business'
 import { deleteTheReviewThunk, getBusinessReviewThunk, getUserReviewsThunk } from '../../store/reviews'
+import DeleteReviewModal from '../reviews/deleteReviewModal'
 import EditReviewFormModal from '../reviews/editReviewFormModal'
 import ReviewFormModal from '../reviews/reviewFormModal'
 
@@ -294,12 +295,17 @@ function GetBusinessById() {
                                                 <div className='bz-details-users-review-button'>
                                                     <div className='bz-details-users-reviews-inner-div'>
                                                         <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
-                                                        <button onClick={async (e) => {
+                                                        {/* <button onClick={async (e) => {
                                                             e.preventDefault()
                                                             await dispatch(deleteTheReviewThunk(rev.id))
                                                             //await dispatch(getBusinessReviewThunk(businessId))
                                                             await dispatch(getOneBusinessThunk(businessId))
-                                                        }} className='bz-details-delete-button-reviews'> <i class="fa-solid fa-trash"></i> </button>
+                                                        }} className='bz-details-delete-button-reviews'> <i class="fa-solid fa-trash"></i>
+                                                        </button> */}
+
+                                                        <div className='bz-details-delete-button-reviews'>
+                                                            <DeleteReviewModal reviewId={rev.id} businessId={+businessId}/>
+                                                        </div>
 
                                                     </div>
                                                 </div>
