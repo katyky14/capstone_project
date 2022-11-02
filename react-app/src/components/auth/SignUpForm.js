@@ -28,7 +28,8 @@ const SignUpForm = () => {
     setHasSubmitted(true)
 
     if (errors.length > 0) {
-      return alert("Cannot Submit")
+      // return alert("Cannot Submit")
+      return 
     }
 
     // if (!email.includes('@')) {
@@ -52,7 +53,7 @@ const SignUpForm = () => {
 
     if (username.length < 2 || username.length > 25) valErrors.push('Username must be between 2 and 25 characters');
     if (first_name.length < 2 || first_name.length > 25) valErrors.push('First Name must be between 2 and 25 characters');
-    if(last_name.length < 2 || last_name.length > 25) valErrors.push("Last Name must be between 2 and 25 characters");
+    if (last_name.length < 2 || last_name.length > 25) valErrors.push("Last Name must be between 2 and 25 characters");
     if (!email.includes('@')) valErrors.push("Please provide a valid Email");
     if (email.length < 5 || email.length > 25) valErrors.push("Email must be between 5 and 25 characters")
     if (password.length < 6 || password.length > 25) valErrors.push("Password must be between 6 and 25 characters");

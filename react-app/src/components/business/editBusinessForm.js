@@ -73,7 +73,12 @@ function EditBusinessForm() {
         e.preventDefault()
         setHasSubmitted(true)
 
-        if (validationeErrors.length) return alert('Cannot edit form')
+        if (validationeErrors.length) {
+
+            // return alert('Cannot edit form')
+            return 
+
+        }
 
         const businessInformation = {
             id: businessId,
