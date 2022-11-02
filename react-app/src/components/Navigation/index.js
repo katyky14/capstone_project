@@ -1,10 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import ProfileButton from "./ProfileButton";
 
 import './navigation.css'
+import logo from '../images-all/logo.png'
 
 const StyledNavLinkLogIn = (props) => {
     return <NavLink {...props} className={`${props.className} login-navlink-style`} />
@@ -18,6 +19,8 @@ const StyledNavLinkSignUp = (props) => {
 
 function Navigation({ loaded, home }) {
 
+    const history = useHistory()
+
     const sessionUser = useSelector(state => state.session.user)
 
     // MENU
@@ -28,11 +31,12 @@ function Navigation({ loaded, home }) {
 
 
             {/* <div className={"nav-logout-div"}> */}
-                <div className="logo-div">
+                <div className="logo-div" onClick={() => history.push('/')}>
 
-                    <NavLink to='/' exact={true} activeClassName='active'>
+                    {/* <NavLink to='/' exact={true} activeClassName='active'>
                         Home
-                    </NavLink>
+                    </NavLink> */}
+                    <img src={logo} alt='logo'  className="logo"/>
                 </div>
 
 
