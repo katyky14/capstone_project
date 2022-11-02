@@ -99,8 +99,9 @@
 }
 
 .li-bz-form-errors {
-    list-style: circle;
+    /* list-style: circle; */
     color: red;
+    padding-bottom: 10px;
 }
 
 .h2-bz-form {

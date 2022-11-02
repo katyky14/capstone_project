@@ -102,7 +102,7 @@ function GetBusinessById() {
         }
         else if (rating === 2) {
             return (
-                < span >
+                < span className='bz-details-stars'>
                     <i class="fa-solid fa-star" />
                     <i class="fa-solid fa-star" />
                     <i class="fa-regular fa-star" />
@@ -206,7 +206,7 @@ function GetBusinessById() {
                         <div className='overall-rating'> Overall Rating </div>
 
                         <div>
-                            {business1.reviews.length > 0 ? avgRating(business1.reviews) : <span>
+                            {business1.reviews.length > 0 ? avgRating(business1.reviews) : <span className='bz-details-stars'>
                                 <i class="fa-regular fa-star" />
                                 <i class="fa-regular fa-star" />
                                 <i class="fa-regular fa-star" />
@@ -277,6 +277,7 @@ function GetBusinessById() {
 
                                                 <div className='bz-details-rating'>
                                                     {getRating(rev.rating)}
+                                                    {console.log('the rating per user', rev.rating)}
                                                     {/* <span>10/14/22</span> */}
                                                 </div>
 
