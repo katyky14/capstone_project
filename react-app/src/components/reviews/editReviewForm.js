@@ -129,7 +129,7 @@ function EditReviewForm({ setShowModal, business}) {
                 </textarea>
             </div>
             <div className='review-errors-div'>
-                {validationErrors.map((error, idx) => (
+                {validationErrors.length > 0 && validationErrors.map((error, idx) => (
                     <p key={idx} >{error}</p>
                     ))}
             </div>
