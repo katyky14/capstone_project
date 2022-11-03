@@ -33,7 +33,7 @@ function CreateBusinessForm() {
         setHasSubmitted(true);
 
 
-        if (validationErrors.length) {
+        if (validationErrors.length > 0) {
 
             // return alert("Cannot Submit Form, please fill out the required fields")
             return
@@ -69,7 +69,8 @@ function CreateBusinessForm() {
         if (state.length < 2  || state.length > 14) errors.push("State must be between 2 and 14 characters")
         if (description.length < 5 || description.length > 255) errors.push('Description must be between 5 and 255 characters')
         if (!phone.match(phoneRegEx)) errors.push('Please enter a valid phone number ex. 000-000-0000')
-        if (website.length < 2 || !website.match(websiteRegEx)) errors.push("Business website mus be a valid url ex.(http://example.com)")
+        if (!website.match(websiteRegEx)) errors.push("Business website must be a valid url ex.(http://example.com)")
+        if (website.length < 3) errors.push("Business website must be greater than 2 characters")
         if (!preview_image.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
 
 
