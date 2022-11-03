@@ -50,7 +50,7 @@ function CreateReview({ setShowModal, businessId }) {
 
         if (stars === 0) valErrors.push("Star rating is required");
         // if (review.length === 0) valErrors.push("Review cannot be empty")
-        if (review.length < 5 || review.length > 800) valErrors.push("Review must be between 5 to 800 characters")
+        if (review.length < 5 || review.length > 500) valErrors.push("Review must be between 5 to 500 characters")
         setErrors(valErrors)
     }, [review, stars])
 
