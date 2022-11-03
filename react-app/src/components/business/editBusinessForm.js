@@ -122,7 +122,7 @@ function EditBusinessForm() {
         setValidationeErrors(valerrors)
 
         // }
-    }, [name, preview_image, phone, businessId, city, address, website, description])
+    }, [name, preview_image, phone, businessId, city, address, website, description, state])
 
 
 
