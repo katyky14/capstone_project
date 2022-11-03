@@ -50,46 +50,50 @@ function ProfileButton({ sessionUser }) {
     return (
         <div>
 
-        {/* <div className="profile-container"> */}
-        <ul className="profile-container">
+            {/* <div className="profile-container"> */}
+            <ul className="profile-container">
 
-            <li className="li-owner">
-                <StyledNavBusinessForm to='/business/new' exact={true}> Create Business </StyledNavBusinessForm>
-            </li>
-            <li className="li-owner">
-                <StyledNavAllBusiness to='/business' exact={true}>All Restaurants</StyledNavAllBusiness>
-            </li>
+                <li className="li-owner">
+                    <StyledNavBusinessForm to='/business/new' exact={true}> Create Business </StyledNavBusinessForm>
+                </li>
+                <li className="li-owner">
+                    <StyledNavAllBusiness to='/business' exact={true}>All Restaurants</StyledNavAllBusiness>
+                </li>
+
+                <li className="li-owner">
+                    <StyledNavMyBusiness to='/business/owner' exact={true}> My Businesses </StyledNavMyBusiness>
+                </li>
 
 
-            <li>
-                <button onClick={openMenu} className="button-user">
-                    <div>
-                        {/* <i className="fas fa-user-circle fa-2x" /> */}
-                        {/* <i className="fas fa-angle-down fa-2x" /> */}
-                        <img
-                        className="profile-icon" src={sessionUser.iconImg ? sessionUser.iconImg : 'https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg'}
-                        onError={e => { e.currentTarget.src = 'https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg'; e.currentTarget.className ='icon-user' }}
+                <li>
+                    <button onClick={openMenu} className="button-user">
+                        <div>
+                            {/* <i className="fas fa-user-circle fa-2x" /> */}
+                            {/* <i className="fas fa-angle-down fa-2x" /> */}
+                            <img
+                                className="profile-icon" src={sessionUser.iconImg ? sessionUser.iconImg : 'https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg'}
+                                onError={e => { e.currentTarget.src = 'https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg'; e.currentTarget.className = 'icon-user' }}
 
-                        ></img>
+                            ></img>
 
-                    </div>
-                </button>
-            </li>
+                        </div>
+                    </button>
+                </li>
 
-        </ul>
-        {/* </div> */}
+            </ul>
+            {/* </div> */}
 
 
             {showMenu && (
                 <ul className="profile-dropdown">
                     <li className="profile-content username">
-                    <i class="fa-regular fa-circle-user"></i> <span className="user-span">{sessionUser.username} </span></li>
+                        <i class="fa-regular fa-circle-user"></i> <span className="user-span">{sessionUser.username} </span></li>
                     {/* <li>
                         <NavLink to='/' exact={true}>My reviews</NavLink>
                     </li> */}
-                    <li className="profile-content button-style-profile">
+                    {/* <li className="profile-content button-style-profile">
                         <StyledNavMyBusiness to='/business/owner' exact={true}> <i class="fa-solid fa-business-time"></i> My Businesses </StyledNavMyBusiness>
-                    </li>
+                    </li> */}
                     <li className="profile-content button-style-profile">
                         <div onClick={loggingOut} className='button-style-profile'> <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</div>
                     </li>
