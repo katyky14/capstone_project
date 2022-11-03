@@ -73,7 +73,7 @@ function EditBusinessForm() {
         e.preventDefault()
         setHasSubmitted(true)
 
-        if (validationeErrors.length) {
+        if (validationeErrors.length > 0) {
 
             // return alert('Cannot edit form')
             return
@@ -109,12 +109,13 @@ function EditBusinessForm() {
         // if (businessObj != undefined && businessId) {
 
         if (name.length < 2 || name.length > 50) valerrors.push('Name must be between 2 and 50 characters')
-        if (address.length > 45 || address.length < 5) valerrors.push("Address must be between 5 and 35 characters")
-        if (city.length < 2 || city.length > 18) valerrors.push("City must be between 3 and 18 characters")
+        if (address.length < 5 || address.length > 35) valerrors.push("Address must be between 5 and 35 characters")
+        if (city.length < 2 || city.length > 18) valerrors.push("City must be between 2 and 18 characters")
         if (state.length < 2 || state.length > 14) valerrors.push("State must be between 2 and 14 characters")
         if (description.length < 5 || description.length > 255) valerrors.push('Description must be between 5 and 255 characters')
         if (!phone.match(phoneRegEx)) valerrors.push('Please enter a valid phone number ex. 000-000-0000')
-        if (website.length < 2 || !website.match(websiteRegEx)) valerrors.push("Business website mus be a valid url ex.(http://example.com)")
+        if (!website.match(websiteRegEx)) valerrors.push("Business website mus be a valid url ex.(http://example.com)")
+        if  (website.length < 3) valerrors.push("Business website must be greater than 2 characters")
         if (!preview_image?.match(/\.(jpg|jpeg|png|gif)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
 
 
