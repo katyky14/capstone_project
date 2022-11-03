@@ -8,7 +8,7 @@ import { authenticate } from "../../store/session";
 function DeleteBusiness({ setShowModal, businessId }) {
     const dispatch = useDispatch()
 
-    console.log('businessid', businessId)
+    //console.log('businessid', businessId)
 
     return (
         <div className="delete-modal-main-div">
