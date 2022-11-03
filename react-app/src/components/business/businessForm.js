@@ -68,7 +68,11 @@ function CreateBusinessForm() {
         if (city.length < 2 || city.length > 18) errors.push("City must be between 2 and 18 characters")
         if (state.length < 2  || state.length > 14) errors.push("State must be between 2 and 14 characters")
         if (description.length < 5 || description.length > 255) errors.push('Description must be between 5 and 255 characters')
-        if (!phone.match(phoneRegEx)) errors.push('Please enter a valid phone number ex. 000-000-0000')
+
+        if (phone.length > 12) errors.push("Phone Number must be 10 digit (ex. 000-000-0000)")
+        if (!phone.match('[0-9]{3}-[0-9]{3}-[0-9]{4}')) errors.push('Please enter a valid phone number ex. 000-000-0000')
+
+
         if (!website.match(websiteRegEx)) errors.push("Business website must be a valid url ex.(http://example.com)")
         if (website.length < 3) errors.push("Business website must be greater than 2 characters")
         if (!preview_image.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
