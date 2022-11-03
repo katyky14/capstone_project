@@ -54,7 +54,7 @@ function EditReviewForm({ setShowModal, business}) {
         const errors = [];
         if (stars === 0) errors.push("Stars rating is required");
         if (review.length === 0) errors.push("Review cannot be empty");
-        if (review.length < 5 || review.length > 800) errors.push("Review must be between 5 to 800 characters")
+        if (review.length < 5 || review.length > 500) errors.push("Review must be between 5 to 500 characters")
         setValidationErrors(errors);
     }, [review, stars])
 
