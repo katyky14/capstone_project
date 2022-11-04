@@ -4,6 +4,7 @@
     min-height: 800px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 50px;
 }
 
 

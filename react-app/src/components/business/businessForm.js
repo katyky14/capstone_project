@@ -63,10 +63,11 @@ function CreateBusinessForm() {
     useEffect(() => {
         const errors = [];
 
+        // if (name.length < 2 || name.length > 50) errors.push({message: 'Name must be between 2 and 50 characters', key: 'name'})
         if (name.length < 2 || name.length > 50) errors.push('Name must be between 2 and 50 characters')
         if (address.length > 35 || address.length < 5) errors.push("Address must be between 5 and 35 characters")
         if (city.length < 2 || city.length > 18) errors.push("City must be between 2 and 18 characters")
-        if (state.length < 2  || state.length > 14) errors.push("State must be between 2 and 14 characters")
+        if (state.length < 2 || state.length > 14) errors.push("State must be between 2 and 14 characters")
         if (description.length < 5 || description.length > 255) errors.push('Description must be between 5 and 255 characters')
 
         if (phone.length > 12) errors.push("Phone Number must be 10 digit (ex. 000-000-0000)")
@@ -96,7 +97,7 @@ function CreateBusinessForm() {
                     {hasSubmitted && validationErrors.length > 0 && (
                         <ul className='ul-error-bz-form'>
                             {validationErrors.map(error =>
-                                <li key={error} className='li-bz-form-errors'>{error}</li>)}
+                                typeof error === "string" && <li key={error} className='li-bz-form-errors'>{error}</li>)}
                         </ul>
                     )}
 
@@ -104,7 +105,6 @@ function CreateBusinessForm() {
 
                         <div>
                             <label className='bz-form-label'>Business Name *</label>
-
                         </div>
                         <input
                             className='bz-input-form'
@@ -114,6 +114,7 @@ function CreateBusinessForm() {
                             onChange={(e) => setName(e.target.value)}
                             required
                         />
+                        {/*{validationErrors.find(error => error.key === "name")?.message} */}
                     </div>
 
                     <div>
@@ -182,7 +183,7 @@ function CreateBusinessForm() {
                     </div>
 
                     <div>
-                        <label className='bz-form-label'>website * (ex. https://example.com)</label>
+                        <label className='bz-form-label'>Website * (ex. https://example.com)</label>
                         <input
                             className='bz-input-form'
                             type='string'
@@ -216,7 +217,7 @@ function CreateBusinessForm() {
             </div>
             <div className='bz-right-form '>
                 <img
-                className='bz-img'
+                    className='bz-img'
                     src='https://lolwildriftbuild.com/wp-content/uploads/2021/01/Teemo-Portrait.jpg' alt='bz-img'
                 ></img>
             </div>

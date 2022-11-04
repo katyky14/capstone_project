@@ -128,7 +128,7 @@ function CreateReview({ setShowModal, businessId }) {
                     rows="5"
                     cols="51"
                     value={review}
-                    placeholder="Type Review here"
+                    placeholder="Your Review here..."
                     onChange={(e) => setReview(e.target.value)}>
                 </textarea>
             </div>
