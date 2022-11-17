@@ -24,6 +24,9 @@ function CreateBusinessForm() {
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
+    //added for aws
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
 
     const ownerObj = useSelector(state => state.session.user)
     //console.log('the user obj in form', ownerObj)
@@ -83,6 +86,43 @@ function CreateBusinessForm() {
     }, [name, description, phone, preview_image, address, city, state, website])
 
 
+    //aws image
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image);
+
+        // aws uploads can be a bit slow—displaying
+        // some sort of loading message is a good idea
+        setImageLoading(true);
+
+        const res = await fetch('/api/business/upload', {
+            method: "POST",
+            body: formData,
+        });
+        if (res.ok) {
+            const data = await res.json();
+
+            setPreviewImage(data.url)
+
+            setImageLoading(false);
+            // history.push("/business");
+            alert("Successfully uploaded")
+        }
+        else {
+            setImageLoading(false);
+            // a real app would probably use more advanced
+            // error handling
+            console.log("error");
+            alert("Cannot upload your image")
+        }
+    }
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    }
 
 
     return (
@@ -193,7 +233,7 @@ function CreateBusinessForm() {
                         />
                     </div>
 
-                    <div>
+                    {/* <div>
 
                         <label className='bz-form-label'>Preview Image *
                             <span>
@@ -207,7 +247,33 @@ function CreateBusinessForm() {
                             value={preview_image}
                             onChange={e => setPreviewImage(e.target.value)}
                         />
+                    </div> */}
+
+                    <div>
+                        <label>Preview Image *</label>
+                        <div className='upload-image'>
+                            <div className='inner-upload-img'>
+                                <input
+                                    className='input-upload'
+                                    type='file'
+                                    accept="image/*"
+                                    onChange={updateImage}
+                                    id='file'
+                                />
+
+                            </div>
+                            <div>
+                                <button
+                                    type='submit'
+                                    onClick={handleSubmit}
+                                >Upload</button>
+                            </div>
+                            {(imageLoading) && <p>Loading...</p>}
+                        </div>
                     </div>
+
+
+
 
                     <div>
                         <button className='button-style'> Create New Business</button>
