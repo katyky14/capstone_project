@@ -123,7 +123,7 @@ def add_review(business_id):
 @business_routes.route("/upload", methods=["POST"])
 @login_required
 def upload_image():
-    print('at the beginning of the route')
+    # print('at the beginning of the route')
     if "image" not in request.files:
         return {"errors": "image required"}, 400
 
@@ -135,7 +135,6 @@ def upload_image():
     image.filename = get_unique_filename(image.filename)
 
     upload = upload_file_to_s3(image)
-    print('the upload', image, upload)
     if "url" not in upload:
         print('here inside the upload')
         # if the dictionary doesn't have a url key
@@ -144,7 +143,6 @@ def upload_image():
         return upload, 400
 
     url = upload["url"]
-    print('the url -------', url)
     # flask_login allows us to get the current user from the request
     # new_image = Image(user=current_user, url=url)
     # db.session.add(new_image)

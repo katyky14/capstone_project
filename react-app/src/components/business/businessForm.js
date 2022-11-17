@@ -104,9 +104,10 @@ function CreateBusinessForm() {
             body: formData,
         });
         if (res.ok) {
-              await res.json();
+            const data = await res.json();
 
-         
+            setPreviewImage(data.url)
+
             setImageLoading(false);
             // history.push("/business");
             alert("Successfully uploaded")
@@ -254,15 +255,15 @@ function CreateBusinessForm() {
                         <label>Preview Image *</label>
                         <div>
                             <input
-                            type='file'
-                            accept="image/*"
-                            onChange={updateImage}
+                                type='file'
+                                accept="image/*"
+                                onChange={updateImage}
                             />
                         </div>
                         <div>
                             <button
-                            type='submit'
-                            onClick={handleSubmit}
+                                type='submit'
+                                onClick={handleSubmit}
                             >Upload</button>
                         </div>
                         {(imageLoading) && <p>Loading...</p>}

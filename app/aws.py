@@ -20,13 +20,15 @@ def allowed_file(filename):
 
 
 def get_unique_filename(filename):
-    print('get unique files')
+    # print('get unique files')
     ext = filename.rsplit(".", 1)[1].lower()
     unique_filename = uuid.uuid4().hex
+    # print('the unique and ext', ext, unique_filename)
     return f"{unique_filename}.{ext}"
 
 
 def upload_file_to_s3(file, acl="public-read"):
+
     try:
         s3.upload_fileobj(
             file,
@@ -39,6 +41,7 @@ def upload_file_to_s3(file, acl="public-read"):
         )
     except Exception as e:
         # in case the our s3 upload fails
+     
         return {"errors": str(e)}
 
     return {"url": f"{S3_LOCATION}{file.filename}"}
