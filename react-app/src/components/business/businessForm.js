@@ -115,7 +115,7 @@ function CreateBusinessForm() {
         else {
             setImageLoading(false);
             // a real app would probably use more advanced
-            // error handling
+            // error handling test
             console.log("error");
             alert("Cannot upload your image")
         }
