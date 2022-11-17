@@ -15,7 +15,8 @@ class Business(db.Model):
     preview_image = db.Column(db.String(500), nullable=False)
     website = db.Column(db.String(500), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    # owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     owner = db.relationship('User', back_populates='business')
     images = db.relationship('Image', back_populates ='business')
