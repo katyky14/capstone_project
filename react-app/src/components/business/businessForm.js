@@ -253,20 +253,25 @@ function CreateBusinessForm() {
 
                     <div>
                         <label>Preview Image *</label>
-                        <div>
-                            <input
-                                type='file'
-                                accept="image/*"
-                                onChange={updateImage}
-                            />
+                        <div className='upload-image'>
+                            <div className='inner-upload-img'>
+                                    <input
+                                        className='input-upload'
+                                        type='file'
+                                        accept="image/*"
+                                        onChange={updateImage}
+                                        id='file'
+                                    />
+
+                            </div>
+                            <div>
+                                <button
+                                    type='submit'
+                                    onClick={handleSubmit}
+                                >Upload</button>
+                            </div>
+                            {(imageLoading) && <p>Loading...</p>}
                         </div>
-                        <div>
-                            <button
-                                type='submit'
-                                onClick={handleSubmit}
-                            >Upload</button>
-                        </div>
-                        {(imageLoading) && <p>Loading...</p>}
                     </div>
 
 
