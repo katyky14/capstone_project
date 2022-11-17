@@ -114,3 +114,55 @@
 
     font-size: 18px;
 }
+
+
+/* aws image upload */
+
+.upload-image {
+    border: 1px solid black;
+    display: flex;
+    width: 98%;
+    height: 30px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+/* .input-upload::-webkit-file-upload-button {
+    visibility: hidden;
+  } */
+.input-upload {
+    min-height: 30px;
+}
+
+/* .input-upload::before {
+    height: 100%;
+    min-height: 30px;
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    -webkit-user-select: none;
+} */
+
+.inner-upload-img {
+    height: 100%;
+    min-height: 30px;
+}
+
+input[type="file"] {
+    color: transparent;
+}
+
+
