@@ -17,6 +17,7 @@ import Navigation from './components/Navigation';
 import OwnerBusiness from './components/business/ownerBusiness';
 import HomePage from './homepage/homepage';
 import NotFound from './components/404Page/NotFound';
+import SearchBar from './components/Navigation/searchBar';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,9 +40,15 @@ function App() {
 
       <Switch>
 
+
         <Route path='/' exact={true}>
           <HomePage />
         </Route>
+
+      {/* <Route path='/search' >
+
+      </Route> */}
+
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -54,6 +61,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+
 
 
         <ProtectedRoute path='/business/owner' exact={true}>

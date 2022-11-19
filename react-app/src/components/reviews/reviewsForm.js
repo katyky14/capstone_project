@@ -66,9 +66,9 @@ function CreateReview({ setShowModal, businessId }) {
                 {/* <i className="fas fa-times cancel-button" onClick={() => setShowModal(false)} /> */}
                 <h2 className='review-title'>Write your review</h2>
             </div>
-                {hasSubmitted && errors.map((error, idx) => (
-                    <div className="review-errors-div" key={idx}>{error}</div>
-                ))}
+            {hasSubmitted && errors.map((error, idx) => (
+                <div className="review-errors-div" key={idx}>{error}</div>
+            ))}
             <div className='star-container'>
                 <input
                     className='star-inputs'
@@ -78,8 +78,9 @@ function CreateReview({ setShowModal, businessId }) {
                     value={5}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 5 ? true : false}
-                    />
-                <label className='star-label' htmlFor="st5">&#9733;</label>
+                />
+                {/* <label className='star-label' htmlFor="st5">&#9733;</label> */}
+                <label className='star-label' htmlFor="st5"><i className="fa-solid fa-star star1"/></label>
                 <input
                     className='star-inputs'
                     type="checkbox"
@@ -88,8 +89,10 @@ function CreateReview({ setShowModal, businessId }) {
                     value={4}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 4 ? true : false}
-                    />
-                <label className='star-label' htmlFor="st4">&#9733;</label>
+                />
+
+                {/* <label className='star-label' htmlFor="st4">&#9733;</label> */}
+                <label className='star-label' htmlFor="st4"><i className="fa-solid fa-star star1" /></label>
                 <input
                     className='star-inputs'
                     type="checkbox"
@@ -98,8 +101,9 @@ function CreateReview({ setShowModal, businessId }) {
                     value={3}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 3 ? true : false}
-                    />
-                <label className='star-label' htmlFor="st3">&#9733;</label>
+                />
+                {/* <label className='star-label' htmlFor="st3">&#9733;</label> */}
+                <label className='star-label' htmlFor="st3"><i className="fa-solid fa-star star1" /></label>
                 <input
                     className='star-inputs'
                     type="checkbox"
@@ -108,8 +112,9 @@ function CreateReview({ setShowModal, businessId }) {
                     value={2}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 2 ? true : false}
-                    />
-                <label className='star-label' htmlFor="st2">&#9733;</label>
+                />
+                {/* <label className='star-label' htmlFor="st2">&#9733;</label> */}
+                <label className='star-label' htmlFor="st2"><i className="fa-solid fa-star star1" /></label>
                 <input
                     className='star-inputs'
                     type="checkbox"
@@ -118,8 +123,13 @@ function CreateReview({ setShowModal, businessId }) {
                     value={Number(1)}
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 1 ? true : false}
-                    />
-                <label className='star-label' htmlFor="st1">&#9733;</label>
+                />
+                {/* <label className='star-label' htmlFor="st1">&#9733;</label> */}
+                <label className='star-label' htmlFor="st1">
+
+                    <i className="fa-solid fa-star star1" />
+                </label>
+
             </div>
             <div className='review-div'>
                 <label htmlFor="review" />
@@ -140,7 +150,7 @@ function CreateReview({ setShowModal, businessId }) {
             <button className='Submit-Review' type="submit" >Submit Review</button>
         </form>
 
-)
+    )
 
 
 }
