@@ -18,6 +18,7 @@ export const getSearchBzThunk = (search) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
+        console.log('the data in thunk --', data)
         dispatch(getSearchBz(data.business))
     }
 

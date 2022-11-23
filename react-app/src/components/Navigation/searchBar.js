@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react'
-import {useDispatch} from 'react-redux'
-import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { NavLink, useHistory } from 'react-router-dom';
 import { getSearchBzThunk } from '../../store/search';
 
 
@@ -15,7 +15,7 @@ function SearchBar() {
 
     useEffect(() => {
 
-        const searchData = true;
+        let searchData = true;
 
         const fetchData = async (search) => {
             const data = await fetch('/api/search/', {
@@ -24,6 +24,7 @@ function SearchBar() {
                 body: JSON.stringify({ search })
             })
             const dataResponse = await data.json()
+            console.log('the response', dataResponse)
             if (searchData) {
                 setSearchResults(dataResponse.business)
             }
@@ -31,18 +32,21 @@ function SearchBar() {
 
         fetchData(search);
 
-        return () => searchData = false;
+
+        return () => searchData = false
 
     }, [search])
 
+    //to handle the empty object that comes from be?
     const isEmptyObj = (obj) => {
         return JSON.stringify(obj) === '{}';
     }
 
-    const onSubmit = async(e) => {
+
+    const onSubmit = async (e) => {
         e.preventDefault();
         if (search === '') return; // handle empty searches
-        if (isEmptyObj(searchResults)) return // searchResults === {}
+        if (isEmptyObj(searchResults)) return // searchResults === []
 
         const searchButton = await dispatch(getSearchBzThunk(search))
 
@@ -56,21 +60,42 @@ function SearchBar() {
 
     return (
         <>
-    <form>
-        <div>
-            <input
-            name='searchbar'
-            type='search'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            />
-            <button
-            onClick={(onSubmit)}
-            ><i className='fa-solid fa-magnifying-glass'></i> </button>
-        </div>
-    </form>
+            <form className='search-main-div'>
+                <div>
+                    <input
+                        name='searchbar'
+                        type='search'
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <button
+                        onClick={(onSubmit)}
+                    ><i className='fa-solid fa-magnifying-glass'></i> </button>
+                </div>
+            </form>
 
+            {search && searchResults && searchResults.length > 0 && (
+                <ul>
+                    {
+                        searchResults.map(result => (
+                            <li key={result.id}>
+                                <NavLink to={`/business/${result.id}`}
+                                    onClick={() => setSearch('')}
+                                >
+                                    <p>{result.name}</p>
+                                </NavLink>
+                            </li>
+                        ))
+                    }
+                </ul>
+            )}
 
+            {search && isEmptyObj(searchResults) && search.length > 0 && (
+                <ul>
+                    <li>No Results Found</li>
+                </ul>
+            )
+            }
         </>
     )
 

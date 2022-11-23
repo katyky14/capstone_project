@@ -9,8 +9,10 @@ def search_business():
     searchForm = SearchForm()
     searchForm['csrf_token'].data = request.cookies['csrf_token']
     if searchForm.validate_on_submit():
-        data = search_routes.data['search']
+        data = searchForm.data['search']
         searchResult = Business.query.filter(Business.name.ilike(f'%{data}%')).all()
+        # print('the data in backend-----', data)
+        # print('the result --------', searchResult)
         if searchResult:
             return {'business': [business.to_dict_relationship() for business in searchResult]}
         else:
