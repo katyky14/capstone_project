@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { NavLink, useHistory } from 'react-router-dom';
 import { getSearchBzThunk } from '../../store/search';
 
-
+import './searchBar.css'
 
 
 function SearchBar() {
@@ -60,29 +60,35 @@ function SearchBar() {
 
     return (
         <>
-            <form className='search-main-div'>
-                <div>
+            <form className='search-main-form'>
+                <div className='search-inner-div'>
                     <input
+                    className='search-input'
                         name='searchbar'
                         type='search'
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
+                    {/* here another input for search in maps */}
                     <button
+                    className='search-button'
                         onClick={(onSubmit)}
                     ><i className='fa-solid fa-magnifying-glass'></i> </button>
                 </div>
             </form>
 
             {search && searchResults && searchResults.length > 0 && (
-                <ul>
+                <ul className='search-result-ul'>
                     {
                         searchResults.map(result => (
-                            <li key={result.id}>
+                            <li
+                            className='search-result-li'
+                            key={result.id}>
                                 <NavLink to={`/business/${result.id}`}
                                     onClick={() => setSearch('')}
+                                    className='search-result-navlink'
                                 >
-                                    <p>{result.name}</p>
+                                    <p className='search-result-p'>{result.name}</p>
                                 </NavLink>
                             </li>
                         ))
@@ -91,8 +97,8 @@ function SearchBar() {
             )}
 
             {search && isEmptyObj(searchResults) && search.length > 0 && (
-                <ul>
-                    <li>No Results Found</li>
+                <ul className='search-result-ul'>
+                    <li className='search-result-not-found'>No Results Found</li>
                 </ul>
             )
             }
