@@ -18,6 +18,7 @@ import OwnerBusiness from './components/business/ownerBusiness';
 import HomePage from './homepage/homepage';
 import NotFound from './components/404Page/NotFound';
 import SearchBar from './components/Navigation/searchBar';
+import SearchBusiness from './components/business/searchBusiness';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,9 +46,9 @@ function App() {
           <HomePage />
         </Route>
 
-      {/* <Route path='/search' >
-
-      </Route> */}
+      <Route path='/search' >
+        <SearchBusiness />
+      </Route>
 
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -61,6 +62,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+
 
 
 

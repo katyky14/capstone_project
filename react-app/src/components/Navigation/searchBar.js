@@ -18,13 +18,18 @@ function SearchBar() {
         let searchData = true;
 
         const fetchData = async (search) => {
+            // console.log('inside fetchdata')
+            // console.log('the search before fetch', search)
             const data = await fetch('/api/search/', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ search })
             })
+
+            // console.log('the respnse in fetchdata', data)
+            // console.log('the search in fetch data', search)
             const dataResponse = await data.json()
-            console.log('the response', dataResponse)
+            // console.log('the dataResponse in fetchdata', dataResponse)
             if (searchData) {
                 setSearchResults(dataResponse.business)
             }
@@ -32,38 +37,49 @@ function SearchBar() {
 
         fetchData(search);
 
+        // console.log('the function fetchdata', fetchData(search))
 
         return () => searchData = false
 
     }, [search])
 
-    //to handle the empty object that comes from be?
-    const isEmptyObj = (obj) => {
-        return JSON.stringify(obj) === '{}';
-    }
 
 
-    const onSubmit = async (e) => {
+    const onSubmitSearch = async (e) => {
         e.preventDefault();
-        if (search === '') return; // handle empty searches
-        if (isEmptyObj(searchResults)) return // searchResults === []
 
+        // console.log('IS THE BUTTON WOEKIN?')
+        if (search === '') return; // handle empty searches
+        if (isEmptyObj(searchResults)) return; // searchResults === []
+
+        //console.log('the search in search bar', typeof search)
         const searchButton = await dispatch(getSearchBzThunk(search))
 
+        // console.log('the dispatch without await', dispatch(getSearchBzThunk(search)))
+        // console.log('the dispatch', await dispatch(getSearchBzThunk(search)))
+        // console.log('search inside button', searchButton)
+
         if (searchButton) {
+            //history.push('/search')
             history.push(`/search/?searchbar=${search}`)
         }
 
         setSearch('')
 
+
+
     }
 
+    //to handle the empty object that comes from be?
+    const isEmptyObj = (obj) => {
+        return JSON.stringify(obj) === '{}';
+    }
     return (
         <>
             <form className='search-main-form'>
                 <div className='search-inner-div'>
                     <input
-                    className='search-input'
+                        className='search-input'
                         name='searchbar'
                         type='search'
                         value={search}
@@ -71,8 +87,8 @@ function SearchBar() {
                     />
                     {/* here another input for search in maps */}
                     <button
-                    className='search-button'
-                        onClick={(onSubmit)}
+                        className='search-button'
+                        onClick={onSubmitSearch}
                     ><i className='fa-solid fa-magnifying-glass'></i> </button>
                 </div>
             </form>
@@ -82,8 +98,8 @@ function SearchBar() {
                     {
                         searchResults.map(result => (
                             <li
-                            className='search-result-li'
-                            key={result.id}>
+                                className='search-result-li'
+                                key={result.id}>
                                 <NavLink to={`/business/${result.id}`}
                                     onClick={() => setSearch('')}
                                     className='search-result-navlink'

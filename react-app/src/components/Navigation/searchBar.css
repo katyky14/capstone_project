@@ -112,6 +112,8 @@
     text-decoration: none;
     padding-left: 20px;
     transition: all 0.3s ease-in 0s;
+    height: 35px;
+
 }
 
 .search-result-navlink {
