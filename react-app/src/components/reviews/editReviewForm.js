@@ -75,7 +75,7 @@ function EditReviewForm({ setShowModal, business}) {
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 5 ? true : false}
                     />
-                <label className='star-label' htmlFor="r5">&#9733;</label>
+                <label className='star-label' htmlFor="r5"><i className="fa-solid fa-star star1"/></label>
                 <input
                     className='star-inputs'
                     type="checkbox"
@@ -85,7 +85,7 @@ function EditReviewForm({ setShowModal, business}) {
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 4 ? true : false}
                     />
-                <label className='star-label' htmlFor="r4">&#9733;</label>
+                <label className='star-label' htmlFor="r4"><i className="fa-solid fa-star star1"/></label>
                 <input
                     className='star-inputs'
                     type="checkbox"
@@ -95,7 +95,7 @@ function EditReviewForm({ setShowModal, business}) {
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 3 ? true : false}
                     />
-                <label className='star-label' htmlFor="r3">&#9733;</label>
+                <label className='star-label' htmlFor="r3"><i className="fa-solid fa-star star1"/></label>
                 <input
                     className='star-inputs'
                     type="checkbox"
@@ -105,7 +105,7 @@ function EditReviewForm({ setShowModal, business}) {
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 2 ? true : false}
                     />
-                <label className='star-label' htmlFor="r2">&#9733;</label>
+                <label className='star-label' htmlFor="r2"><i className="fa-solid fa-star star1"/></label>
                 <input
                     className='star-inputs'
                     type="checkbox"
@@ -115,7 +115,7 @@ function EditReviewForm({ setShowModal, business}) {
                     onChange={(e) => setStars(e.target.value)}
                     checked={+stars >= 1 ? true : false}
                     />
-                <label className='star-label' htmlFor="r1">&#9733;</label>
+                <label className='star-label' htmlFor="r1"><i className="fa-solid fa-star star1"/></label>
             </div>
             <div className='review-div'>
                 <label htmlFor="review" />

@@ -251,21 +251,22 @@ function CreateBusinessForm() {
                     </div> */}
                     {/* image aws upload */}
 
-                    <div>
+                    <div className='form-fields-upload'>
                         <label>Preview Image *</label>
                         <div className='upload-image'>
                             <div className='inner-upload-img'>
-                                    <input
-                                        className='input-upload'
-                                        type='file'
-                                        accept="image/*"
-                                        onChange={updateImage}
-                                        id='file'
-                                    />
+                                <input
+                                    className='input-upload'
+                                    type='file'
+                                    accept="image/*"
+                                    onChange={updateImage}
+                                    id='file-input'
+                                />
 
                             </div>
                             <div>
                                 <button
+                                    className='file-upload-button'
                                     type='submit'
                                     onClick={handleSubmit}
                                 >Upload</button>
