@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: black;
 }
 
 
@@ -11,30 +12,33 @@
     margin-left: -150px;
 }
 
-.search-business-page-container {
-    /* display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.search-business-card {
+    display: flex;
     justify-content: center;
-    height: 350px;
-    width: 1328px;
-    gap: 15px;
-    padding-bottom: 120px; */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
 
-/* 
+
+}
+
+.search-business-card-container {
+    /* box-shadow: rgba(149, 157, 164, 0.2) 0px 8px 24px; */
+
     width: 840px;
     height: 225px;
     padding: 24px;
     cursor: pointer;
-    border-bottom: 2px solid rgb(235, 235, 235); */
+    border-bottom: 2px solid rgb(235, 235, 235);
 
 }
 
-.search-business-page-container {
-    box-shadow: rgba(149, 157, 164, 0.2) 0px 8px 24px;
+
+.search-business-card-container:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.search-business-card-div {
+.search-business-card-inner-div {
     /* height: 210px;
     width: 250px;
     cursor: pointer;
@@ -43,33 +47,16 @@
      display: flex;
 }
 
-.search-business-card-link {
-    /* height: 100%;
-    width: 100%;
-    text-decoration: none;
-    color: black; */
 
-    width: 840px;
-    height: 225px;
-    padding: 24px;
-    cursor: pointer;
-    border-bottom: 2px solid rgb(235, 235, 235);
+.search-business-card-div-left {
+    margin-right: 24px;
+
 }
 
-.search-business-card-base {
-    height: 100%;
-    width: 100%;
-}
-
-.search-business-image-div {
-    width: 100%;
-    height: 75%;
-}
-
-.search-business-image {
-    height: 100%;
-    width: 100%;
-    border-radius: 8px;
+.search-business-card-image {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
 }
 
 
@@ -79,8 +66,45 @@
 }
 
 .search-business-card-text-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 16px;
+    max-height: 220px;
+    word-wrap: break-word;
+
+}
+
+
+.search-business-card-review {
+    overflow: hidden;
+    max-height: 120px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: break-word;
+    max-width: 620px;
+    min-height: 120px;
+
+    color:rgb(150, 144, 144)
+}
+
+.search-business-card-text-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+
+}
+
+.search-business-card-rate {
+    margin-bottom: 10px;
+}
+
+.search-business-card-address {
+    margin-bottom: 10px;
+}
+
+.search-business-card-description {
+    margin-bottom: 10px;
+    overflow: hidden;
+    word-wrap: break-word;
+    max-width: 600px;
+    max-height: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
