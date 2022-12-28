@@ -40,6 +40,11 @@ function EditBusinessForm() {
     const [hasSubmitted, setHasSubmitted] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
 
+    // aws
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false)
+
+
     const updatedName = e => setName(e.target.value)
     const updatedAddress = e => setAddress(e.target.value)
     const updatedCity = e => setCity(e.target.value)
@@ -119,7 +124,7 @@ function EditBusinessForm() {
         if (!phone.match('[0-9]{3}-[0-9]{3}-[0-9]{4}')) valerrors.push('Please enter a valid phone number ex. 000-000-0000')
 
         if (!website.match(websiteRegEx)) valerrors.push("Business website mus be a valid url ex.(http://example.com)")
-        if  (website.length < 3) valerrors.push("Business website must be greater than 2 characters")
+        if (website.length < 3) valerrors.push("Business website must be greater than 2 characters")
         if (!preview_image?.match(/\.(jpg|jpeg|png|gif)$/)) valerrors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
 
 
@@ -129,6 +134,42 @@ function EditBusinessForm() {
     }, [name, preview_image, phone, businessId, city, address, website, description, state])
 
 
+    // aws image
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image);
+
+        // aws uploads can be a bit slow—displaying
+        // some sort of loading message is a good idea
+        setImageLoading(true);
+
+        const res = await fetch('/api/business/upload', {
+            method: "POST",
+            body: formData,
+        });
+        if (res.ok) {
+            const data = await res.json();
+
+            setPreviewImage(data.url)
+
+            setImageLoading(false);
+            // history.push("/business");
+            alert("Successfully uploaded")
+        }
+        else {
+            setImageLoading(false);
+            // a real app would probably use more advanced
+            // error handling
+            console.log("error");
+            alert("Cannot upload your image")
+        }
+    }
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    }
 
 
 
@@ -241,7 +282,7 @@ function EditBusinessForm() {
                     </div>
 
 
-                    <div>
+                    {/* <div>
                         <label className='bz-form-label'>Preview Image *
                         </label>
                         <input
@@ -251,6 +292,30 @@ function EditBusinessForm() {
                             value={preview_image}
                             onChange={updatedPreviewImage}
                         />
+                    </div> */}
+
+                    <div className='form-fields-upload'>
+                        <label>Preview Image *</label>
+                        <div className='upload-image'>
+                            <div className='inner-upload-img'>
+                                <input
+                                    className='input-upload'
+                                    type='file'
+                                    accept="image/*"
+                                    onChange={updateImage}
+                                    id='file-input'
+                                />
+
+                            </div>
+                            <div>
+                                <button
+                                    className='file-upload-button'
+                                    type='submit'
+                                    onClick={handleSubmit}
+                                >Upload</button>
+                            </div>
+                            {(imageLoading) && <p>Loading...</p>}
+                        </div>
                     </div>
 
                     <button className='button-style' type="submit"> Edit Business</button>

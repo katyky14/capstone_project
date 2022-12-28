@@ -7,6 +7,7 @@ import ProfileButton from "./ProfileButton";
 import './navigation.css'
 import logo from '../images-all/logo.png'
 import logo2 from '../images-all/logo2.png'
+import SearchBar from "./searchBar";
 
 const StyledNavLinkLogIn = (props) => {
     return <NavLink {...props} className={`${props.className} login-navlink-style`} />
@@ -32,38 +33,43 @@ function Navigation({ loaded, home }) {
 
 
             {/* <div className={"nav-logout-div"}> */}
-                <div className="logo-div" onClick={() => history.push('/')}>
+            <div className="logo-div" onClick={() => history.push('/')}>
 
-                    {/* <NavLink to='/' exact={true} activeClassName='active'>
+                {/* <NavLink to='/' exact={true} activeClassName='active'>
                         Home
                     </NavLink> */}
-                    <img src={logo2} alt='logo'  className="logo"/>
-                </div>
+                <img src={logo2} alt='logo' className="logo" />
+            </div>
 
+            {/* search bar  */}
+            <div>
 
-                {!sessionUser && (
-                    <div className="nav-right-container">
-                        <div className="login-signup-div">
-                            <div className="login-div">
-                                <StyledNavLinkLogIn to='/login' exact={true} activeClassName='active'>
-                                    Login
-                                </StyledNavLinkLogIn>
-                            </div>
-                            <div className="signup-div">
-                                <StyledNavLinkSignUp to='/sign-up' exact={true} activeClassName='active'>
-                                    Sign Up
-                                </StyledNavLinkSignUp>
-                            </div>
+                <SearchBar />
+            </div>
+
+            {!sessionUser && (
+                <div className="nav-right-container">
+                    <div className="login-signup-div">
+                        <div className="login-div">
+                            <StyledNavLinkLogIn to='/login' exact={true} activeClassName='active'>
+                                Login
+                            </StyledNavLinkLogIn>
+                        </div>
+                        <div className="signup-div">
+                            <StyledNavLinkSignUp to='/sign-up' exact={true} activeClassName='active'>
+                                Sign Up
+                            </StyledNavLinkSignUp>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
 
 
-                {sessionUser && (
-                    <div className="nav-logged-div">
-                        <ProfileButton sessionUser={sessionUser} />
-                    </div>
-                )}
+            {sessionUser && (
+                <div className="nav-logged-div">
+                    <ProfileButton sessionUser={sessionUser} />
+                </div>
+            )}
             {/* </div> */}
 
 
