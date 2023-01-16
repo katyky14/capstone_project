@@ -12,6 +12,7 @@ from .api.business_routes import business_routes
 from .api.review_routes import review_routes
 from .api.image_routes import image_routes
 from .api.search_routes import search_routes
+from .api.profile_routes import profile_routes
 
 from .seeds import seed_commands
 
