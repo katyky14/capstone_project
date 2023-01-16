@@ -13,9 +13,10 @@ def profile_page(userId):
     user_profile = User.query.get_or_404(userId)
 
     profile = user_profile.to_dict()
+    print('the user profile in --------', profile)
 
     all_businesses = Business.query.filter(Business.owner_id == userId).all()
-    businesses = [business.to_dict() for business in all_businesses]
+    businesses = [business.to_dict_business() for business in all_businesses]
 
     res = {
         'profile': profile,
@@ -43,7 +44,7 @@ def edit_profile(userId):
         user_profile.last_name = edit_form.data['last_name']
         # user_profile.gender = edit_form.data['gender']
         # user_profile.bio = edit_form.data['bio']
-        user_profile.profile_img = edit_form.data['profile_img']
+        user_profile.icon_img = edit_form.data['icon_img']
 
         db.session.commit()
         return user_profile.to_dict()

@@ -19,6 +19,7 @@ import HomePage from './homepage/homepage';
 import NotFound from './components/404Page/NotFound';
 import SearchBar from './components/Navigation/searchBar';
 import SearchBusiness from './components/business/searchBusiness';
+import ProfilePage from './components/Profile';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -56,6 +57,8 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
+        {/* user routes */}
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
@@ -63,6 +66,14 @@ function App() {
           <User />
         </ProtectedRoute>
 
+
+        <ProtectedRoute path="/profile/:userId" exact={true}>
+          <ProfilePage />
+        </ProtectedRoute>
+
+        {/* <ProtectedRoute path="/profile/edit/:userId" exact={true}>
+          <EditProfileForm />
+        </ProtectedRoute> */}
 
 
 
