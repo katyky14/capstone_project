@@ -35,5 +35,35 @@ export const editProfileThunk = (userId, profile) => async (dispatch) => {
         headers:  { "Content-Type": "application/json"},
         body: JSON.stringify(profile)
     });
-    
+    // console.log('the response in thunk', response)
+    if (response.ok) {
+        const data = await response.json();
+
+        dispatch(editProfile(data))
+        return data;
+
+    }
 }
+
+const userProfileReducer = (state = {}, action) => {
+    let newState = {};
+    switch (action.type) {
+        case GET_USER_PROFILE: {
+            newState = { ...state };
+            newState.profile = action.profile;
+            return newState
+        }
+
+        case EDIT_USER_PROFILE: {
+            newState = { ...state };
+            newState.profile = action.profile;
+            return newState
+        }
+
+        default:
+            return state;
+
+    }
+}
+
+export default userProfileReducer;
