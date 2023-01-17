@@ -32,7 +32,7 @@ function OwnerBusiness() {
         await dispatch(getAllBusinessThunk())
     }
 
-    if (!ownerArr.length) return null;
+    // if (!!ownerArr.length) return null;
 
     return (
         <div className='business-card-owner'>

@@ -26,7 +26,6 @@ function EditProfileForm() {
     const GREETING_LIST = [
         "Hello",
         "Hola",
-        "Zdravstvuyte",
         "Nǐ hǎo",
         "Olá",
         "Anyoung haseyo",
@@ -156,7 +155,7 @@ function EditProfileForm() {
                 <div className='edit_profile_container'>
                     <div className="profilePreview">
                         <img className="profilePicEdit" src={icon_img} alt="profile image"
-                            onError={e => { e.currentTarget.src = "https://s3-media0.fl.yelpcdn.com/photo/u_4AtMdPnNBQgn5fWEyTnw/ss.jpg" }}
+                            onError={e => { e.currentTarget.src = 'https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg' }}
                         ></img>
                         <div className="profilePreviewName"><span id="edit-profile-greeting">{greeting},</span> {first_name} {last_name}!</div>
                         {/* <div className="profilePreviewName">{last_name}</div> */}

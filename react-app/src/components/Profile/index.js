@@ -92,7 +92,7 @@ const ProfilePage = () => {
                 <div>
                     <div>
                         <img className="profilePage_img" src={profile?.iconImg}
-                            onError={e => { e.currentTarget.src = "https://s3-media0.fl.yelpcdn.com/photo/u_4AtMdPnNBQgn5fWEyTnw/ss.jpg" }}
+                            onError={e => { e.currentTarget.src = 'https://i.pinimg.com/736x/25/77/85/25778577593b1591687a0435eb3542b1.jpg' }}
                         />
                     </div>
                     <button onClick={(e) => handleEditProfile(e, profile?.id)} className="Edit_profile">

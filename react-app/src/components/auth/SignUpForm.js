@@ -16,7 +16,8 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [hasSubmitted, setHasSubmitted] = useState(false)
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [icon_img, setIcon_img] = useState('');
 
 
 
@@ -29,7 +30,7 @@ const SignUpForm = () => {
 
     if (errors.length > 0) {
       // return alert("Cannot Submit")
-      return 
+      return
     }
 
     // if (!email.includes('@')) {
@@ -37,9 +38,9 @@ const SignUpForm = () => {
     // }
 
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, first_name, last_name));
+      const data = await dispatch(signUp(username, email, password, first_name, last_name, icon_img));
       if (data) {
-        //console.log('the data', data)
+        console.log('the data', data)
         setErrors(data)
       }
     //   return;
@@ -58,11 +59,11 @@ const SignUpForm = () => {
     if (email.length < 5 || email.length > 25) valErrors.push("Email must be between 5 and 25 characters")
     if (password.length < 6 || password.length > 25) valErrors.push("Password must be between 6 and 25 characters");
     if (password !== repeatPassword) valErrors.push("Password fields doesn't match")
-
+    if (!icon_img.match(/\.(jpg|jpeg|png|gif)$/)) valErrors.push('Please provide a valid image extension [png/jpg/jpeg/gif]')
 
     setErrors(valErrors)
 
-  }, [first_name, last_name, email, username, password, repeatPassword])
+  }, [first_name, last_name, email, username, password, repeatPassword, icon_img])
 
 
 
@@ -81,6 +82,10 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const updatedIconImg = (e) => {
+    setIcon_img(e.target.value);
+  }
 
   if (user) {
     return <Redirect to='/' />;
@@ -173,6 +178,18 @@ const SignUpForm = () => {
               onChange={updateRepeatPassword}
               value={repeatPassword}
               required={true}
+            ></input>
+          </div>
+          <div>
+            <label  className='label-signup'>Profile Image</label>
+            <input
+              className='input-form'
+              // placeholder='Confirm Password'
+              type='string'
+              name='icon_img'
+              value={icon_img}
+              onChange={updatedIconImg}
+
             ></input>
           </div>
           <button className='button-style' type='submit'>Sign Up</button>

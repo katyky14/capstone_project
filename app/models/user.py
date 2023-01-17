@@ -9,14 +9,12 @@ class User(db.Model, UserMixin):
     if environment == "production":
       __table_args__ = {'schema': SCHEMA}
 
-
-
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     first_name = db.Column(db.String(40), nullable=False)
     last_name = db.Column(db.String(40), nullable=False)
-    
+
     hashed_password = db.Column(db.String(255), nullable=False)
     business = db.relationship('Business', back_populates='owner', cascade='all, delete')
     images = db.relationship('Image', back_populates='users', cascade='all, delete')
