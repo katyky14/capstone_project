@@ -26,10 +26,10 @@ const ProfilePage = () => {
 
     }
 
-    // const handleEditProfile = (e, userId) => {
-    //     e.preventDefault();
-    //     history.push(`/profile/edit/${userId}`);
-    //   };
+    const handleEditProfile = (e, userId) => {
+        e.preventDefault();
+        history.push(`/profile/edit/${userId}`);
+      };
 
 
     useEffect(() => {
@@ -45,15 +45,13 @@ const ProfilePage = () => {
                             onError={e => { e.currentTarget.src = "https://s3-media0.fl.yelpcdn.com/photo/u_4AtMdPnNBQgn5fWEyTnw/ss.jpg" }}
                         />
                     </div>
-                    {/* <button onClick={(e) => handleEditProfile(e, profile?.id)} className="Edit_profile">
+                    <button onClick={(e) => handleEditProfile(e, profile?.id)} className="Edit_profile">
               <i className="fa-solid fa-pen-to-square"></i> Edit profile
-            </button> */}
+            </button>
                 </div>
                 <div className="second_container">
 
-                    {/* <button onClick={(e) => handleEditProfile(e, profile?.id)} className="Edit_profile">
-              <i className="fa-solid fa-pen-to-square"></i> Edit profile
-            </button> */}
+
 
                     <div className="word_container">
 
@@ -74,29 +72,9 @@ const ProfilePage = () => {
                         </div>
                     </div>
 
-                    {/* <div className="word_container">
-              <div className="Gender">
-                Gender:
-              </div>
-              {profile?.gender ?
-                <div className="Gender">
-                  {profile?.gender}
-                </div> : <div>You have no edit your gender yet</div>}
-            </div>
-
-            <div className="word_container">
-              <div className="Bio">
-                Bio:
-              </div>
-              {profile?.bio ?
-                (<div className="Bio1">{profile?.bio}</div>) : (<div>You have not edit your bio yet</div>)}
-            </div> */}
 
                 </div>
-                {/* <button onClick={(e) => handleEditProfile(e, profile?.id)} className="Edit_profile">
-            <i className="fa-solid fa-pen-to-square"></i> Edit profile
-          </button> */}
-
+        
             </div>
             <hr className="line1"></hr>
             <div className="business"><i className="fa-solid fa-utensils" /> My Businesses</div>

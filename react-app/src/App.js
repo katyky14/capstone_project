@@ -20,6 +20,7 @@ import NotFound from './components/404Page/NotFound';
 import SearchBar from './components/Navigation/searchBar';
 import SearchBusiness from './components/business/searchBusiness';
 import ProfilePage from './components/Profile';
+import EditProfileForm from './components/Profile/EditProfileForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -71,9 +72,9 @@ function App() {
           <ProfilePage />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute path="/profile/edit/:userId" exact={true}>
+        <ProtectedRoute path="/profile/edit/:userId" exact={true}>
           <EditProfileForm />
-        </ProtectedRoute> */}
+        </ProtectedRoute>
 
 
 

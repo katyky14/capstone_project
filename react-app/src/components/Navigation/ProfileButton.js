@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, NavLink } from "react-router-dom";
 import { logout } from "../../store/session";
 
@@ -24,6 +24,9 @@ function ProfileButton({ sessionUser }) {
 
     const [showMenu, setShowMenu] = useState(false);
 
+    const user = useSelector(state => state.session.user)
+    console.log('the user', user)
+
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -45,6 +48,13 @@ function ProfileButton({ sessionUser }) {
         await dispatch(logout());
 
         return history.push('/')
+    }
+
+    const aboutMe = async (e) => {
+        e.preventDefault();
+
+
+        return history.push(`/profile/${user?.id}`)
     }
 
     return (
@@ -87,7 +97,7 @@ function ProfileButton({ sessionUser }) {
             {showMenu && (
                 <ul className="profile-dropdown">
                     <li className="profile-content username">
-                        <i class="fa-regular fa-circle-user"></i> <span className="user-span">{sessionUser.username} </span></li>
+                        <div onClick={aboutMe} className="button-style-profile"><i class="fa-regular fa-circle-user"></i> <span className="user-span">{sessionUser.username} </span></div></li>
                     {/* <li>
                         <NavLink to='/' exact={true}>My reviews</NavLink>
                     </li> */}
