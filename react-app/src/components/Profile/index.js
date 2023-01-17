@@ -26,8 +26,55 @@ const ProfilePage = () => {
     const helper = async () => {
         const userProfile = await dispatch(getProfileThunk(userId));
 
-
     }
+
+
+    const GREETING_LIST = [
+        "Hello",
+        "Hola",
+        "Zdravstvuyte",
+        "Nǐ hǎo",
+        "Olá",
+        "Anyoung haseyo",
+        "Asalaam alaikum",
+        "Namaste",
+        "Merhaba",
+        "Shalom",
+        "Ciao",
+        "G'day",
+        "Ciao",
+        "Hallo",
+        "Xin Chào",
+    ];
+
+    // const pickRandomGreeting = () => {
+    //     return GREETING_LIST[Math.floor(Math.random() * GREETING_LIST.length)];
+    // }
+
+    const [greeting, setGreeting] = useState(GREETING_LIST[0]);
+    const [second, setSeconds] = useState(0);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        setGreeting(GREETING_LIST[second]);
+    }, [GREETING_LIST, second]);
+
+
+    useEffect(() =>  {
+        const interval = setInterval(() => {
+            setSeconds((seconds) =>
+                seconds === GREETING_LIST.length - 1 ? 0 : seconds + 1
+            );
+        }, 5000);
+        return () => clearInterval(interval)
+    }, [])
+
+    useEffect(() => {
+        const LoadingTimeOut = setTimeout(() => {
+            setLoaded(true);
+        }, 500);
+        return () => clearTimeout(LoadingTimeOut)
+    }, []);
 
     const handleEditProfile = (e, userId) => {
         e.preventDefault();
@@ -54,9 +101,9 @@ const ProfilePage = () => {
                 </div>
                 <div className="second_container">
 
+                    <div className="word-container First">{greeting}, {profile?.firstName} {profile?.lastName}</div>
 
-
-                    <div className="word_container">
+                    {/* <div className="word_container">
 
                         <div className="First">
                             First Name:
@@ -73,7 +120,7 @@ const ProfilePage = () => {
                         <div className="Last">
                             {profile?.lastName}
                         </div>
-                    </div>
+                    </div> */}
 
 
                 </div>
