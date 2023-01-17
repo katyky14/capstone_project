@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import businessReducer from './business';
+import userProfileReducer from './profile';
 import reviewReducer from './reviews';
 import searchReducer from './search';
 import session from './session'
@@ -9,7 +10,8 @@ const rootReducer = combineReducers({
   session,
   businessState: businessReducer,
   reviewState: reviewReducer,
-  searchState: searchReducer
+  searchState: searchReducer,
+  profileState: userProfileReducer
 });
 
 
