@@ -70,9 +70,9 @@ function ProfileButton({ sessionUser }) {
                     <StyledNavAllBusiness to='/business' exact={true}>All Restaurants</StyledNavAllBusiness>
                 </li>
 
-                <li className="li-owner">
+                {/* <li className="li-owner">
                     <StyledNavMyBusiness to='/business/owner' exact={true}> My Businesses </StyledNavMyBusiness>
-                </li>
+                </li> */}
 
 
                 <li>
