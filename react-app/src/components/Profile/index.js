@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProfileThunk } from "../../store/profile";
 import './profilePage.css'
 
+import OwnerBusiness from '../business/ownerBusiness'
+
+
 
 const ProfilePage = () => {
     const history = useHistory();
@@ -79,13 +82,18 @@ const ProfilePage = () => {
             <hr className="line1"></hr>
             <div className="business"><i className="fa-solid fa-utensils" /> My Businesses</div>
 
-            {user.business.length ? <div className="business_img_in_profile_container">
+            <OwnerBusiness />
+
+            {/* {user.business.length ? <div className="business_img_in_profile_container">
           {user.business.map(business => (
 
             <div key={business.id}>
-               
+
               <NavLink to={`/business/${business.id}`}>
-                <img className="business_img_in_profile" src={business.previewImage}></img>
+                <img className="business_img_in_profile"
+                src={business.previewImage}
+                onError={e => { e.currentTarget.src = 'https://static.vecteezy.com/system/resources/previews/005/276/530/original/set-of-cute-kawaii-breakfast-food-and-beverages-free-vector.jpg' }}
+                />
               </NavLink>
             </div>
 
@@ -95,7 +103,7 @@ const ProfilePage = () => {
             Create Business
           </NavLink>
 
-        </div>}
+        </div>} */}
 
 
         </div>

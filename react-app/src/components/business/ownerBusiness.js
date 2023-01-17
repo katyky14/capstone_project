@@ -36,7 +36,7 @@ function OwnerBusiness() {
 
     return (
         <div className='business-card-owner'>
-            <h2 className="h2-owner-div">Manage Your Businesses</h2>
+            {/* <h2 className="h2-owner-div">Manage Your Businesses</h2> */}
             {ownerArr?.map(({ id, name, address, city, previewImage, phone, state }) => (
                 <div key={id} className='business-card-container-owner'>
                     <div className="business-card-inner-div-owner">
