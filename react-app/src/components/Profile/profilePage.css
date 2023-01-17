@@ -27,19 +27,19 @@
 
 .First {
     margin-bottom: 5px;
-    font-family: cursive;
+    /* font-family: cursive; */
     font-weight: bold;
 }
 
 .Last {
     margin-bottom: 5px;
-    font-family: cursive;
+    /* font-family: cursive; */
     font-weight: bold;
 }
 
 .Gender {
     margin-bottom: 5px;
-    font-family: cursive;
+    /* font-family: cursive; */
     font-weight: bold;
 
 
@@ -105,7 +105,7 @@
     /* font-family: cursive; */
     font-size: 20px;
     font-weight: bold;
-    color: rgb(6, 174, 252);
+    /* color: rgb(6, 174, 252); */
     border: thin solid lightgray;
     background-color: lightcyan;
     padding: 5px;
@@ -126,8 +126,14 @@
     border: thin solid grey;
     padding: 5px;
     font-size: 15px;
-    background-color: lightcyan;
-    color: red;
+
+    background-color: #f51600;
+    color: #fff;
+    border: none;
+
+
+    /* background-color: lightcyan; */
+    /* color: red; */
 }
 
 
@@ -155,6 +161,11 @@
 
 .profilePreviewName{
     word-break: break-all;
+    font-weight: bold;
+    /* border: 1px solid red; */
+    text-align: center;
+    font-size: 20px;
+
 }
 
 .profilePreviewBio{
@@ -202,16 +213,17 @@
 .edit_title{
     text-align: center;
     font-size: 30px;
-    color: rgb(0, 157, 255);
+    color: red;
+    /* color: rgb(0, 157, 255); */
 }
 
 .edit_input{
-    border-radius: 15px;
+    border-radius: 8px;
     width: 250px;
     text-overflow: ellipsis;
     height: 28px;
     font-size: 16px;
-    background-color: rgb(253, 253, 227);
+    /* background-color: rgb(253, 253, 227); */
 }
 
 .editProfileButton {
@@ -221,16 +233,16 @@
 
 
 .editProfileButton>button {
-    border-radius: 15px;
+    border-radius: 5px;
     /* font-family:cursive; */
     width: 100px;
-    background-color: white;
+    background-color: #f51600;
     border:1px solid rgb(216, 203, 203);
     margin: 10px;
     width: 130px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
-    color: rgb(0, 157, 255);
+    color: #fff;
   }
 
   .editProfileButton > button:hover{
@@ -246,4 +258,8 @@
   .pen{
     margin-top: 3px;
     margin-right: 3px;
+  }
+
+  #edit-profile-greeting {
+    color: rgb(220, 85, 85);
   }

@@ -23,6 +23,54 @@ function EditProfileForm() {
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
+    const GREETING_LIST = [
+        "Hello",
+        "Hola",
+        "Zdravstvuyte",
+        "Nǐ hǎo",
+        "Olá",
+        "Anyoung haseyo",
+        "Asalaam alaikum",
+        "Namaste",
+        "Merhaba",
+        "Shalom",
+        "Ciao",
+        "G'day",
+        "Ciao",
+        "Hallo",
+        "Xin Chào",
+    ];
+
+    // const pickRandomGreeting = () => {
+    //     return GREETING_LIST[Math.floor(Math.random() * GREETING_LIST.length)];
+    // }
+
+    const [greeting, setGreeting] = useState(GREETING_LIST[0]);
+    const [second, setSeconds] = useState(0);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        setGreeting(GREETING_LIST[second]);
+    }, [GREETING_LIST, second]);
+
+
+    useEffect(() =>  {
+        const interval = setInterval(() => {
+            setSeconds((seconds) =>
+                seconds === GREETING_LIST.length - 1 ? 0 : seconds + 1
+            );
+        }, 5000);
+        return () => clearInterval(interval)
+    }, [])
+
+    useEffect(() => {
+        const LoadingTimeOut = setTimeout(() => {
+            setLoaded(true);
+        }, 500);
+        return () => clearTimeout(LoadingTimeOut)
+    }, []);
+
+
     const redirectBack = (e) => {
         e.preventDefault();
         history.push(`/profile/${userId}`);
@@ -110,8 +158,8 @@ function EditProfileForm() {
                         <img className="profilePicEdit" src={icon_img} alt="profile image"
                             onError={e => { e.currentTarget.src = "https://s3-media0.fl.yelpcdn.com/photo/u_4AtMdPnNBQgn5fWEyTnw/ss.jpg" }}
                         ></img>
-                        <div className="profilePreviewName">{first_name}</div>
-                        <div className="profilePreviewName">{last_name}</div>
+                        <div className="profilePreviewName"><span id="edit-profile-greeting">{greeting},</span> {first_name} {last_name}!</div>
+                        {/* <div className="profilePreviewName">{last_name}</div> */}
 
                     </div>
                     <div className='edit_input_container'>
