@@ -25,7 +25,7 @@ function ProfileButton({ sessionUser }) {
     const [showMenu, setShowMenu] = useState(false);
 
     const user = useSelector(state => state.session.user)
-    console.log('the user', user)
+    //console.log('the user', user)
 
     const openMenu = () => {
         if (showMenu) return;
@@ -97,7 +97,7 @@ function ProfileButton({ sessionUser }) {
             {showMenu && (
                 <ul className="profile-dropdown">
                     <li className="profile-content username">
-                        <div onClick={aboutMe} className="button-style-profile"><i class="fa-regular fa-circle-user"></i> <span className="user-span">{sessionUser.username} </span></div></li>
+                        <div onClick={aboutMe} className="button-style-profile"><i class="fa-regular fa-circle-user"></i> <span className="user-span">About {sessionUser.username} </span></div></li>
                     {/* <li>
                         <NavLink to='/' exact={true}>My reviews</NavLink>
                     </li> */}

@@ -13,7 +13,7 @@ const ProfilePage = () => {
     const [isLoaded, setIsLoaded] = useState(false)
 
     const user = useSelector(state => state.session.user);
-    console.log('the user', user)
+    //console.log('the user', user)
     // const businessObj = useSelector(state => state.business);
     // const businessArr = Object.values(businessObj)
 
@@ -74,7 +74,7 @@ const ProfilePage = () => {
 
 
                 </div>
-        
+
             </div>
             <hr className="line1"></hr>
             <div className="business"><i className="fa-solid fa-utensils" /> My Businesses</div>
@@ -83,7 +83,7 @@ const ProfilePage = () => {
           {user.business.map(business => (
 
             <div key={business.id}>
-                {console.log('the business inside component', business)}
+               
               <NavLink to={`/business/${business.id}`}>
                 <img className="business_img_in_profile" src={business.previewImage}></img>
               </NavLink>

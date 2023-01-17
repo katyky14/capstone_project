@@ -15,10 +15,11 @@ function EditProfileForm() {
     userId = Number(userId);
     const profile = useSelector(state => state.profileState.profile);
 
+
     const [first_name, setFirst_name] = useState(profile?.firstName || "")
     const [last_name, setLast_name] = useState(profile?.lastName || "")
 
-    const [profile_img, setProfile_img] = useState(profile?.iconImg || "");
+    const [icon_img, setIcon_img] = useState(profile?.iconImg || "");
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -32,12 +33,13 @@ function EditProfileForm() {
         if (userId) {
 
             const userProfile = await dispatch(getProfileThunk(userId))
-            const userProfileData = userProfile.profile
+            const userProfileData = userProfile.profile;
+
 
             setFirst_name(userProfileData.firstName);
             setLast_name(userProfileData.lastName);
 
-            setProfile_img(userProfileData.iconImg);
+            setIcon_img(userProfileData.iconImg);
 
         }
     }, [dispatch, userId]);
@@ -57,7 +59,7 @@ function EditProfileForm() {
         let editedData = {
             first_name,
             last_name,
-            profile_img,
+            icon_img,
         };
 
 
@@ -81,15 +83,15 @@ function EditProfileForm() {
 
 
         if (
-            !profile_img?.includes("jpg") &&
-            !profile_img?.includes("jpeg") &&
-            !profile_img?.includes("png")
+            !icon_img?.includes("jpg") &&
+            !icon_img?.includes("jpeg") &&
+            !icon_img?.includes("png")
         ) {
             errors.push("Please provide validate url form jpg, jpeg or png");
         }
 
         setValidationErrors(errors);
-    }, [profile_img, first_name, last_name]);
+    }, [icon_img, first_name, last_name]);
 
 
     return (
@@ -105,12 +107,12 @@ function EditProfileForm() {
                 </ul>
                 <div className='edit_profile_container'>
                     <div className="profilePreview">
-                        <img className="profilePicEdit" src={profile_img} alt="profile image"
+                        <img className="profilePicEdit" src={icon_img} alt="profile image"
                             onError={e => { e.currentTarget.src = "https://s3-media0.fl.yelpcdn.com/photo/u_4AtMdPnNBQgn5fWEyTnw/ss.jpg" }}
                         ></img>
                         <div className="profilePreviewName">{first_name}</div>
                         <div className="profilePreviewName">{last_name}</div>
-                     
+
                     </div>
                     <div className='edit_input_container'>
                         <div className='edit_title'>Edit Profile</div>
@@ -144,8 +146,8 @@ function EditProfileForm() {
                             <input className='edit_input'
                                 type="text"
                                 placeholder="Profile Image URL"
-                                value={profile_img}
-                                onChange={(e) => setProfile_img(e.target.value)}
+                                value={icon_img}
+                                onChange={(e) => setIcon_img(e.target.value)}
 
                             />
                         </label>
