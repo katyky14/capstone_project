@@ -88,7 +88,7 @@ export const signUp = (username, email, password, first_name, last_name, icon_im
 
   if (response.ok) {
     const data = await response.json();
-    console.log('the data in thunk', data)
+
     dispatch(setUser(data))
     return null;
   } else if (response.status < 500) {
