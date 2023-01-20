@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getAllBusinessThunk, getOneBusinessThunk } from '../../store/business'
-import { deleteTheReviewThunk, getBusinessReviewThunk, getUserReviewsThunk } from '../../store/reviews'
+// import { deleteTheReviewThunk, getBusinessReviewThunk, getUserReviewsThunk } from '../../store/reviews'
 import DeleteReviewModal from '../reviews/deleteReviewModal'
 import EditReviewFormModal from '../reviews/editReviewFormModal'
 import ReviewFormModal from '../reviews/reviewFormModal'
@@ -15,16 +15,13 @@ function GetBusinessById() {
     const dispatch = useDispatch()
     const { businessId } = useParams()
     const businessObj = useSelector(state => state.businessState)
-    //console.log('in the component', businessObj)
-    const businessArr = Object.values(businessObj)
-    //console.log('the busines arr', businessArr)
-    const business1 = businessArr.find(buz => buz.id === +businessId)
-    //console.log('the business find', business1)
 
-    const allReviewsObj = useSelector(state => state.reviewState)
-    //console.log('the reviews obj', allReviewsObj)
+    const businessArr = Object.values(businessObj)
+    const business1 = businessArr.find(buz => buz.id === +businessId)
+
+    // const allReviewsObj = useSelector(state => state.reviewState)
+
     const user = useSelector(state => state.session.user)
-    //console.log('the user', user)
 
     const owner = business1 && user && business1.ownerId === user.id
 
@@ -130,17 +127,6 @@ function GetBusinessById() {
                     <i class="fa-regular fa-star" />
                 </span >)
         }
-        // else if (rating === 0) {
-        //     return (
-        //         < span >
-        //             <i class="fa-regular fa-star" />
-        //             <i class="fa-regular fa-star" />
-        //             <i class="fa-regular fa-star" />
-        //             <i class="fa-regular fa-star" />
-        //             <i class="fa-regular fa-star" />
-        //         </span >)
-
-        // }
     }
 
 
@@ -220,37 +206,6 @@ function GetBusinessById() {
 
 
 
-
-                        {/* testing to get overall rating chart! */}
-
-                        {/* <div className='rating-reviews'>
-                    <div>
-                    <div>Overall rating</div>
-                    <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
-                    </div>
-
-                    <div>4 stars</div>
-                    <div className='rate-bar-container'>
-                    <div className='background-rate-color'>
-                    {
-                        business1.reviews.length > 0 && (
-                            <div className='rate-bar' style={{ width: `${getRating()}`}} > </div>
-                            )
-                        }
-                        </div>
-                        <div></div>
-                        </div>
-
-                    </div> */}
-
-                        {/* end of testing the rating overall chart */}
-
-
-
-
-
-
-
                         <br />
                         {/* for users to create a reviews and that are not the owner of the restaurant */}
 
@@ -277,7 +232,7 @@ function GetBusinessById() {
 
                                                 <div className='bz-details-rating'>
                                                     {getRating(rev.rating)}
-                                                    {/* {console.log('the rating per user', rev.rating)} */}
+                                        
                                                     {/* <span>10/14/22</span> */}
                                                 </div>
 
@@ -297,13 +252,6 @@ function GetBusinessById() {
                                                 <div className='bz-details-users-review-button'>
                                                     <div className='bz-details-users-reviews-inner-div'>
                                                         <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
-                                                        {/* <button onClick={async (e) => {
-                                                            e.preventDefault()
-                                                            await dispatch(deleteTheReviewThunk(rev.id))
-                                                            //await dispatch(getBusinessReviewThunk(businessId))
-                                                            await dispatch(getOneBusinessThunk(businessId))
-                                                        }} className='bz-details-delete-button-reviews'> <i class="fa-solid fa-trash"></i>
-                                                        </button> */}
 
                                                         <div className='bz-details-delete-button-reviews'>
                                                             <DeleteReviewModal reviewId={rev.id} businessId={+businessId}/>
