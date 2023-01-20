@@ -15,16 +15,15 @@ function GetBusinessById() {
     const dispatch = useDispatch()
     const { businessId } = useParams()
     const businessObj = useSelector(state => state.businessState)
-    //console.log('in the component', businessObj)
+
     const businessArr = Object.values(businessObj)
-    //console.log('the busines arr', businessArr)
+
     const business1 = businessArr.find(buz => buz.id === +businessId)
-    //console.log('the business find', business1)
+
 
     const allReviewsObj = useSelector(state => state.reviewState)
-    //console.log('the reviews obj', allReviewsObj)
+
     const user = useSelector(state => state.session.user)
-    //console.log('the user', user)
 
     const owner = business1 && user && business1.ownerId === user.id
 
