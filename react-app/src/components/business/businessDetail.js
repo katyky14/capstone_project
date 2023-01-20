@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getAllBusinessThunk, getOneBusinessThunk } from '../../store/business'
-import { deleteTheReviewThunk, getBusinessReviewThunk, getUserReviewsThunk } from '../../store/reviews'
+// import { deleteTheReviewThunk, getBusinessReviewThunk, getUserReviewsThunk } from '../../store/reviews'
 import DeleteReviewModal from '../reviews/deleteReviewModal'
 import EditReviewFormModal from '../reviews/editReviewFormModal'
 import ReviewFormModal from '../reviews/reviewFormModal'
@@ -17,11 +17,9 @@ function GetBusinessById() {
     const businessObj = useSelector(state => state.businessState)
 
     const businessArr = Object.values(businessObj)
-
     const business1 = businessArr.find(buz => buz.id === +businessId)
 
-
-    const allReviewsObj = useSelector(state => state.reviewState)
+    // const allReviewsObj = useSelector(state => state.reviewState)
 
     const user = useSelector(state => state.session.user)
 
@@ -129,17 +127,6 @@ function GetBusinessById() {
                     <i class="fa-regular fa-star" />
                 </span >)
         }
-        // else if (rating === 0) {
-        //     return (
-        //         < span >
-        //             <i class="fa-regular fa-star" />
-        //             <i class="fa-regular fa-star" />
-        //             <i class="fa-regular fa-star" />
-        //             <i class="fa-regular fa-star" />
-        //             <i class="fa-regular fa-star" />
-        //         </span >)
-
-        // }
     }
 
 
@@ -216,37 +203,6 @@ function GetBusinessById() {
                                 {business1.reviews.length} reviews
                             </div>
                         </div>
-
-
-
-
-                        {/* testing to get overall rating chart! */}
-
-                        {/* <div className='rating-reviews'>
-                    <div>
-                    <div>Overall rating</div>
-                    <div>{avgRating(business1.reviews)} {business1.reviews.length} reviews </div>
-                    </div>
-
-                    <div>4 stars</div>
-                    <div className='rate-bar-container'>
-                    <div className='background-rate-color'>
-                    {
-                        business1.reviews.length > 0 && (
-                            <div className='rate-bar' style={{ width: `${getRating()}`}} > </div>
-                            )
-                        }
-                        </div>
-                        <div></div>
-                        </div>
-
-                    </div> */}
-
-                        {/* end of testing the rating overall chart */}
-
-
-
-
 
 
 
