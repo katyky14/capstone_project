@@ -232,7 +232,7 @@ function GetBusinessById() {
 
                                                 <div className='bz-details-rating'>
                                                     {getRating(rev.rating)}
-                                                    {/* {console.log('the rating per user', rev.rating)} */}
+                                        
                                                     {/* <span>10/14/22</span> */}
                                                 </div>
 
@@ -252,13 +252,6 @@ function GetBusinessById() {
                                                 <div className='bz-details-users-review-button'>
                                                     <div className='bz-details-users-reviews-inner-div'>
                                                         <div>{<EditReviewFormModal businessId={+businessId} business={business1} />}</div>
-                                                        {/* <button onClick={async (e) => {
-                                                            e.preventDefault()
-                                                            await dispatch(deleteTheReviewThunk(rev.id))
-                                                            //await dispatch(getBusinessReviewThunk(businessId))
-                                                            await dispatch(getOneBusinessThunk(businessId))
-                                                        }} className='bz-details-delete-button-reviews'> <i class="fa-solid fa-trash"></i>
-                                                        </button> */}
 
                                                         <div className='bz-details-delete-button-reviews'>
                                                             <DeleteReviewModal reviewId={rev.id} businessId={+businessId}/>

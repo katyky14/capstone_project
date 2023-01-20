@@ -24,14 +24,11 @@ function CreateBusinessForm() {
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
+    const ownerObj = useSelector(state => state.session.user)
 
     //added for aws
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
-
-
-    const ownerObj = useSelector(state => state.session.user)
-    //console.log('the user obj in form', ownerObj)
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -58,7 +55,6 @@ function CreateBusinessForm() {
 
         let createdBusiness = await dispatch(addOneBusinessThunk(businessInformation))
 
-        //console.log('the created business in component', createdBusiness)
         if (createdBusiness) {
             history.push(`/business/${createdBusiness.id}`)
         }
@@ -69,6 +65,7 @@ function CreateBusinessForm() {
         const errors = [];
 
         // if (name.length < 2 || name.length > 50) errors.push({message: 'Name must be between 2 and 50 characters', key: 'name'})
+        // and then you will call upon each errors for each one of them
         if (name.length < 2 || name.length > 50) errors.push('Name must be between 2 and 50 characters')
         if (address.length > 35 || address.length < 5) errors.push("Address must be between 5 and 35 characters")
         if (city.length < 2 || city.length > 18) errors.push("City must be between 2 and 18 characters")
@@ -116,7 +113,7 @@ function CreateBusinessForm() {
             setImageLoading(false);
             // a real app would probably use more advanced
             // error handling test
-            console.log("error");
+            //console.log("error");
             alert("Cannot upload your image")
         }
     }
@@ -249,6 +246,8 @@ function CreateBusinessForm() {
                             onChange={e => setPreviewImage(e.target.value)}
                         />
                     </div> */}
+
+                    
                     {/* image aws upload */}
 
                     <div className='form-fields-upload'>
