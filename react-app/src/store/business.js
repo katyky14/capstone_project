@@ -100,19 +100,16 @@ export const getOneBusinessThunk = (id) => async dispatch => {
 
 //add business
 export const addOneBusinessThunk = (businessData) => async (dispatch) => {
-    //console.log('the business data', businessData)
+
     const response = await fetch('/api/business', {
         method: 'POST',
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(businessData)
     });
 
-    //console.log('after post', businessData)
-    //console.log('after post in thunk response ', response)
     if (response.ok) {
         const data = await response.json();
         dispatch(addOneBusiness(data))
-        //console.log('the data if response is ok', data)
         return data
     }
 }
@@ -120,8 +117,6 @@ export const addOneBusinessThunk = (businessData) => async (dispatch) => {
 
 //edit a bz
 export const editBusinessThunk = (businessData, businessId) => async (dispatch) => {
-    // console.log('before everything', businessData)
-    // console.log('the bz id', businessId)
 
     const response = await fetch(`/api/business/${businessId}`, {
         method: 'PUT',
@@ -130,13 +125,10 @@ export const editBusinessThunk = (businessData, businessId) => async (dispatch) 
     });
 
 
-    //console.log('after response the edit business data', businessData)
 
     if (response.ok) {
         const data = await response.json();
-
-        dispatch(editBusiness(data))
-        //console.log('after dispatch data is', data)
+        dispatch(editBusiness(data));
         return data;
     }
 }
@@ -147,7 +139,7 @@ export const editBusinessThunk = (businessData, businessId) => async (dispatch) 
 // delete a bz
 
 export const deleteBusinessThunk = (businessId) => async (dispatch) => {
-    //console.log('the id in delete', businessId)
+
     const response = await fetch(`/api/business/${businessId}`, {
         method: 'DELETE',
         headers: {
@@ -157,7 +149,6 @@ export const deleteBusinessThunk = (businessId) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        //console.log('the data in thunk', data)
         dispatch(deleteBusiness(businessId))
     }
 }
@@ -186,19 +177,13 @@ const businessReducer = (state = {}, action) => {
 
         case ADD_BUSINESS: {
             const newStateBz = { ...state };
-            //console.log('in reducer', action)
-            // console.log('in the reducer the action.payload', action.payload)
-            // newStateBz[action.payload.business.id] = action.payload;
-            //console.log('in the reducer the state after normalization', newStateBz)
             newStateBz[action.payload.id] = action.payload
             return newStateBz
         }
 
         case EDIT_BUSINESS: {
             const newStateEdit = {...state}
-            //console.log('in reducer ----', action.payload)
             newStateEdit[action.payload.id] = action.payload
-            //console.log('in reducer after normalized', newStateEdit)
             return newStateEdit
         }
 

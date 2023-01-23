@@ -35,7 +35,7 @@ export const editProfileThunk = (userId, profile) => async (dispatch) => {
         headers:  { "Content-Type": "application/json"},
         body: JSON.stringify(profile)
     });
-    // console.log('the response in thunk', response)
+
     if (response.ok) {
         const data = await response.json();
 
