@@ -49,15 +49,12 @@ const deleteTheReview = payload => {
 //reviews for each business
 
 export const getBusinessReviewThunk = (product_id) => async (dispatch) => {
-    //console.log('the id in thunk', product_id)
 
     const response = await fetch(`/api/business/$${product_id}/reviews`)
 
     if (response.ok) {
         const data = await response.json()
         dispatch(getBusinessReview(data.review))
-
-        //console.log('the data after dispatch', data)
         // return data;
     }
 
@@ -71,7 +68,6 @@ export const getUserReviewsThunk = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
-        //console.log('the data before dispatch', data)
         dispatch(getUserReviews(data.review))
         return { ...data }
     }
@@ -82,7 +78,6 @@ export const getUserReviewsThunk = () => async (dispatch) => {
 
 export const addOneReviewThunk = (reviewData) => async (dispatch) => {
     const { businessId } = reviewData
-    //console.log('the id ', businessId)
     const response = await fetch(`/api/business/${businessId}/reviews`, {
         method: 'POST',
         headers: {
@@ -94,7 +89,6 @@ export const addOneReviewThunk = (reviewData) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(addOneReview(data.review));
-        //console.log('the data in add review', data)
         return data
     }
 }
@@ -104,8 +98,6 @@ export const addOneReviewThunk = (reviewData) => async (dispatch) => {
 
 export const editTheReviewThunk = (reviewData) => async (dispatch) => {
     const { reviewId } = reviewData
-    //console.log('the review id', reviewId)
-
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: 'PUT',
         headers: {
@@ -123,7 +115,6 @@ export const editTheReviewThunk = (reviewData) => async (dispatch) => {
 
 
 export const deleteTheReviewThunk = (reviewId) => async(dispatch) => {
-    //console.log('the review id', reviewId)
 
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE'
@@ -182,7 +173,6 @@ const reviewReducer = (state = {}, action) => {
 
         case DELETE_REVIEW: {
             const newStateDelete = { ...state };
-            //console.log('in the reducer for review action', action.payload)
             delete newStateDelete[action.payload];
             return newStateDelete;
         }
