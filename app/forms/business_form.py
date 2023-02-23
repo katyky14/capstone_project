@@ -1,13 +1,31 @@
 from tokenize import String
 from wsgiref.validate import validator
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, SubmitField, validators, IntegerField
+from wtforms import StringField, TextAreaField, SubmitField, validators, IntegerField, SelectMultipleField
 from wtforms.validators import DataRequired, Email, ValidationError
 
 def validUrl(form, field):
     url = field.data
     if('jpg' or 'png' or 'jpeg' or 'gif') not in url:
         raise ValidationError('Must be a valid url jpg, jpeg, png, or gif')
+
+
+TYPES = [
+    ('bakeries', 'Bakeries'),
+    ('bobatea', 'Boba Tea'),
+    ('desserts', 'Desserts'),
+    ('dimsum', 'Dim Sum'),
+    ('burgers', 'Burgers'),
+    ('korean', 'Korean'),
+    ('american', 'American'),
+    ('ramen', 'Ramen'),
+    ('pho', 'Pho'),
+    ('noodles', 'Noodles'),
+    ('pizza', 'Pizza'),
+    ('sandwich', 'Sandwich'),
+    ('tacos', 'Tacos'),
+]
+
 
 class BusinessForm(FlaskForm):
     name = StringField('Business Name', validators=[DataRequired(), validators.Length(min=1, max=50, message='Name must be between 2 to 50 characters')])
@@ -19,6 +37,7 @@ class BusinessForm(FlaskForm):
     preview_image = StringField('PreviewImage', validators=[DataRequired()])
     website = StringField('Website', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
+    types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
     submit = SubmitField('Add Business')
 
 
@@ -33,6 +52,7 @@ class EditBusinessForm(FlaskForm):
     preview_image = StringField('PreviewImage', validators=[DataRequired()])
     website = StringField('Website', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
+    types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
     submit = SubmitField('Edit Business')
 
 
