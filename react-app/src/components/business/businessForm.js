@@ -30,6 +30,10 @@ function CreateBusinessForm() {
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
 
+    const types = [{
+        
+    }]
+
     const onSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
@@ -247,7 +251,7 @@ function CreateBusinessForm() {
                         />
                     </div> */}
 
-                    
+
                     {/* image aws upload */}
 
                     <div className='form-fields-upload'>
