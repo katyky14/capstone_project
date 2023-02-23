@@ -24,6 +24,7 @@ TYPES = [
     ('pizza', 'Pizza'),
     ('sandwich', 'Sandwich'),
     ('tacos', 'Tacos'),
+    ('chinese', 'Chinese'),
 ]
 
 

@@ -9,7 +9,7 @@ from app.aws import (
 from app.forms.images_form import ImageForm
 from ..forms.business_form import BusinessForm, EditBusinessForm
 from ..forms.review_form import ReviewForm
-from ..models import Business, Image, db, Review
+from ..models import Business, Image, db, Review, Type
 
 
 business_routes = Blueprint('business', __name__)
@@ -47,6 +47,7 @@ all_type_list = [
     {'alias': 'pizza', 'title': 'Pizza'},
     {'alias': 'sandwich', 'title': 'Sandiwch'},
     {'alias': 'tacos', 'title': 'Tacos'},
+    {'alias': 'chinese', 'title': 'Chinese'},
 
 ]
 
@@ -80,6 +81,12 @@ def edit_business(id):
     # print('edit form', form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        type_list = []
+        for alias in form.data['types']:
+            filtered = [i for i in all_type_list if i['alias'] == alias[0]]
+            ty = (Type(type=filtered['title'], alias=alias))
+            type_list.append(ty)
+
         data = Business.query.get(id)
         # print('the data inside form', data)
         form.populate_obj(data)
