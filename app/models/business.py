@@ -1,5 +1,11 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
+business_types = db.Table(
+  'business_type',
+  db.Model.metadata,
+  db.Column('business_id', db.Integer, db.ForeignKey('businesses.id'), primary_key=True),
+  db.Column('type_id', db.Integer, db.ForeignKey('types.id'), primary_key=True)
+)
 
 class Business(db.Model):
     __tablename__ = 'businesses'
@@ -21,6 +27,13 @@ class Business(db.Model):
     owner = db.relationship('User', back_populates='business')
     images = db.relationship('Image', back_populates ='business')
     reviews = db.relationship('Review', back_populates='business', cascade='all, delete')
+
+    types = db.relationship(
+      'Type',
+      secondary=business_types,
+      back_populates='businesses'
+    )
+
 
     def to_dict_business(self):
         return {
