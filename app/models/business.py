@@ -67,3 +67,23 @@ class Business(db.Model):
           # "reviews": [r.to_dict_reviews() for r in self.reviews]
           "reviews": [r.to_dict_rel() for r in self.reviews]
         }
+
+class Type(db.Model):
+  __tablename__ = "types"
+
+  id = db.Column(db.Integer, primary_key=True)
+  type = db.Column(db.String(500))
+  alias = db.Column(db.String(500))
+
+  businesses = db.relationship(
+    'Business',
+    secondary=business_types,
+    back_populates='types'
+  )
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "type": self.type,
+      "alias": self.alias
+    }
