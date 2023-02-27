@@ -18,12 +18,8 @@ function EditBusinessForm() {
     const dispatch = useDispatch();
     const history = useHistory()
     const ownerObj = useSelector(state => state.session.user)
-    //console.log('the ownerobj', ownerObj)
-
     const businessObj = useSelector(state => state.businessState[businessId])
-    //console.log('the business obj in compon', businessObj)
-
-
+    
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [city, setCity] = useState("")
