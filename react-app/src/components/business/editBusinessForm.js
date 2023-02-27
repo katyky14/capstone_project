@@ -17,10 +17,6 @@ function EditBusinessForm() {
     const { businessId } = useParams()
     const dispatch = useDispatch();
     const history = useHistory()
-
-    //console.log('the business id', businessId)
-
-
     const ownerObj = useSelector(state => state.session.user)
     //console.log('the ownerobj', ownerObj)
 
