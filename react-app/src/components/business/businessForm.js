@@ -21,6 +21,7 @@ function CreateBusinessForm() {
     const [phone, setPhone] = useState('')
     const [preview_image, setPreviewImage] = useState('')
     const [website, setWebsite] = useState('')
+    const [types, setTypes] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
     const [hasSubmitted, setHasSubmitted] = useState(false)
 
@@ -30,9 +31,22 @@ function CreateBusinessForm() {
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
 
-    const types = [{
-        
-    }]
+    const typesArr = [
+        {'alias': 'bakeries', 'title': 'Bakeries'},
+        {'alias': 'bobatea', 'title': 'Boba Tea'},
+        {'alias': 'desserts', 'title': 'Desserts'},
+        {'alias': 'dimsum', 'title': 'Dim Sum'},
+        {'alias': 'burgers', 'title': 'Burgers'},
+        {'alias': 'korean', 'title': 'Korean'},
+        {'alias': 'american', 'title': 'American'},
+        {'alias': 'ramen', 'title': 'Ramen'},
+        {'alias': 'pho', 'title': 'Pho'},
+        {'alias': 'noodles', 'title': 'Noodles'},
+        {'alias': 'pizza', 'title': 'Pizza'},
+        {'alias': 'sandwich', 'title': 'Sandiwch'},
+        {'alias': 'tacos', 'title': 'Tacos'},
+        {'alias': 'chinese', 'title': 'Chinese'},
+    ]
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -54,7 +68,8 @@ function CreateBusinessForm() {
             description,
             phone,
             preview_image,
-            website
+            website,
+            types
         }
 
         let createdBusiness = await dispatch(addOneBusinessThunk(businessInformation))
@@ -279,7 +294,9 @@ function CreateBusinessForm() {
                     </div>
 
 
+                    <div>
 
+                    </div>
 
                     <div>
                         <button className='button-style'> Create New Business</button>
