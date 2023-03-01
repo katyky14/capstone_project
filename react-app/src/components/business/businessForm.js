@@ -32,20 +32,20 @@ function CreateBusinessForm() {
     const [imageLoading, setImageLoading] = useState(false);
 
     const typesArr = [
-        {'alias': 'bakeries', 'title': 'Bakeries'},
-        {'alias': 'bobatea', 'title': 'Boba Tea'},
-        {'alias': 'desserts', 'title': 'Desserts'},
-        {'alias': 'dimsum', 'title': 'Dim Sum'},
-        {'alias': 'burgers', 'title': 'Burgers'},
-        {'alias': 'korean', 'title': 'Korean'},
-        {'alias': 'american', 'title': 'American'},
-        {'alias': 'ramen', 'title': 'Ramen'},
-        {'alias': 'pho', 'title': 'Pho'},
-        {'alias': 'noodles', 'title': 'Noodles'},
-        {'alias': 'pizza', 'title': 'Pizza'},
-        {'alias': 'sandwich', 'title': 'Sandiwch'},
-        {'alias': 'tacos', 'title': 'Tacos'},
-        {'alias': 'chinese', 'title': 'Chinese'},
+        { 'alias': 'bakeries', 'title': 'Bakeries' },
+        { 'alias': 'bobatea', 'title': 'Boba Tea' },
+        { 'alias': 'desserts', 'title': 'Desserts' },
+        { 'alias': 'dimsum', 'title': 'Dim Sum' },
+        { 'alias': 'burgers', 'title': 'Burgers' },
+        { 'alias': 'korean', 'title': 'Korean' },
+        { 'alias': 'american', 'title': 'American' },
+        { 'alias': 'ramen', 'title': 'Ramen' },
+        { 'alias': 'pho', 'title': 'Pho' },
+        { 'alias': 'noodles', 'title': 'Noodles' },
+        { 'alias': 'pizza', 'title': 'Pizza' },
+        { 'alias': 'sandwich', 'title': 'Sandiwch' },
+        { 'alias': 'tacos', 'title': 'Tacos' },
+        { 'alias': 'chinese', 'title': 'Chinese' },
     ]
 
     const onSubmit = async (e) => {
@@ -294,8 +294,39 @@ function CreateBusinessForm() {
                     </div>
 
 
-                    <div>
+                    {/* CATEGORIES - TYPES */}
 
+                    <div>
+                        {typesArr.map(type => (
+                            <div  key={type.alias}>
+                                <input
+                                    type="checkbox"
+                                    className=''
+                                    id='form-for-type'
+                                    onChange={e => {
+                                        const typeList = types;
+                                        if (e.target.checked) {
+                                            console.log('adding type to checkbox')
+                                            typeList.push(e.target.value);
+                                        } else {
+                                            console.log('removing type from checkbox')
+                                            const i = typeList.indexOf(e.target.value) // find the index
+                                            typeList.splice(i, 1);
+                                            console.log('did it got remove?', typeList)
+                                        }
+                                        setTypes(typeList)
+                                    }}
+                                    value={type.alias}
+                                    name={type.alias}
+                                />
+                                <label
+                                    htmlFor={type.alias}
+                                    className=''
+                                >
+                                    {type.title}
+                                </label>
+                            </div>
+                        ))}
                     </div>
 
                     <div>
