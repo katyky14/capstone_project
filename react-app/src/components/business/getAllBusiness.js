@@ -12,8 +12,7 @@ function GetAllBusiness() {
     const history = useHistory()
     const businessObj = useSelector(state => state.businessState)
     const businessArr = Object.values(businessObj)
-    //console.log('in the component', businessObj)
-    //console.log('component arr', businessArr)
+ 
 
     useEffect(() => {
         dispatch(getAllBusinessThunk())
