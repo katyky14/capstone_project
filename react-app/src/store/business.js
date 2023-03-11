@@ -50,7 +50,6 @@ const deleteBusiness = payload => {
 export const getAllBusinessThunk = () => async dispatch => {
     const response = await fetch('/api/business/')
 
-    //console.log('the response in all thunk', response)
     if (response.ok) {
         const data = await response.json()
 
