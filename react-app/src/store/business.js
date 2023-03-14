@@ -105,7 +105,7 @@ export const addOneBusinessThunk = (businessData) => async (dispatch) => {
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(businessData)
     });
-    console.log('the response', response)
+    //console.log('the response', response)
 
     if (response.ok) {
         const data = await response.json();

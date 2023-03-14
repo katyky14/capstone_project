@@ -71,7 +71,7 @@ def create_business():
         db.session.add(data)
         db.session.commit()
         # return {'business': data.to_dict_relationship()}
-        print('the data after form', data.to_dict_relationship())
+        # print('the data after form', data.to_dict_relationship())
         return data.to_dict_relationship()
 
 
