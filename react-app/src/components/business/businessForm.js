@@ -296,7 +296,7 @@ function CreateBusinessForm() {
 
                     {/* CATEGORIES - TYPES */}
 
-                    {/* <div>
+                    <div>
                         {typesArr.map(type => (
                             <div  key={type.alias}>
                                 <input
@@ -327,7 +327,7 @@ function CreateBusinessForm() {
                                 </label>
                             </div>
                         ))}
-                    </div> */}
+                    </div>
 
                     <div>
                         <button className='button-style'> Create New Business</button>
