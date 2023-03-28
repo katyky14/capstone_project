@@ -13,7 +13,7 @@ def profile_page(userId):
     user_profile = User.query.get_or_404(userId)
 
     profile = user_profile.to_dict()
-    print('the user profile in --------', profile)
+    #print('the user profile in --------', profile)
 
     all_businesses = Business.query.filter(Business.owner_id == userId).all()
     businesses = [business.to_dict_business() for business in all_businesses]

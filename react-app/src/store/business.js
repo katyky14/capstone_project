@@ -109,7 +109,7 @@ export const addOneBusinessThunk = (businessData) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log('the data in bz thunk', data)
+        //console.log('the data in bz thunk', data)
         dispatch(addOneBusiness(data))
         return data
     }
