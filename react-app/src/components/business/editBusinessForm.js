@@ -19,7 +19,7 @@ function EditBusinessForm() {
     const history = useHistory()
     const ownerObj = useSelector(state => state.session.user)
     const businessObj = useSelector(state => state.businessState[businessId])
-    
+
     const [name, setName] = useState("")
     const [address, setAddress] = useState("")
     const [city, setCity] = useState("")
@@ -153,7 +153,7 @@ function EditBusinessForm() {
             setImageLoading(false);
             // a real app would probably use more advanced
             // error handling
-            console.log("error");
+            //console.log("error");
             alert("Cannot upload your image")
         }
     }
