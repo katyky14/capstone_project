@@ -9,7 +9,7 @@ from app.aws import (
 from app.forms.images_form import ImageForm
 from ..forms.business_form import BusinessForm, EditBusinessForm
 from ..forms.review_form import ReviewForm
-from ..models import Business, Image, db, Review, Type
+from ..models import Business, Image, db, Review #, Type
 
 
 business_routes = Blueprint('business', __name__)
@@ -18,8 +18,6 @@ business_routes = Blueprint('business', __name__)
 @business_routes.route('/')
 def get_all_businesses():
     all_business = Business.query.all()
-    # print('in the', all_business)
-    # print('the all business --------', [a.to_dict_relationship() for a in all_business])
     return {'business': [b.to_dict_relationship() for b in all_business]}
     # all_businesses = Business.query.join(Image).all()
     # return {'business': [business.to_dict_relationship() for business in all_businesses]}
@@ -33,23 +31,23 @@ def get_business_id(id):
 
 # get the current user/owner businesses
 
-all_type_list = [
-    {'alias': 'bakeries', 'title': 'Bakeries'},
-    {'alias': 'bobatea', 'title': 'Boba Tea'},
-    {'alias': 'desserts', 'title': 'Desserts'},
-    {'alias': 'dimsum', 'title': 'Dim Sum'},
-    {'alias': 'burgers', 'title': 'Burgers'},
-    {'alias': 'korean', 'title': 'Korean'},
-    {'alias': 'american', 'title': 'American'},
-    {'alias': 'ramen', 'title': 'Ramen'},
-    {'alias': 'pho', 'title': 'Pho'},
-    {'alias': 'noodles', 'title': 'Noodles'},
-    {'alias': 'pizza', 'title': 'Pizza'},
-    {'alias': 'sandwich', 'title': 'Sandiwch'},
-    {'alias': 'tacos', 'title': 'Tacos'},
-    {'alias': 'chinese', 'title': 'Chinese'},
+# all_type_list = [
+#     {'alias': 'bakeries', 'title': 'Bakeries'},
+#     {'alias': 'bobatea', 'title': 'Boba Tea'},
+#     {'alias': 'desserts', 'title': 'Desserts'},
+#     {'alias': 'dimsum', 'title': 'Dim Sum'},
+#     {'alias': 'burgers', 'title': 'Burgers'},
+#     {'alias': 'korean', 'title': 'Korean'},
+#     {'alias': 'american', 'title': 'American'},
+#     {'alias': 'ramen', 'title': 'Ramen'},
+#     {'alias': 'pho', 'title': 'Pho'},
+#     {'alias': 'noodles', 'title': 'Noodles'},
+#     {'alias': 'pizza', 'title': 'Pizza'},
+#     {'alias': 'sandwich', 'title': 'Sandiwch'},
+#     {'alias': 'tacos', 'title': 'Tacos'},
+#     {'alias': 'chinese', 'title': 'Chinese'},
 
-]
+# ]
 
 
 # create a new business
@@ -58,12 +56,12 @@ def create_business():
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        type_list = []
-        for alias in form.data['types']:
-            filtered = [i for i in all_type_list if i['alias'] == alias[0]]
-            ty = (Type(type=filtered['title'], alias=alias))
-            #print('the ty', ty)
-            type_list.append(ty)
+        # type_list = []
+        # for alias in form.data['types']:
+        #     filtered = [i for i in all_type_list if i['alias'] == alias[0]]
+        #     ty = (Type(type=filtered['title'], alias=alias))
+        #     #print('the ty', ty)
+        #     type_list.append(ty)
 
 
         data = Business()
@@ -84,11 +82,11 @@ def edit_business(id):
     # print('edit form', form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        type_list = []
-        for alias in form.data['types']:
-            filtered = [i for i in all_type_list if i['alias'] == alias[0]]
-            ty = (Type(type=filtered['title'], alias=alias))
-            type_list.append(ty)
+        # type_list = []
+        # for alias in form.data['types']:
+        #     filtered = [i for i in all_type_list if i['alias'] == alias[0]]
+        #     ty = (Type(type=filtered['title'], alias=alias))
+        #     type_list.append(ty)
 
         data = Business.query.get(id)
         # print('the data inside form', data)

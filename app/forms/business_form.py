@@ -10,22 +10,22 @@ def validUrl(form, field):
         raise ValidationError('Must be a valid url jpg, jpeg, png, or gif')
 
 
-TYPES = [
-    ('bakeries', 'Bakeries'),
-    ('bobatea', 'Boba Tea'),
-    ('desserts', 'Desserts'),
-    ('dimsum', 'Dim Sum'),
-    ('burgers', 'Burgers'),
-    ('korean', 'Korean'),
-    ('american', 'American'),
-    ('ramen', 'Ramen'),
-    ('pho', 'Pho'),
-    ('noodles', 'Noodles'),
-    ('pizza', 'Pizza'),
-    ('sandwich', 'Sandwich'),
-    ('tacos', 'Tacos'),
-    ('chinese', 'Chinese'),
-]
+# TYPES = [
+#     ('bakeries', 'Bakeries'),
+#     ('bobatea', 'Boba Tea'),
+#     ('desserts', 'Desserts'),
+#     ('dimsum', 'Dim Sum'),
+#     ('burgers', 'Burgers'),
+#     ('korean', 'Korean'),
+#     ('american', 'American'),
+#     ('ramen', 'Ramen'),
+#     ('pho', 'Pho'),
+#     ('noodles', 'Noodles'),
+#     ('pizza', 'Pizza'),
+#     ('sandwich', 'Sandwich'),
+#     ('tacos', 'Tacos'),
+#     ('chinese', 'Chinese'),
+# ]
 
 
 class BusinessForm(FlaskForm):
@@ -38,7 +38,7 @@ class BusinessForm(FlaskForm):
     preview_image = StringField('PreviewImage', validators=[DataRequired()])
     website = StringField('Website', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
-    types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
+    # types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
     submit = SubmitField('Add Business')
 
 
@@ -53,7 +53,7 @@ class EditBusinessForm(FlaskForm):
     preview_image = StringField('PreviewImage', validators=[DataRequired()])
     website = StringField('Website', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
-    types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
+    # types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
     submit = SubmitField('Edit Business')
 
 
