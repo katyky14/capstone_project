@@ -33,23 +33,23 @@ def get_business_id(id):
 
 # get the current user/owner businesses
 
-all_type_list = [
-    {'alias': 'bakeries', 'title': 'Bakeries'},
-    {'alias': 'bobatea', 'title': 'Boba Tea'},
-    {'alias': 'desserts', 'title': 'Desserts'},
-    {'alias': 'dimsum', 'title': 'Dim Sum'},
-    {'alias': 'burgers', 'title': 'Burgers'},
-    {'alias': 'korean', 'title': 'Korean'},
-    {'alias': 'american', 'title': 'American'},
-    {'alias': 'ramen', 'title': 'Ramen'},
-    {'alias': 'pho', 'title': 'Pho'},
-    {'alias': 'noodles', 'title': 'Noodles'},
-    {'alias': 'pizza', 'title': 'Pizza'},
-    {'alias': 'sandwich', 'title': 'Sandiwch'},
-    {'alias': 'tacos', 'title': 'Tacos'},
-    {'alias': 'chinese', 'title': 'Chinese'},
+# all_type_list = [
+#     {'alias': 'bakeries', 'title': 'Bakeries'},
+#     {'alias': 'bobatea', 'title': 'Boba Tea'},
+#     {'alias': 'desserts', 'title': 'Desserts'},
+#     {'alias': 'dimsum', 'title': 'Dim Sum'},
+#     {'alias': 'burgers', 'title': 'Burgers'},
+#     {'alias': 'korean', 'title': 'Korean'},
+#     {'alias': 'american', 'title': 'American'},
+#     {'alias': 'ramen', 'title': 'Ramen'},
+#     {'alias': 'pho', 'title': 'Pho'},
+#     {'alias': 'noodles', 'title': 'Noodles'},
+#     {'alias': 'pizza', 'title': 'Pizza'},
+#     {'alias': 'sandwich', 'title': 'Sandiwch'},
+#     {'alias': 'tacos', 'title': 'Tacos'},
+#     {'alias': 'chinese', 'title': 'Chinese'},
 
-]
+# ]
 
 
 # create a new business
@@ -58,12 +58,12 @@ def create_business():
     form = BusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        type_list = []
-        for alias in form.data['types']:
-            filtered = [i for i in all_type_list if i['alias'] == alias[0]]
-            ty = (Type(type=filtered['title'], alias=alias))
-            #print('the ty', ty)
-            type_list.append(ty)
+        # type_list = []
+        # for alias in form.data['types']:
+        #     filtered = [i for i in all_type_list if i['alias'] == alias[0]]
+        #     ty = (Type(type=filtered['title'], alias=alias))
+        #     #print('the ty', ty)
+        #     type_list.append(ty)
 
 
         data = Business()
@@ -84,11 +84,11 @@ def edit_business(id):
     # print('edit form', form)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        type_list = []
-        for alias in form.data['types']:
-            filtered = [i for i in all_type_list if i['alias'] == alias[0]]
-            ty = (Type(type=filtered['title'], alias=alias))
-            type_list.append(ty)
+        # type_list = []
+        # for alias in form.data['types']:
+        #     filtered = [i for i in all_type_list if i['alias'] == alias[0]]
+        #     ty = (Type(type=filtered['title'], alias=alias))
+        #     type_list.append(ty)
 
         data = Business.query.get(id)
         # print('the data inside form', data)

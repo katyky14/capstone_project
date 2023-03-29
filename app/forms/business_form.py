@@ -38,7 +38,7 @@ class BusinessForm(FlaskForm):
     preview_image = StringField('PreviewImage', validators=[DataRequired()])
     website = StringField('Website', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
-    types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
+    # types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
     submit = SubmitField('Add Business')
 
 
@@ -53,7 +53,7 @@ class EditBusinessForm(FlaskForm):
     preview_image = StringField('PreviewImage', validators=[DataRequired()])
     website = StringField('Website', validators=[DataRequired()])
     owner_id = IntegerField('Owner Id')
-    types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
+    # types = SelectMultipleField('Categories (select up to 3)', choices=TYPES)
     submit = SubmitField('Edit Business')
 
 
