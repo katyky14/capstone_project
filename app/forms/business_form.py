@@ -10,22 +10,22 @@ def validUrl(form, field):
         raise ValidationError('Must be a valid url jpg, jpeg, png, or gif')
 
 
-TYPES = [
-    ('bakeries', 'Bakeries'),
-    ('bobatea', 'Boba Tea'),
-    ('desserts', 'Desserts'),
-    ('dimsum', 'Dim Sum'),
-    ('burgers', 'Burgers'),
-    ('korean', 'Korean'),
-    ('american', 'American'),
-    ('ramen', 'Ramen'),
-    ('pho', 'Pho'),
-    ('noodles', 'Noodles'),
-    ('pizza', 'Pizza'),
-    ('sandwich', 'Sandwich'),
-    ('tacos', 'Tacos'),
-    ('chinese', 'Chinese'),
-]
+# TYPES = [
+#     ('bakeries', 'Bakeries'),
+#     ('bobatea', 'Boba Tea'),
+#     ('desserts', 'Desserts'),
+#     ('dimsum', 'Dim Sum'),
+#     ('burgers', 'Burgers'),
+#     ('korean', 'Korean'),
+#     ('american', 'American'),
+#     ('ramen', 'Ramen'),
+#     ('pho', 'Pho'),
+#     ('noodles', 'Noodles'),
+#     ('pizza', 'Pizza'),
+#     ('sandwich', 'Sandwich'),
+#     ('tacos', 'Tacos'),
+#     ('chinese', 'Chinese'),
+# ]
 
 
 class BusinessForm(FlaskForm):

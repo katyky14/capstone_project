@@ -9,7 +9,7 @@ from app.aws import (
 from app.forms.images_form import ImageForm
 from ..forms.business_form import BusinessForm, EditBusinessForm
 from ..forms.review_form import ReviewForm
-from ..models import Business, Image, db, Review, Type
+from ..models import Business, Image, db, Review #, Type
 
 
 business_routes = Blueprint('business', __name__)
@@ -18,8 +18,6 @@ business_routes = Blueprint('business', __name__)
 @business_routes.route('/')
 def get_all_businesses():
     all_business = Business.query.all()
-    # print('in the', all_business)
-    # print('the all business --------', [a.to_dict_relationship() for a in all_business])
     return {'business': [b.to_dict_relationship() for b in all_business]}
     # all_businesses = Business.query.join(Image).all()
     # return {'business': [business.to_dict_relationship() for business in all_businesses]}
